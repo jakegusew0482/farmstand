@@ -42,13 +42,16 @@
 	<h2>Login Existing Account </h2>
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+<form id='login' name='loginform' method='post'>
+    <label for="user"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="user" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="pass"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="pass" required>
         
-    <button type="submit">Login</button>
+    <button type="submit" id='sub'>Login</button>
+	<p id="demo">logintest</p>
+</form>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
@@ -71,3 +74,33 @@
 
 </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script language='JavaScript' type='text/javascript'>
+
+$(document).ready(function() {
+$("#sub").on('click',function() {
+var user = $('#user').val();
+var pass = $('#pass').val();
+
+if (user != "" && pass != "") {
+$.ajax({
+        url:'/login.php',
+        type:'post',
+        data:{user:user,pass:pass},
+        success:function(response){
+        var msg="";
+        if(response==1){
+                msg="success";
+                document.getElementById("demo").innerHTML = msg;
+        } else {
+                msg="fail";
+                document.getElementById("demo").innerHTML = msg;
+        }
+        }
+        });
+}
+});
+});
+</script>
+
