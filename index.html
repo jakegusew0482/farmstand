@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/indexStyle.css" media="screen" />
     <script src="indexJS.js"></script>
   </head>
-  <body>
+  <body onload='checkLogin()'>
     <div class="header">
       <h1>AddHealth Choices At Your Local Stand</h1>
       <p>Find Local Stand Near You</p>
@@ -40,8 +40,8 @@
       <div class="main">
         <h4>Local Farm Stand News</h4>
 
-        <p>Put Some text in here</p>
-        <p>Fill this area with something</p>
+        <p>login status:</p>
+        <p id='login'></p>
       </div>
     </div>
 
@@ -50,3 +50,25 @@
     </div>
   </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script language='Javascript' type='text/javascript'>
+
+function checkLogin() {
+	$.ajax({
+		url:'checklogin.php',
+		type:'post',
+		success:function(response){
+			var msg = "";
+	
+			if(response==1){
+				msg="logged in";
+			} else {
+				msg="logged out";
+			}
+
+			document.getElementById("login").innerHTML = msg;
+		}
+	});
+}
+</script>

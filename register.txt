@@ -1,0 +1,20 @@
+<?php
+
+	$table 	= "user";
+	$name 	= "testuser";
+	$email 	= "test@email.com";
+
+	if(isset($_POST['username'])) $username = $_POST['username'])) else $username = NULL;
+	if(isset($_POST['password'])) $password = $_POST['password'])) else $password = NULL;
+
+	if($username != NULL && $password != NULL) {
+		$query = "INSERT INTO $table VALUES(123, $username, $name, $email, $password")";
+		
+		if (mysqli_query($connect, $query)) {
+			echo "Success";
+		} else {
+			echo "Failure";
+		}
+	
+	mysqli_close($connect);
+?>
