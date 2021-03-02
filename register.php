@@ -12,14 +12,14 @@
 	if($user != NULL && $pass != NULL && $email != NULL) {
 
 		$query = "INSERT INTO $table(username, name, email, password)  VALUES('$user', '$defaultName', '$email', '$pass');";
-if(mysqli_query($connect, $query)){
+/*DISABLED	if(mysqli_query($connect, $query)){
 		
 			
 			echo 1;
 		} else {
 		
 			echo 0;
-	} 		
+	} DISABLED*/		
 	}
 	echo 0;
 mysqli_close($connect);

@@ -49,7 +49,8 @@
     <label for="pass"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="pass" id="pass"required>
         
-    <input type='button' name='sub' id='sub' value="Login">
+	<button type='button' name='sub' id='sub'>Login</button>
+<!--    <input type='button' name='sub' id='sub' value="Login"> -->
 	<p id="demo">logintest</p>
 </form>
     <label>
@@ -79,7 +80,7 @@
 <script language='JavaScript' type='text/javascript'>
 
 $(document).ready(function() {
-$("#sub").on('click',function() {
+$("#sub").click(function() {
 var user = $('#user').val();
 var pass = $('#pass').val();
 
@@ -93,6 +94,7 @@ $.ajax({
         if(response==1){
                 msg="success";
                 document.getElementById("demo").innerHTML = msg;
+		window.location.href = "http://farmstandwebsite.com/index.html";
         } else {
                 msg="fail";
                 document.getElementById("demo").innerHTML = msg;

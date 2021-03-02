@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/indexStyle.css" media="screen" />
-    <script src="indexJS.js"></script>
+<!--    <script src="indexJS.js"></script> -->
   </head>
   <body onload='checkLogin()'>
     <div class="header">
@@ -15,7 +15,7 @@
 
     <div class="navbar">
       <a href="index.html">Home</a>
-      <a href="logIn.html">Log In</a>
+      <a id='loginbutton' href="logIn.html">Log In</a>
       <a href="Feedback.html" class="right">Feedback</a>
       <a href="ContactUs.html" class="right">Contact Us</a>
       <a href="createAccount.html" class="right">Create Account</a>
@@ -62,7 +62,10 @@ function checkLogin() {
 			var msg = "";
 	
 			if(response==1){
+				document.getElementById("loginbutton").innerHTML = "Log Out";
+				document.getElementById("loginbutton").setAttribute("href", "");
 				msg="logged in";
+				
 			} else {
 				msg="logged out";
 			}
