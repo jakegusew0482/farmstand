@@ -12,13 +12,7 @@
       <h1>Create Account</h1>
     </div>
 
-    <div class="navbar">
-      <a href="index.html">Home</a>
-      <a href="logIn.html">Log In</a>
-      <a href="Feedback.html" class="right">Feedback</a>
-      <a href="ContactUs.html" class="right">Contact Us</a>
-      <a href="createAccount.html" class="right">Create Account</a>
-    </div>
+    <?php	include('navbar.php');	?>
 
     <!-- Side Column of Main Page -->
     <div class="row">

@@ -11,17 +11,16 @@
 
 	if($user != NULL && $pass != NULL && $email != NULL) {
 
-		$query = "INSERT INTO $table(username, name, email, password)  VALUES('$user', '$defaultName', '$email', '$pass');";
-/*DISABLED	if(mysqli_query($connect, $query)){
-		
-			
-			echo 1;
-		} else {
-		
-			echo 0;
-	} DISABLED*/		
+		$query = "INSERT INTO $table(username, name, email, password)  VALUES(?, ?, ?, ?);";
+		$statement = mysqli_prepare($connect, $query);
+		mysqli_stmt_bind_param($statement, 'ssss', $user, $defaultName, $email, $pass);
+		mysqli_stmt_execute($statement);
+		$count = mysqli_stmt_affected_rows($statement);
+		echo $count;
+		mysqli_stmt_close($statement);
+	} else {
+		echo 0;
 	}
-	echo 0;
 mysqli_close($connect);
 ?>
 

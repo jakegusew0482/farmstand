@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/indexStyle.css" media="screen" />
-<!--    <script src="indexJS.js"></script> -->
+    <script src="scripts/indexJS.js"></script>
   </head>
   <body onload='checkLogin()'>
     <div class="header">
@@ -13,13 +13,7 @@
       <p>Find Local Stand Near You</p>
     </div>
 
-    <div class="navbar">
-      <a href="index.html">Home</a>
-      <a id='loginbutton' href="logIn.html">Log In</a>
-      <a href="Feedback.html" class="right">Feedback</a>
-      <a href="ContactUs.html" class="right">Contact Us</a>
-      <a href="createAccount.html" class="right">Create Account</a>
-    </div>
+	<?php include('navbar.php'); ?>
 
     <!-- Side Column of Main Page -->
     <div class="row">
@@ -54,24 +48,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script language='Javascript' type='text/javascript'>
 
-function checkLogin() {
-	$.ajax({
-		url:'checklogin.php',
-		type:'post',
-		success:function(response){
-			var msg = "";
-	
-			if(response==1){
-				document.getElementById("loginbutton").innerHTML = "Log Out";
-				document.getElementById("loginbutton").setAttribute("href", "");
-				msg="logged in";
-				
-			} else {
-				msg="logged out";
-			}
 
-			document.getElementById("login").innerHTML = msg;
-		}
-	});
-}
 </script>
+
+
