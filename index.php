@@ -24,7 +24,7 @@
 
 	 <form autocomplete="off">
   <div class="autocomplete" style="width:300px;">
-    <input id="myInput" type="text" name="myCountry" placeholder="Country">
+    <input id="myInput" type="text" name="FoodTypeSearch" placeholder="Browse by Type">
   </div>
   <input type="submit">
 </form>
