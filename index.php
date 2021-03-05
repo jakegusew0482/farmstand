@@ -22,12 +22,16 @@
         <h2>Support Your Local Farm Stand</h2>
         <button onclick="getLocation" id="getLocation">Find Near Me</button>
 
-	 <form autocomplete="off">
-  <div class="autocomplete" style="width:300px;">
-    <input id="myInput" type="text" name="FoodTypeSearch" placeholder="Browse by Type">
-  </div>
-  <input type="submit">
-</form>
+	       
+        <h3>Search by Type of goods</h3>
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="myFunction()"
+          placeholder="Search for Type of stand"
+        />
+		    
+      </div>
 
       <!--Main Page-->
       <div class="main">
