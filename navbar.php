@@ -6,7 +6,7 @@
                         echo"<a href='logout.php'>Log Out</a>";
                 }
                 else {
-                        echo "<a href='logIn.php'>Log In</a>";
+                        echo "<a href='loginPage.php'>Log In</a>";
                 }
         ?>
 
