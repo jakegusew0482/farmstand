@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/indexStyle.css" media="screen" />
     <script src="scripts/indexJS.js"></script>
-    <script src="scripts/SearchBarScript.js"></script>	  
+   <!-- script src="scripts/SearchBarScript.js"></script>-->	  
   </head>
   <body onload='checkLogin()'>
     <div class="header">
