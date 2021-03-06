@@ -20,8 +20,31 @@
     <div class="row">
       <div class="side">
         <h2>Support Your Local Farm Stand</h2>
-        <button onclick="getLocation" id="getLocation">Find Near Me</button>
+        <div id="GeoLocation">
 
+			<p>Find a local Stand.</p>
+
+			<button onclick="getLocation()">Find a local Stand</button>
+			<p id="demo"></p>
+
+			<script>
+			var x = document.getElementById("demo");
+
+			function getLocation() {
+			  if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition);
+			  } else { 
+				x.innerHTML = "Geolocation is not supported by this browser.";
+			  }
+			}
+
+			function showPosition(position) {
+			  x.innerHTML = "Latitude: " + position.coords.latitude + 
+			  "<br>Longitude: " + position.coords.longitude;
+			}
+		</script>
+
+	</div>
 	       
         <h3>Search by Type of goods</h3>
         <input
