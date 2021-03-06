@@ -10,7 +10,7 @@
   </head>
   <body onload='checkLogin()'>
     <div class="header">
-      <h1>AddHealth Choices At Your Local Stand</h1>
+      <h1>Add Health Choices At Your Local Stand</h1>
       <p>Find Local Stand Near You</p>
     </div>
 
