@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Farm Stand</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles/indexStyle.css" media="screen" />
-    <script src="indexJS.js"></script>
-  </head>
-  <body>
-    <div class="header">
-      <h1>Feedback Page</h1>
-      <p>We would love to hear from you</p>
-    </div>
-
     <?php include('navbar.php'); ?>
 
     <!-- Side Column of Main Page -->

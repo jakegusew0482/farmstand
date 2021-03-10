@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Farm Stand Sign Up</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles/indexStyle.css" media="screen" />
-  <!--  <script src="indexJS.js"></script> -->
-  </head>
-  <body>
-    <div class="header">
-      <h1>Create Account</h1>
-    </div>
-
     <?php	include('navbar.php');	?>
 
     <!-- Side Column of Main Page -->
@@ -90,7 +76,7 @@
               <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
             </p>
 
-	<p id="testp">test field</p>
+	<p id="output"></p>
 	
 
             <div class="clearfix">
@@ -125,12 +111,14 @@ $.ajax({
 	success:function(response){
 	var msg="";
 	if(response==1) {
-		msg="account created";
-	
-	} else {
-		msg = "account not created";
+		msg="Account Created";
+		window.location.href = "http://farmstandwebsite.com"
+	} else if(response==2){
+		alert("The Username or Email is already in use");
+	} else if(response==3) {
+		alert("The account could not be created");
 	}
-	document.getElementById("testp").innerHTML = msg;
+	document.getElementById("output").innerHTML = msg;
 }
 });
 }
