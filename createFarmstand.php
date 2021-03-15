@@ -19,7 +19,7 @@
       <div class="mainFeedback">
         <h2>Create Farmstand Account</h2>
 
-        <form id='register' name='registerform' method='post'>
+        <form id='regform' name='regform' method='post' action='registerFarmstand.php' enctype='multipart/form-data'>
           <div class="container">
             <h1>Register Your Farmstand</h1>
             <p>Please fill in this form to register your farmstand.</p>
@@ -80,6 +80,7 @@
               required
             />
 
+	<input id="uploadImage" type="file" accept="image/*" name="image" />
 
 
             <p>
@@ -91,7 +92,7 @@
 	
 
             <div class="clearfix">
-              <button type='button' name='reg' id='reg'>Register</button>
+<input class="btn btn-success" type="submit" value="Upload">
 		<button type="button" class="cancelBtn">Cancel</button>
             </div>
           </div>
@@ -99,50 +100,35 @@
       </div>
     </div>
 
+<!--
     <div class="footer">
       <h5>To Reach us, send us an Email: www.somekindofemail@something.com</h5>
     </div>
   </body>
 </html>
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script language='JavaScript' type='text/javascript'>
-
-$(document).ready(function() {
-$("#reg").on('click',function() {
-	
-var title = $('#title').val();
-var desc = $('#desc').val();
-var user = $('#user').val();
-var email = $('#email').val();
-var address = $('#address').val();
-var password = $('#password').val();
-if(title != "" && desc != "" && user != "" && email != "" && address != "" && password != "") {
+$(document).ready(function (e) {
+ $("#regform").on('submit',(function(e) {
+e.preventDefault();
 $.ajax({
-	url:'/registerFarmstand.php',
-	type:'post',
-	data:{title:title, desc:desc, user:user, email:email, address:address, password:password},
-	success:function(response){
-
-	if(response==0){
-	document.getElementById("output").innerHTML = "Account Not Created";
-	}
-
-	if(response==1) {
-		document.getElementById("output").innerHTML = "Account Created";
-
-	} else if(reponse==2) {
-		document.getElementById("output").innerHTML = "Account Not Created";
-
-	} else if (response==3) {
-	}
-	
-}
-});
-} else {
-	document.getElementById("output").innerHTML = "All Fields Must be Filled Out";
-
-}
-});
+         url: "registerFarmstand.php",
+   type: "POST",
+   data:  new FormData(this),
+   contentType: false,
+         cache: false,
+   processData:false,
+   success: function(data) {
+     $("#regform")[0].reset(); 
+	window.location.href = "http://farmstandwebsite.com/index.php";
+	     }
+         
+    });
+ }));
 });
 </script>
+
+
+

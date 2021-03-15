@@ -40,6 +40,7 @@
 				$_SESSION['farmstand_name'] = $row['title'];
 				$_SESSION['farmstand_description'] = $row['description'];
 				$_SESSION['farmstand_address'] = $row['address'];
+				$_SESSION['farmstand_image'] = $row['coverimage'];
                			 echo 1;
                 } else {
 			echo 0;

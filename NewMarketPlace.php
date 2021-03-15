@@ -6,15 +6,19 @@
 				<!--Main Container-->
 				<!--Text input from previous pages should be locked in div id containers-->
 				<div class="UserStandContainer">
-					<div id = "ImageContainer">
-					<img id ="FarmStandImage" style="width:100%"> 
-					</div>
-					<div id = "StandNameContainer">
+					
 					<?php 
 					include('config.php');
 					$name = $_SESSION['farmstand_name'];
 					$desc = $_SESSION['farmstand_description'];
 					$address = $_SESSION['farmstand_address'];
+					$imgsrc = $_SESSION['farmstand_image'];
+					echo"<div id = 'ImageContainer'>
+					<img src='$imgsrc' id ='FarmStandImage' style='width:100%'> 
+					</div>
+					<div id = 'StandNameContainer'>
+
+					";
 					echo "<h1 id = 'StandNamePass'> $name  </h1> 
 					</div>
 					<div id = 'DescriptionContainer'>
