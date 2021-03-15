@@ -82,6 +82,7 @@
             <div class="clearfix">
               <button type='button' name='reg' id='reg'>Register</button>
 		<button type="button" class="cancelBtn">Cancel</button>
+		<a href='createFarmstand.php'>Create a Farmstand Account</a>
             </div>
           </div>
         </form>
