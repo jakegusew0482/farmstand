@@ -1,38 +1,43 @@
-
-var modal = document.getElementById('createFarmStand');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-
-
-/*
-  Gets info for the farm stand location and description
-*/
-
-document.getElementById("submit").onclick = function() {myFunction()};
-
-function myFunction() {
-  var StandName = document.getElementById("sName").nodeValue;
-  var StandDescription = document.getElementById("sDescription").nodeValue;
-  var StandAddress = document.getElementById("address").nodeValue;
-  var StandCity = document.getElementById("city").nodeValue;
-  var StandState = document.getElementById("state").nodeValue;
-  var StandZip = document.getElementById("zip").nodeValue;
+function vallPassToNextPage()
+{
+  var StandName = document.getElementById("sName").value;
+  var StandDescription = document.getElementById("sDescription").value;
+  var StandAddress = document.getElementById("address").value;
+  var StandCity = document.getElementById("city").value;
+  var StandState = document.getElementById("state").value;
+  var StandZip = document.getElementById("zip").value;
   var StandImage = document.getElementById("StandImage");
+
+
+  localStorage.setItem("StandName",StandName);
+  localStorage.setItem("StandDescription",StandDescription);
+  localStorage.setItem("StandAddress",StandAddress);
+  localStorage.setItem("StandCity",StandCity);
+  localStorage.setItem("StandState",StandState);
+  localStorage.setItem("StandZip",StandZip);
+  localStorage.setItem("StandImage",StandImage);
+
+
+  return false;
+
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
-  Gets info check boxes and stores images
-*/
-
-document.getElementById("submit").onclick = function() {myFunction()};
-
 function myFunction() {
   var VegetablesBox = document.getElementById("Vegetables").value;
   var FruitsBox = document.getElementById("Fruits").value;
@@ -46,12 +51,24 @@ function myFunction() {
 
 }
 
+*/
+
+/*Modal close when clicked outside of area*/
+
+var modal = document.getElementById('createFarmStand');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 
 
 
-
-
-
+AddItemsButton.onclick = function() {
+  modal.style.display = "block";
+}
 
 
