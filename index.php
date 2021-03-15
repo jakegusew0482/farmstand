@@ -35,10 +35,33 @@
 					maxZoom: 16
 				});
 
+				let leafIcon = L.Icon.extend({
+					options: {
+						shadowUrl: './images/leaf-shadow.png',
+						iconSize: [38, 95],
+						shadowSize: [50, 64],
+						iconAnchor: [22, 94],
+						shadowAnchor: [4, 62],
+						popupAnchor: [-3, -76]
+					}
+				})
+
+				let greenIcon = new leafIcon({
+						iconUrl: './images/leaf-green.png'
+					}),
+					redIcon = new leafIcon({
+						iconUrl: "./images/leaf-green.png"
+					}),
+					orangeIcon = new leafIcon({
+						iconUrl: "./images/leaf-orange.png"
+					});
+
 				function onLocationFound(e) {
 					let radius = e.accuracy;
 
-					L.marker(e.latlng).addTo(myMap);
+					L.marker(e.latlng, {
+						icon: greenIcon
+					}).addTo(myMap);
 
 					L.circle(e.latlng, radius).addTo(myMap);
 				}
