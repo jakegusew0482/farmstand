@@ -12,9 +12,12 @@
 	if(isset($_POST['email'])) $email = $_POST['email']; else $email = NULL;
 	if(isset($_POST['address'])) $address = $_POST['address']; else $address = NULL;
 	if(isset($_POST['password'])) $password = $_POST['password']; else $password = NULL;
+	if(isset($_POST['city'])) $city = $_POST['city']; else $city = NULL;
+	if(isset($_POST['state'])) $state = $_POST['state']; else $state = NULL;
+	if(isset($_POST['zipcode'])) $zipcode = $_POST['zipcode']; else $zipcode = NULL;
 
 
-	if($title != NULL && $desc != NULL && $address != NULL && $user != NULL && $email != NULL && $_FILES['image']) {
+	if($title != NULL && $desc != NULL && $address != NULL && $user != NULL && $email != NULL && $_FILES['image'] && $city != NULL && $state != NULL && $zipcode != NULL) {
                 
 			$img = $_FILES['image']['name'];
 			$tmp = $_FILES['image']['tmp_name'];
@@ -28,9 +31,9 @@
 
 			
 
-						$query = "INSERT INTO $table(username, email, title, description, address, password, coverimage)  VALUES(?, ?, ?, ?, ?, ?, ?);";
+						$query = "INSERT INTO $table(username, email, title, description, address, password, coverimage, city, state, zip_code)  VALUES(?, ?, ?, ?, ?, ?, ?,?,?,?);";
 						$statement = mysqli_prepare($connect, $query);
-						mysqli_stmt_bind_param($statement, 'sssssss', $user, $email, $title, $desc, $address, $password, $path);
+						mysqli_stmt_bind_param($statement, 'ssssssssss', $user, $email, $title, $desc, $address, $password, $path, $city, $state, $zipcode);
 						mysqli_stmt_execute($statement);
 						$count = mysqli_stmt_affected_rows($statement);
 						if ($count > 0) {

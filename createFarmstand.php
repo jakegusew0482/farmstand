@@ -71,7 +71,7 @@
               required
             />
 
-<label for="password"><b>Password for farmstand login</b></label>
+	 <label for="password"><b>Password for farmstand login</b></label>
             <input
               type="text"
               placeholder="Enter Password"
@@ -79,6 +79,34 @@
               id="password"
               required
             />
+
+	 <label for="city"><b>City</b></label>
+            <input
+              type="text"
+              placeholder="Enter City"
+              name="city"
+              id="city"
+              required
+            />
+
+	 <label for="state"><b>State</b></label>
+            <input
+              type="text"
+              placeholder="Enter State"
+              name="state"
+              id="state"
+              required
+            />
+
+	 <label for="zipcode"><b>Zipcode</b></label>
+            <input
+              type="text"
+              placeholder="Enter Zipcode"
+              name="zipcode"
+              id="zipcode"
+              required
+            />
+
 
 	<input id="uploadImage" type="file" accept="image/*" name="image" />
 
@@ -119,8 +147,11 @@ e.preventDefault();
 	var email = document.getElementById('email').value;
 	var add = document.getElementById('address').value;
 	var pass = document.getElementById('password').value;
+	var city = document.getElementById('city').value;
+	var state = document.getElementById('state').value;
+	var zip = document.getElementById('zipcode').value;
 
-	if (name != "" && desc != "" & user != "" && email != "" && add != "" && pass != "") {
+	if (name != "" && desc != "" & user != "" && email != "" && add != "" && pass != "" && city != "" && state != "" && zip != "") {
 
 		$.ajax({
       			url: "registerFarmstand.php",
