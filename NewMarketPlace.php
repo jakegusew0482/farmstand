@@ -55,72 +55,67 @@
 			<h1>Add new inventory</h1>
 			
 			<div class="UserInventoryAdd">
-				
-					<label for="invItem">Item Name</label><br>
-					<input type="text" id="invItem" name="invItem" placeholder="New Item"><br>
-					<label for="invItemDesc">Item Description</label><br>
-					<input type="text" id="invItemDesc" name="invItemDesc" placeholder="Item Description"><br>
+				<form id='productform' name='productform' method='post' action='addProduct.php' enctype='multipart/form-data'>
+
+					<label for="name">Item Name</label><br>
+					<input type="text" id="name" name="name" placeholder="New Item"><br>
+					<label for="desc">Item Description</label><br>
+					<input type="text" id="desc" name="desc" placeholder="Item Description"><br>
 
 						<p>Inventory Images</p>
 						<div class="panel">
-							<form action="/action_page.php">
-							<label for="files">Select files:</label>
-							<input type="file" id="files" name="files" multiple><br><br>
+							
+							<label for="files">Select file:</label>
+							<input id="uploadImage" type="file" accept="image/*" name="image"/><br><br>
 							
 						</div>
 						<div id = "QTYandPrice">							
-								<label for="quantity">Quantity (minimum of 1):</label>
-								<input type="number" id="quantity" name="quantity" min="1" max="none">
-
 								<label for="quantity">Price:</label>
-								<input type="number" id="Price" name="Price" >
+								<input type="number" id="price" name="price" >
 						</div>
 						<p id='test'>test</p>
 							<?php $id = $_SESSION['farm_id'];
-						echo "<p style='display:none;' id='farmid'>$id</p>"; ?>
+						echo "<input style='display:none;' id='id' name = 'id' value='$id'>"; ?>
 						</div>
 						<br>
 					<br>
 					
 
-					<button type='button' name='add' id='add'>Add New Item</button>
-					<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-					<script language='JavaScript' type='text/javascript'>
+					<input class="btn btn-success" type="submit" value="Add Item">
+
+					</form>
 
 
-						$(document).ready(function() {
-						$("#add").on('click',function() {
-							var name = $('#invItem').val();
-							var desc = $('#invItemDesc').val();
-							var price = $('#Price').val();
-							var id = document.getElementById("farmid").innerHTML;
+					<div class="clear">
+						<button type="button" onclick="document.getElementById('AddItemsButton').style.display='none'" class="cancelbtn">Cancel</button>
+					</div>
+			</div>
+
+	</body>
+</html>
 
 					
-							if(name != "" && desc != "" && price != "") {
-							
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>					
+<script>
 
-								$.ajax({
-									url:'/addProduct.php',
-									type:'post',
-									data:{name:name, desc:desc, price:price, id:id},
-									success:function(response) {
-									if(response==1) {
-										document.getElementById('test').innerHTML = "Item Added";
-										document.getElementById('invItem').value = "";
-										document.getElementById('invItemDesc').value = "";
-										document.getElementById('Price').value = "";			
-									} else if(response==2) {
-										
-									}
-										
 
-									}
-							});
-							} else {
-								document.getElementById('test').innerHTML = "Please fill out each field";
-							}
-							});
-							});
+	$(document).ready(function(e) {
+	 $("#productform").on('submit',(function(e) {
+	  e.preventDefault();
+					
+		$.ajax({
+         		url: "addProduct.php",
+  			type: "POST",
+   			data:  new FormData(this),
+   			contentType: false,
+       			cache: false,
+  			processData:false,
+   			success: function(data) {
+     				$("#productform")[0].reset(); 
+			}
+    		});
+ 	}));
+});
 
 
 
@@ -131,12 +126,7 @@
 							divElement.setAttribute("style", "background-color: pink;");
 							divElement.appendChild(t);
 							document.body.appendChild(divElement);
-							
-
-
-
-
-							
+								
 
 						}
 					</script>
@@ -192,20 +182,3 @@
 
 
 
-
-					<div class="clear">
-						<button type="button" onclick="document.getElementById('AddItemsButton').style.display='none'" class="cancelbtn">Cancel</button>
-					</div>
-			</div>
-
-
-
-
-
-
-
-	
-
-
-</body>
-</html>

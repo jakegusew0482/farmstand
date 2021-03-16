@@ -17,7 +17,7 @@
   
  <!--Main Page-->
   <div class="mainFeedback">
-	<h2>Login Existing Account </h2>
+	<h2>Login Existing User or Farmstand Account </h2>
 
   <div class="container">
 <form id='login' name='loginform' method='post'>
@@ -74,7 +74,7 @@ $.ajax({
                 document.getElementById("demo").innerHTML = msg;
 		window.location.href = "http://farmstandwebsite.com/index.php";
         } else {
-                msg="fail";
+                msg="Failed to Login";
                 document.getElementById("demo").innerHTML = msg;
         }
         }

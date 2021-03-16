@@ -12,6 +12,18 @@
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 <script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<script>
+
+function logout() {
+$.ajax({
+	url: 'logout.php',
+	type:'post',
+	success:function(reponse) {
+		window.location.href = "http://farmstandwebsite.com";
+	}
+	});
+}
+</script>
 
 	<!-- script src="scripts/SearchBarScript.js"></script>-->
 </head>
@@ -30,7 +42,7 @@
 		<?php
 		include('config.php');
 		if (isset($_SESSION['username'])) {
-			echo "<a href='logout.php'>Log Out</a>";
+			echo "<a onclick='logout()'>Log Out</a>";
 		} else {
 			echo "<a href='loginPage.php'>Log In</a>";
 		}

@@ -81,7 +81,6 @@
 
             <div class="clearfix">
               <button type='button' name='reg' id='reg'>Register</button>
-		<button type="button" class="cancelBtn">Cancel</button>
 		<a href='createFarmstand.php'>Create a Farmstand Account</a>
             </div>
           </div>
@@ -113,7 +112,7 @@ $.ajax({
 	var msg="";
 	if(response==1) {
 		msg="Account Created";
-		window.location.href = "http://farmstandwebsite.com"
+		window.location.href = "http://farmstandwebsite.com";
 	} else if(response==2){
 		alert("The Username or Email is already in use");
 	} else if(response==3) {
@@ -122,6 +121,8 @@ $.ajax({
 	document.getElementById("output").innerHTML = msg;
 }
 });
+} else {
+	document.getElementById("output").innerHTML = "Please fill out every field";
 }
 });
 });

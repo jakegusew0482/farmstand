@@ -92,8 +92,7 @@
 	
 
             <div class="clearfix">
-<input class="btn btn-success" type="submit" value="Upload">
-		<button type="button" class="cancelBtn">Cancel</button>
+<input class="btn btn-success" type="submit" value="Register">
             </div>
           </div>
         </form>
@@ -113,20 +112,33 @@
 $(document).ready(function (e) {
  $("#regform").on('submit',(function(e) {
 e.preventDefault();
-$.ajax({
-         url: "registerFarmstand.php",
-   type: "POST",
-   data:  new FormData(this),
-   contentType: false,
-         cache: false,
-   processData:false,
-   success: function(data) {
-     $("#regform")[0].reset(); 
-	window.location.href = "http://farmstandwebsite.com/index.php";
-	     }
+
+	var name = document.getElementById('title').value;
+	var desc = document.getElementById('desc').value;
+	var user = document.getElementById('user').value;
+	var email = document.getElementById('email').value;
+	var add = document.getElementById('address').value;
+	var pass = document.getElementById('password').value;
+
+	if (name != "" && desc != "" & user != "" && email != "" && add != "" && pass != "") {
+
+		$.ajax({
+      			url: "registerFarmstand.php",
+  	 		type: "POST",
+  			data:  new FormData(this),
+   			contentType: false,
+        		cache: false,
+   			processData:false,
+   			success: function(data) {
+     				$("#regform")[0].reset(); 
+				window.location.href = "http://farmstandwebsite.com/index.php";
+	    		}
          
-    });
- }));
+   		});
+	} else {
+		document.getElementById("output").innerHTML = "Please fill out every field";
+	}
+}));
 });
 </script>
 
