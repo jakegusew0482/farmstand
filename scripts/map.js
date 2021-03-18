@@ -71,16 +71,17 @@ $.ajax({
   url: "mapData.php",
   dataType: "html",
   success: function (response) {
-    console.log(response);
+    let showResult = JSON.parse(response);
+    console.log("mapData:", showResult[0].title);
   },
 });
 
-let address = "42 Vernon st";
+let address = "42 Vernon st, Patchogue";
 $.get(
   location.protocol +
     "//nominatim.openstreetmap.org/search?format=json&q=" +
     address,
   function (data) {
-    console.log(data);
+    console.log("lat:", data[0].lat, "lon:", data[0].lon);
   }
 );
