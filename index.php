@@ -78,6 +78,11 @@
 					setView: true,
 					maxZoom: 16
 				});
+
+				let address = "42 Vernon st";
+				$.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q=' + address, function(data) {
+					console.log(data);
+				});
 			</script>
 		</div>
 	</div>
@@ -89,8 +94,4 @@
 
 	</html>
 	<script language='Javascript' type='text/javascript'>
-		let address = "42 Vernon st";
-		$.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q=' + address, function(data) {
-			console.log(data);
-		});
 	</script>
