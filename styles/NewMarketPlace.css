@@ -37,10 +37,9 @@ body {
     color: black;
   }
 
-
 .UserStandContainer
 {
-  box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.2);
+  box-shadow: 0 4px 8px 0 rgb(109, 109, 109);
   background-color: lightgray;
   max-width: 300px;
   margin: auto;
@@ -48,37 +47,39 @@ body {
   font-family: arial;
   height: 600px;
   float:center;
-
+  border: gray;
 }
 
 
 #ImageContainer
 {
-    background-color: rgb(121, 115, 115);
+    background-color: rgba(211, 211, 211, 0.767);
     height: 300px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
 
 }
+
 
 #StandNameContainer
 {
-    background-color: rgb(91, 82, 114);
+    background-color: rgba(245, 245, 245, 0.747);
     height: 50px;
-
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
 }
-
 
 #DescriptionContainer
 {
-    background-color: rgb(116, 184, 155);
+  background-color: rgba(245, 245, 245, 0.747);
     height: 50px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
 
 }
 
 #AddressContainer
 {
-    background-color: rgb(70, 5, 48);
+    background-color: rgba(245, 245, 245, 0.747);
     height: 100px;
-    
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
 }
 
 
@@ -107,14 +108,13 @@ Button {
     opacity: 0.9;
     position: absolute;
     bottom: 0px;
-
-
   }
 
   Button:hover
   {
     opacity: 1;
     background-color: #292b31;
+    transform: scale(1.05);
   }
 
 
