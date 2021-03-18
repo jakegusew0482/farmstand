@@ -88,9 +88,9 @@
 	</body>
 
 	</html>
-
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script language='Javascript' type='text/javascript'>
-
-
+		let address = "42 Vernon st";
+		$.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q=' + address, function(data) {
+			console.log(data);
+		});
 	</script>
