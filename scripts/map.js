@@ -46,9 +46,7 @@ let greenIcon = new leafIcon({
 function onLocationFound(e) {
   let radius = e.accuracy;
 
-  L.marker(e.latlng, {
-    icon: greenIcon,
-  }).addTo(myMap);
+  L.marker(e.latlng).addTo(myMap);
 
   L.circle(e.latlng, radius).addTo(myMap);
 }
@@ -66,16 +64,46 @@ myMap.locate({
   maxZoom: 16,
 });
 
-$.ajax({
-  type: "GET",
-  url: "mapData.php",
-  dataType: "html",
-  success: function (response) {
-    let showResult = JSON.parse(response);
-    console.log("mapData:", showResult[0].title);
-  },
-});
+// Getting data from mysql/php
 
+function getMapData(jQuery) {
+  let getAddress = [];
+  $.ajax({
+    type: "GET",
+    url: "mapData.php",
+    success: function (response) {
+      let showResult = JSON.parse(response);
+      //let arrayData = [];
+      for (let i = 0; i < showResult.length; i++) {
+        getAddress.push(showResult[i].address);
+      }
+    },
+  });
+
+  // display address
+  let newAddress = "2350 NY-110, Farmingdale";
+  for (let j = 0; j < getAddress.length; j++) {}
+  $.get(
+    location.protocol +
+      "//nominatim.openstreetmap.org/search?format=json&q=" +
+      //getAddress[0],
+      newAddress,
+
+    function (data) {
+      let lat = parseFloat(data[0].lat).toFixed(2);
+      let lon = parseFloat(data[0].lon).toFixed(2);
+      console.log("lat:", lat, "lon:", lon);
+
+      L.marker([lat, lon], {
+        icon: redIcon,
+      }).addTo(myMap);
+    }
+  );
+}
+
+$(document).ready(getMapData);
+
+/*
 let address = "42 Vernon st, Patchogue";
 $.get(
   location.protocol +
@@ -85,3 +113,4 @@ $.get(
     console.log("lat:", data[0].lat, "lon:", data[0].lon);
   }
 );
+*/
