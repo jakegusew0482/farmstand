@@ -1,5 +1,5 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
 $conn = mysqli_connect("localhost", "root", "", "farm_db");
 
 $result = mysqli_query($conn, "SELECT title ,address, city, state, zipCode FROM farmstand");

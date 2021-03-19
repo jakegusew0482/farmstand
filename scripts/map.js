@@ -37,7 +37,7 @@ let greenIcon = new leafIcon({
     iconUrl: "./images/leaf-green.png",
   }),
   redIcon = new leafIcon({
-    iconUrl: "./images/leaf-green.png",
+    iconUrl: "./images/leaf-red.png",
   }),
   orangeIcon = new leafIcon({
     iconUrl: "./images/leaf-orange.png",
@@ -67,50 +67,54 @@ myMap.locate({
 // Getting data from mysql/php
 
 function getMapData(jQuery) {
-  let getAddress = [];
   $.ajax({
     type: "GET",
+    //dataType: "jsonp",
     url: "mapData.php",
     success: function (response) {
       let showResult = JSON.parse(response);
       //let arrayData = [];
       for (let i = 0; i < showResult.length; i++) {
-        getAddress.push(showResult[i].address);
+        let combinedAddress = showResult[i].address;
+        //    getAddress.push(combinedAddress);
+        console.log("COMBINED:", combinedAddress);
+        $.get(
+          location.protocol +
+            "//nominatim.openstreetmap.org/search?format=json&q=" +
+            //getAddress[0],
+            combinedAddress,
+          function (data) {
+            let lat = parseFloat(data[0].lat).toFixed(2);
+            let lon = parseFloat(data[0].lon).toFixed(2);
+            console.log("lat:", lat, "lon:", lon);
+
+            L.marker([lat, lon], {
+              icon: redIcon,
+            }).addTo(myMap);
+          }
+        );
       }
     },
   });
-
-  // display address
-  let newAddress = "2350 NY-110, Farmingdale";
-  for (let j = 0; j < getAddress.length; j++) {}
-  $.get(
-    location.protocol +
-      "//nominatim.openstreetmap.org/search?format=json&q=" +
-      //getAddress[0],
-      newAddress,
-
-    function (data) {
-      let lat = parseFloat(data[0].lat).toFixed(2);
-      let lon = parseFloat(data[0].lon).toFixed(2);
-      console.log("lat:", lat, "lon:", lon);
-
-      L.marker([lat, lon], {
-        icon: redIcon,
-      }).addTo(myMap);
-    }
-  );
 }
 
+// display address
 $(document).ready(getMapData);
 
-/*
-let address = "42 Vernon st, Patchogue";
+let newAddress = "2350 NY-110, Farmingdale";
 $.get(
   location.protocol +
     "//nominatim.openstreetmap.org/search?format=json&q=" +
-    address,
+    //getAddress[0],
+    newAddress,
+
   function (data) {
-    console.log("lat:", data[0].lat, "lon:", data[0].lon);
+    let lat = parseFloat(data[0].lat).toFixed(2);
+    let lon = parseFloat(data[0].lon).toFixed(2);
+    console.log("lat:", lat, "lon:", lon);
+
+    L.marker([lat, lon], {
+      icon: redIcon,
+    }).addTo(myMap);
   }
 );
-*/
