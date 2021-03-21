@@ -18,7 +18,7 @@ $found = false;
 
 if ($user != NULL && $pass != NULL) {
 
-	$query = "SELECT * FROM $table WHERE username='$user' and password='$pass';";
+	$query = "SELECT * FROM $usertable WHERE username='$user' and password='$pass';";
 
 	$result = mysqli_query($connect, $query);
 	$row = mysqli_fetch_assoc($result);
