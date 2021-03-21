@@ -22,6 +22,7 @@ myMap.locate({
   maxZoom: 16,
 });
 
+// Creating icon's shadow
 let leafIcon = L.Icon.extend({
   options: {
     shadowUrl: "./images/leaf-shadow.png",
@@ -33,6 +34,7 @@ let leafIcon = L.Icon.extend({
   },
 });
 
+// Class for multiple icons, using leafIcon
 let greenIcon = new leafIcon({
     iconUrl: "./images/leaf-green.png",
   }),
@@ -46,6 +48,7 @@ let greenIcon = new leafIcon({
 function onLocationFound(e) {
   let radius = e.accuracy;
 
+  // Display user location
   L.marker(e.latlng).addTo(myMap);
 
   L.circle(e.latlng, radius).addTo(myMap);
@@ -64,8 +67,7 @@ myMap.locate({
   maxZoom: 16,
 });
 
-// Getting data from mysql/php
-
+// Getting data from mysql/php farmstand and display on map
 function getMapData(jQuery) {
   $.ajax({
     type: "GET",
@@ -73,21 +75,27 @@ function getMapData(jQuery) {
     url: "mapData.php",
     success: function (response) {
       let showResult = JSON.parse(response);
-      //let arrayData = [];
+
+      // get data from all
       for (let i = 0; i < showResult.length; i++) {
-        let combinedAddress = showResult[i].address;
-        //    getAddress.push(combinedAddress);
-        console.log("COMBINED:", combinedAddress);
+        let address = showResult[i].address;
+
+        // Debug purposes
+        // console.log("COMBINED:", combinedAddress);
+
         $.get(
           location.protocol +
             "//nominatim.openstreetmap.org/search?format=json&q=" +
-            //getAddress[0],
-            combinedAddress,
+            address,
+
           function (data) {
             let lat = parseFloat(data[0].lat).toFixed(2);
             let lon = parseFloat(data[0].lon).toFixed(2);
-            console.log("lat:", lat, "lon:", lon);
 
+            // Debug purposes
+            // console.log("lat:", lat, "lon:", lon);
+
+            // Add each address to the map with redICon
             L.marker([lat, lon], {
               icon: redIcon,
             }).addTo(myMap);
@@ -98,20 +106,21 @@ function getMapData(jQuery) {
   });
 }
 
-// display address
+// calling getMapData fun
 $(document).ready(getMapData);
 
+// Testing data
 let newAddress = "2350 NY-110, Farmingdale";
 $.get(
   location.protocol +
     "//nominatim.openstreetmap.org/search?format=json&q=" +
-    //getAddress[0],
     newAddress,
 
   function (data) {
     let lat = parseFloat(data[0].lat).toFixed(2);
     let lon = parseFloat(data[0].lon).toFixed(2);
-    console.log("lat:", lat, "lon:", lon);
+    // Debug purposes
+    // console.log("lat:", lat, "lon:", lon);
 
     L.marker([lat, lon], {
       icon: redIcon,
