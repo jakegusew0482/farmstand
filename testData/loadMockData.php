@@ -35,3 +35,39 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
+
+/* Allow to load files on the sever
+ *https://stackoverflow.com/questions/59993844/error-loading-local-data-is-disabled-this-must-be-enabled-on-both-the-client 
+
+You may check the local_infile is disabled or enable. So, you try this-
+
+mysql> show global variables like 'local_infile';
+
+if it shows-
+
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| local_infile  |  OFF  |
++---------------+-------+
+(this means local_infile is disable)
+
+then enable with this-
+
+mysql> set global local_infile=true;
+
+Then check again and quit from mysql server with this-
+
+mysql> exit
+
+Now you have to connect/login server with local_infile. For this run this code from terminal command line-
+
+mysql --local_infile=1 -u root -ppassword DB_name
+
+now load the data from local file-
+
+mysql> load data local infile 'path/file_name.extention' into table table_name;
+
+It's work on my pc. you may try this. thanks.
+
+ */
