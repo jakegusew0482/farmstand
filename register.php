@@ -35,5 +35,3 @@
 		echo 3;
 	}
 mysqli_close($connect);
-?>
-

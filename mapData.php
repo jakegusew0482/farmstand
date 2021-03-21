@@ -1,32 +1,19 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-$conn = mysqli_connect("localhost", "root", "", "farm_db");
 
-$result = mysqli_query($conn, "SELECT title ,address, city, state, zipCode FROM farmstand");
+// connects to localhost - uncomment to test it in your localhost
+/* $conn = mysqli_connect("localhost", "root", "", "farm_db"); */
 
-/*
-echo "<table border='1' >
-<tr>
-<td align=center> <b>Title</b></td>
-<td align=center><b>Address</b></td>
-<td align=center><b>City</b></td>
-<td align=center><b>State</b></td></td>
-<td align=center><b>Zip Code</b></td>";
+// server host
+$conn = mysqli_connect("localhost", "farm_user", "password", "farm_db");
 
-while ($data = mysqli_fetch_row($result)) {
+// local host
+// $result = mysqli_query($conn, "SELECT title ,address, city, state, zipCode FROM farmstand");
 
-	echo "<tr>";
-	echo "<td align=center>$data[0]</td>";
-	echo "<td align=center>$data[1]</td>";
-	echo "<td align=center>$data[2]</td>";
-	echo "<td align=center>$data[3]</td>";
-	echo "<td align=center>$data[4]</td>";
-	echo "</tr>";
-}
+// server data
+$result = mysqli_query($conn, "SELECT title ,address, city, state, zip_code FROM farmstand");
 
-echo "</table>";
- */
-// store in array
+// empty array to store query $result 
 $data = array();
 while ($row = mysqli_fetch_object($result)) {
 	array_push($data, $row);
@@ -34,4 +21,5 @@ while ($row = mysqli_fetch_object($result)) {
 
 // return response in json
 echo json_encode($data);
+
 exit();

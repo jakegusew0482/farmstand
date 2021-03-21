@@ -34,7 +34,7 @@ let leafIcon = L.Icon.extend({
   },
 });
 
-// Class for multiple icons, using leafIcon
+// multiple icons, using leafIcon
 let greenIcon = new leafIcon({
     iconUrl: "./images/leaf-green.png",
   }),

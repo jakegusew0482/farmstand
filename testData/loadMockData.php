@@ -1,7 +1,14 @@
 <?php
+// localhost
+/* $serverName = "localhost"; */
+/* $username = "root"; */
+/* $password = ""; */
+/* $dbname = "farm_db"; */
+
+// server data
 $serverName = "localhost";
-$username = "root";
-$password = "";
+$username = "farm_user";
+$password = "password";
 $dbname = "farm_db";
 
 // Create connection
@@ -13,7 +20,10 @@ if ($conn->connect_error) {
 }
 
 // works on localhost
-$sql = "LOAD DATA INFILE '/opt/lampp/htdocs/farmstand/testData/mockData.csv' INTO TABLE farmstand FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS";
+// $sql = "LOAD DATA INFILE '/opt/lampp/htdocs/farmstand/testData/mockData.csv' INTO TABLE farmstand FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS";
+
+// server 
+$sql = "LOAD DATA INFILE '/var/www/farmstandwebsite.com/html/testData/MOCK_DATA.csv' INTO TABLE farmstand FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS";
 
 // works on server
 // $sql = "LOAD DATA INFILE '/opt/lampp/htdocs/farmstand/testData/mockData.csv' INTO TABLE farmstand FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS";
