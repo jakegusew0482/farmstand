@@ -2,19 +2,7 @@
 
     <!-- Side Column of Main Page -->
     <div class="row">
-      <div class="side">
-        <h2>Support Your Local Farm Stand</h2>
-        <button onclick="getLocation()">Find Near Me</button>
-
-        <h3>Search by Type of goods</h3>
-        <input
-          type="text"
-          id="myInput"
-          onkeyup="myFunction()"
-          placeholder="Search for Type of stand"
-        />
-      </div>
-
+      
       <!--Main Page-->
       <div class="mainFeedback">
         <h4>Local Farm Stand Feedback</h4>

@@ -79,12 +79,12 @@ function getMapData(jQuery) {
       // get data from all
       for (let i = 0; i < showResult.length; i++) {
         let address = showResult[i].address;
-
+	let title = showResult[i].title;
         // Debug purposes
         // console.log("COMBINED:", combinedAddress);
 
         $.get(
-          location.protocol +
+	location.protocol +
             "//nominatim.openstreetmap.org/search?format=json&q=" +
             address,
 
@@ -96,9 +96,12 @@ function getMapData(jQuery) {
             // console.log("lat:", lat, "lon:", lon);
 
             // Add each address to the map with redICon
-            L.marker([lat, lon], {
+            let marker = L.marker([lat, lon], {
               icon: redIcon,
             }).addTo(myMap);
+
+	marker.bindPopup(`title: ${title}`);
+		
           }
         );
       }
@@ -122,8 +125,10 @@ $.get(
     // Debug purposes
     // console.log("lat:", lat, "lon:", lon);
 
-    L.marker([lat, lon], {
+    let marker = L.marker([lat, lon], {
       icon: redIcon,
     }).addTo(myMap);
+
+	  marker.bindPopup(`Title: Farmindale State College`);
   }
 );

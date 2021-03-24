@@ -30,7 +30,7 @@
 
 <body>
 	<div class="header">
-		<h1>Add Health Choices At Your Local Stand</h1>
+		<h1>Farm Stand Website</h1>
 		<p>Find Local Stand Near You</p>
 	</div>
 
@@ -38,7 +38,6 @@
 
 	<div class="navbar">
 		<a href="index.php">Home</a>
-		<a href="farmstands.php">Farm Stands</a>
 		<?php
 		include('config.php');
 		if (isset($_SESSION['username'])) {
@@ -48,18 +47,19 @@
 		}
 		?>
 
-		<a href="Feedback.php" class="right">Feedback</a>
-		<a href="ContactUs.php" class="right">Contact Us</a>
+		
+		<!--<a href="ContactUs.php" class="right">Contact Us</a>-->
 
 		<?php
 		if (!(isset($_SESSION['username']))) {
-			echo "<a href='createAccount.php' class='right'>Create Account</a>";
+			echo "<a href='createAccount.php'>Create Account</a>";
 		} else {
 			if ($_SESSION['account_type'] == "farmstand") {
-				echo "<a href='NewMarketPlace.php' class='right'>My Farmstand</a>";
+				echo "<a href='NewMarketPlace.php'>My Farmstand</a>";
 			} else {
-				echo "<a href='' class='right'>My Account</a>";
+				echo "<a href=''>My Account</a>";
 			}
 		}
 		?>
+		<a href="Feedback.php" class='right'>Feedback</a>
 	</div>

@@ -102,6 +102,12 @@
 				$("#productform").on('submit', (function(e) {
 					e.preventDefault();
 
+					var name = document.getElementById('name').value;
+					var desc = document.getElementById('desc').value;
+					var price = document.getElementById('price').value;
+					var file = document.getElementById('uploadImage').files.length;
+
+					if (name != "" && desc != "" && price != "" && file > 0) {
 					$.ajax({
 						url: "addProduct.php",
 						type: "POST",
@@ -109,10 +115,21 @@
 						contentType: false,
 						cache: false,
 						processData: false,
-						success: function(data) {
-							$("#productform")[0].reset();
+						success: function(response) {
+							if (response==1) {
+								$("#productform")[0].reset();
+								document.getElementById('test').innerHTML = "Item Added";
+							} else {
+								document.getElementById('test').innerHTML = "Error";
+
+							}
+
 						}
 					});
+					} else {
+						document.getElementById('test').innerHTML = "Please fill in all fields";
+
+					}
 				}));
 			});
 

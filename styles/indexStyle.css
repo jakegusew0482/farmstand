@@ -111,6 +111,9 @@ body {
   flex: 70%;
   background-color: white;
   padding: 20px;
+	margin-left:auto;
+	margin-right:auto;
+	width:50%;
 }
 
 body {

@@ -1,18 +1,20 @@
-	<?php include('navbar.php'); ?>
+	<?php include('navbar.php'); 
+		include('config.php');	?>
 
 	<!-- Side Column of Main Page -->
 	<div class="row">
-		<div class="side">
-			<h2>Support Your Local Farm Stand</h2>
-			<h3>Search by Type of goods</h3>
-			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Type of stand" />
-
-		</div>
-
+	<?php
+		include('searchBar.php');
+	?>
 		<!--Main Page-->
 		<div class="main">
-			<h4>Local Farm Stand News</h4>
-			<p>login status:</p>
+			<?php 
+				if(isset($_SESSION['username'])) {
+					echo "<p> You Are Logged In</p>";
+				} else {
+					echo "<p> You Are Not Logged In</p>";
+				}
+			?>
 			<p id='login'></p>
 			<div id="myMap" style="height: 400px"></div>
 			<script src="scripts/map.js">
