@@ -188,11 +188,11 @@
 {
     background-color: rgba(121, 120, 120, 0.63);
     height: 150px;
-    width: 270px;
+    width: 260px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-radius: 10px;
     margin-top: 25px;
-    margin-left: 10px;
+    margin-left: 0px;
     float: left;
 
 }
