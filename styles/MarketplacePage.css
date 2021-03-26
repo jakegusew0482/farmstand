@@ -124,7 +124,6 @@
     margin-top: 20px;
     border-radius: 50px;
     float: left;
-    overflow: scroll;
     
 }
 
@@ -136,6 +135,8 @@
     border-radius: 10px;
     margin-top: 25px;
 }
+
+
 
 #ItemImage
 {
@@ -151,7 +152,7 @@
 
 #ItemDescription
 {
-    background-color: rgba(121, 120, 120, 0.63);
+    background-color: rgba(238, 229, 229, 0.63);
     height: 150px;
     width: 400px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
@@ -161,16 +162,51 @@
     float: left;
 
 }
+#ItemName
+{
+    background-color: rgba(243, 178, 178, 0.767);
+    height: 50px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    margin-top: 0;
+
+
+}
+
+#ItemDescriptionBox
+{
+    background-color: rgba(175, 248, 242, 0.767);
+    height: 100px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    margin-top: 0;
+}
+
+
+/*
+    SideInventoryIDContainer
+*/
+#SideInventoryIDContainer
+{
+    background-color: rgba(121, 120, 120, 0.63);
+    height: 150px;
+    width: 275px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 10px;
+    float: left;
+
+}
+
+
 
 #ItemQTY
 {
     background-color: rgba(121, 120, 120, 0.63);
+    border: black;
     height: 50px;
-    width: 150px;
+    width: 275px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-radius: 10px;
-    margin-top: 25px;
-    margin-left: 25px;
     float: left;
 
 }
@@ -178,30 +214,27 @@
 #ItemPrice
 {
     background-color: rgba(121, 120, 120, 0.63);
+    border: black;
     height: 50px;
-    width: 150px;
+    width: 275px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-radius: 10px;
-    margin-top: 50px;
-    margin-left: 25px;
     float: left;
 }
 
-/*
 #ItemReservation
 {
-    background-color: rgba(162, 241, 247, 0.459);
-    height: 150px;
-    width: 90px;
+    background-color: rgba(121, 120, 120, 0.63);
+    border: black;
+    height: 50px;
+    width: 275px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-radius: 10px;
-    margin-top: -50px;
-    margin-left: 20px;
     float: left;
 
 }
 
-*/
+
 
 
 /*Reviews*/
