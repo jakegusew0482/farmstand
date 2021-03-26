@@ -1,0 +1,237 @@
+/*Stand Info*/
+#FarmstandInfo
+{
+    background-color: lightslategray;
+    width: 300px;
+    height: 400px;
+    border: 2px solid lightblue; 
+    padding: 10px;
+    margin-left: 100px;
+    margin-top: 150px;
+    border-radius: 50px;
+    float: left;
+}
+#FarmStandName
+{
+
+    background-color: rgba(245, 245, 245, 0.747);
+    height: 50px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    margin: 0;
+    border-radius: 10px;
+}
+#FarmStandImage
+{
+    background-color: rgba(211, 211, 211, 0.767);
+    height: 200px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    border-radius: 10px;
+}
+#FarmStandAddr
+{
+    background-color: rgba(245, 245, 245, 0.747);
+    height: 50px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    margin: auto;
+    padding-bottom: 0;
+    border-radius: 10px;
+}
+/*News Container*/
+#NewsContainer
+{
+    background-color: lightslategray;
+    width: 1300px;
+    height: 400px;
+    border: 2px solid lightblue; 
+    padding: 10px;
+    margin-top: 150px;
+    border-radius: 50px;
+    margin-left: 40px;
+    float: left;
+}
+
+#NewsContainerBox
+{
+    background-color: rgba(211, 211, 211, 0.767);
+    height: 350px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    border-radius: 10px;
+    margin-top: 25px;
+
+}
+
+/*Stand Owner Posting*/
+#StandOwnerPosting
+{
+    background-color: lightslategray;
+    width: 300px;
+    height: 600px;
+    border: 2px solid lightblue; 
+    padding: 10px;
+    margin-left: 100px;
+    margin-top: 20px;
+    border-radius: 50px;
+    float: left;
+}
+#StandPostingTitle
+{
+    text-align: center;
+    background-color: rgb(195, 199, 202);
+    box-shadow: 0 4px 8px 0 rgba(229, 237, 240, 0.5);
+    height: 50px;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+#StandPostingSubContainer
+{
+
+    background-color: rgb(195, 199, 202);
+    box-shadow: 0 4px 8px 0 rgba(229, 237, 240, 0.5);
+    height: 500px;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+#StandPostingContent
+{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(207, 208, 209, 0.5);
+    height: 480px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+/*Inventory*/
+#InventoryDisplayContainer
+{
+    background-color: lightslategray;
+    width: 900px;
+    height: 600px;
+    border: 2px solid lightblue; 
+    padding: 10px;
+    margin-left: 40px;
+    margin-top: 20px;
+    border-radius: 50px;
+    float: left;
+    
+}
+
+#itemDisplayContainer
+{
+    background-color: rgba(211, 211, 211, 0.767);
+    height: 200px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+#ItemImage
+{
+    background-color: rgba(121, 120, 120, 0.63);
+    height: 150px;
+    width: 150px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 25px;
+    float: left;
+}
+
+#ItemDescription
+{
+    background-color: rgba(121, 120, 120, 0.63);
+    height: 150px;
+    width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 25px;
+    float: left;
+
+}
+
+#ItemQTY
+{
+    background-color: rgba(121, 120, 120, 0.63);
+    height: 50px;
+    width: 150px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 25px;
+    float: left;
+
+}
+
+#ItemPrice
+{
+    background-color: rgba(121, 120, 120, 0.63);
+    height: 50px;
+    width: 150px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: 25px;
+    float: left;
+}
+
+#ItemReservation
+{
+    background-color: rgba(224, 0, 0, 0.63);
+    height: 150px;
+    width: 100px;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    border-radius: 10px;
+    margin-top: -50px;
+    margin-right: 5px;
+    float: right;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Reviews*/
+#UserReviewContainer
+{
+    background-color: lightslategray;
+    width: 340px;
+    height: 600px;
+    border: 2px solid lightblue; 
+    padding: 10px;
+    margin-left: 40px;
+    margin-top: 20px;
+    border-radius: 50px;
+    float: left;
+}
