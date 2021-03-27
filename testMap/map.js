@@ -18,7 +18,7 @@ L.tileLayer(
   }
 ).addTo(map);
 
-var query_addr = "99 Southwark St, London SE1 0JF, UK";
+var query_addr = "42 Vernon St Patchogue";
 
 // Get the provider, in this case the OpenStreetMap (OSM) provider.
 const provider = new window.GeoSearch.OpenStreetMapProvider();
@@ -35,7 +35,8 @@ query_promise.then(
       var y_coor = value[i].y;
       var label = value[i].label;
       // Create a marker for the found coordinates
-      var marker = L.marker([y_coor, x_coor]).addTo(map); // CAREFULL!!! The first position corresponds to the lat (y) and the second to the lon (x)
+      // CAREFULL!!! The first position corresponds to the lat (y) and the second to the lon (x)
+      var marker = L.marker([y_coor, x_coor]).addTo(map);
       // Add a popup to said marker with the address found by geosearch (not the one from the user)
       marker.bindPopup("<b>Found location</b><br>" + label).openPopup();
     }
