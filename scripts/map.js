@@ -71,7 +71,6 @@ myMap.locate({
 function getMapData(jQuery) {
   $.ajax({
     type: "GET",
-    //dataType: "jsonp",
     url: "mapData.php",
     success: function (response) {
       let showResult = JSON.parse(response);
@@ -79,15 +78,14 @@ function getMapData(jQuery) {
       // get data from all
       for (let i = 0; i < showResult.length; i++) {
         let address = showResult[i].address;
-	let title = showResult[i].title;
+        let title = showResult[i].title;
         // Debug purposes
         // console.log("COMBINED:", combinedAddress);
 
-        $.get(
-	location.protocol +
+        jQuery.get(
+          location.protocol +
             "//nominatim.openstreetmap.org/search?format=json&q=" +
             address,
-
           function (data) {
             let lat = parseFloat(data[0].lat).toFixed(2);
             let lon = parseFloat(data[0].lon).toFixed(2);
@@ -100,8 +98,7 @@ function getMapData(jQuery) {
               icon: redIcon,
             }).addTo(myMap);
 
-	marker.bindPopup(`title: ${title}`);
-		
+            marker.bindPopup(`title: ${title}`);
           }
         );
       }
@@ -129,6 +126,6 @@ $.get(
       icon: redIcon,
     }).addTo(myMap);
 
-	  marker.bindPopup(`Title: Farmindale State College`);
+    marker.bindPopup(`Title: Farmindale State College`);
   }
 );
