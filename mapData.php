@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 // connects to localhost - uncomment to test it in your localhost
 $conn = mysqli_connect("localhost", "root", "", "farm_db");
 

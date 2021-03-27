@@ -68,6 +68,21 @@ myMap.locate({
   maxZoom: 16,
 });
 
+// Get data from Search For Farmstands
+
+let arrayResult = [];
+
+// when Search is clicked store value in an array -> arrayResult
+document.getElementById("submitbutton").addEventListener("click", function (e) {
+  let x = document.getElementById("searchType").value;
+  let y = document.getElementById("search").value;
+  if (x === "product") {
+    arrayResult.push(y);
+  } else {
+    console.log(x);
+  }
+});
+
 function mapData() {
   $.ajax({
     type: "GET",
@@ -77,36 +92,69 @@ function mapData() {
 
       // get data from mapData.php
       for (let i = 0; i < responseResult.length; i++) {
-        let address = responseResult[i].address;
-        let city = responseResult[i].city;
-        console.log(address, city);
-        let queryAddress = address + ", " + city;
+        if (arrayResult[0] === responseResult[i].zipCode) {
+          let address = responseResult[i].address;
+          let city = responseResult[i].city;
+          console.log(address, city);
+          let queryAddress = address + ", " + city;
 
-        console.log(i, "Query address:", queryAddress);
+          console.log(i, "Query address:", queryAddress);
 
-        // Get the provider, in this case the OpenStreetMap (OSM) provider
-        const provider = new window.GeoSearch.OpenStreetMapProvider();
+          // Get the provider, in this case the OpenStreetMap (OSM) provider
+          const provider = new window.GeoSearch.OpenStreetMapProvider();
 
-        // Query for address
-        let queryPromise = provider.search({ query: queryAddress });
+          // Query for address
+          let queryPromise = provider.search({ query: queryAddress });
 
-        // Wait until we have an answer on the Promise
-        queryPromise.then((value) => {
-          for (let j = 0; j < value.length; j++) {
-            // Success
-            let longitude = value[j].x;
-            let latitude = value[j].y;
-            let label = value[j].label;
+          // Wait until we have an answer on the Promise
+          queryPromise.then((value) => {
+            for (let j = 0; j < value.length; j++) {
+              // Success
+              let longitude = value[j].x;
+              let latitude = value[j].y;
+              let label = value[j].label;
 
-            // Create a marker for the found coordinates
-            let marker = L.marker([latitude, longitude], {
-              icon: redIcon,
-            }).addTo(myMap);
+              // Create a marker for the found coordinates
+              let marker = L.marker([latitude, longitude], {
+                icon: redIcon,
+              }).addTo(myMap);
 
-            // Add a popup to the said marker with the address found by geoSearch
-            marker.bindPopup(label);
-          }
-        });
+              // Add a popup to the said marker with the address found by geoSearch
+              marker.bindPopup(label);
+            }
+          });
+        } else {
+          let address = responseResult[i].address;
+          let city = responseResult[i].city;
+          console.log(address, city);
+          let queryAddress = address + ", " + city;
+
+          console.log(i, "Query address:", queryAddress);
+
+          // Get the provider, in this case the OpenStreetMap (OSM) provider
+          const provider = new window.GeoSearch.OpenStreetMapProvider();
+
+          // Query for address
+          let queryPromise = provider.search({ query: queryAddress });
+
+          // Wait until we have an answer on the Promise
+          queryPromise.then((value) => {
+            for (let j = 0; j < value.length; j++) {
+              // Success
+              let longitude = value[j].x;
+              let latitude = value[j].y;
+              let label = value[j].label;
+
+              // Create a marker for the found coordinates
+              let marker = L.marker([latitude, longitude], {
+                icon: redIcon,
+              }).addTo(myMap);
+
+              // Add a popup to the said marker with the address found by geoSearch
+              marker.bindPopup(label);
+            }
+          });
+        }
       }
     },
   });

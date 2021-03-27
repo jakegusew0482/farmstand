@@ -8,7 +8,7 @@ include('config.php');	?>
 		<h3>Search For Farmstands!</h3>
 
 		<form id='searchForm'>
-			<table style="width:100%;">
+			<table id="searchFarmstands" style="width:100%;">
 				<tr>
 					<td>
 
@@ -21,12 +21,7 @@ include('config.php');	?>
 
 						<input type="text" id="search" placeholder="Enter Search Term" style="width:65%;" />
 
-
-						<!--    <input type="text" id="search" placeholder="Enter Search Term"/>
-								</td></tr><tr>
-								<label><input type="radio" name="searchOption" id="searchOption">Zipcode</label>
-								<label><input type="radio" name="searchOption" id="searchOption">Farmstand Name</label>
-								<label><input type="radio" name="searchOption" id="searchOption">Product</label> -->
+					</td>
 
 				</tr>
 			</table>
