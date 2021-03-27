@@ -80,7 +80,7 @@ function mapData() {
         let address = responseResult[i].address;
         let city = responseResult[i].city;
         console.log(address, city);
-        let queryAddress = address + " " + city;
+        let queryAddress = address + ", " + city;
 
         console.log(i, "Query address:", queryAddress);
 
