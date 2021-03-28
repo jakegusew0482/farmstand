@@ -20,11 +20,8 @@ if ($conn->connect_error) {
 }
 
 // works on localhost
-<<<<<<< HEAD
 /* $sql = "LOAD DATA INFILE '/opt/lampp/htdocs/farmstand/testData/mockData.csv' INTO TABLE farmstand FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS"; */
-=======
 // $sql = "LOAD DATA INFILE '/opt/lampp/htdocs/farmstand/testData/mockData.csv' INTO TABLE farmstand FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS";
->>>>>>> 9c04fe48c1bacf535bc8627b7fd6ea1fcfb26a8d
 
 // server 
 $sql = "LOAD DATA INFILE '/var/www/farmstandwebsite.com/html/testData/MOCK_DATA.csv' INTO TABLE farmstand FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS";
