@@ -46,12 +46,12 @@ let greenIcon = new leafIcon({
   });
 
 function onLocationFound(e) {
-  let radius = e.accuracy;
-
   // Display user location
-  L.marker(e.latlng).addTo(myMap);
+  let marker = L.marker(e.latlng, {
+    icon: greenIcon,
+  }).addTo(myMap);
 
-  L.circle(e.latlng, radius).addTo(myMap);
+  marker.bindPopup("Your current location").openPopup();
 }
 
 myMap.on("locationfound", onLocationFound);
@@ -68,3 +68,48 @@ myMap.locate({
 });
 
 // Getting data from mysql/php farmstand and display on map
+function mapData() {
+  $.ajax({
+    type: "GET",
+    url: "mapData.php",
+    success: function (response) {
+      let responseResult = JSON.parse(response);
+
+      // get data from mapData.php
+      for (let i = 0; i < responseResult.length; i++) {
+        let address = responseResult[i].address;
+        let city = responseResult[i].city;
+        console.log(address, city);
+        let queryAddress = address + " " + city;
+
+        console.log(i, "Query address:", queryAddress);
+
+        // Get the provider, in this case the OpenStreetMap (OSM) provider
+        const provider = new window.GeoSearch.OpenStreetMapProvider();
+
+        // Query for address
+        let queryPromise = provider.search({ query: queryAddress });
+
+        // Wait until we have an answer on the Promise
+        queryPromise.then((value) => {
+          for (let j = 0; j < value.length; j++) {
+            // Success
+            let longitude = value[j].x;
+            let latitude = value[j].y;
+            let label = value[j].label;
+
+            // Create a marker for the found coordinates
+            let marker = L.marker([latitude, longitude], {
+              icon: redIcon,
+            }).addTo(myMap);
+
+            // Add a popup to the said marker with the address found by geoSearch
+            marker.bindPopup(label);
+          }
+        });
+      }
+    },
+  });
+}
+
+$(document).ready(mapData);
