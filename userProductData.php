@@ -6,6 +6,7 @@
 				
 					echo "<div id = 'result'>";
 
+					echo "<p>$test</p>";
 					if($id != NULL) {
 						$query = "SELECT * FROM product WHERE farmstand_id = '$id';";
 
@@ -18,7 +19,6 @@
 							$desc = $row['description'];
 							$price = $row['price'];
 							$image = $row['image'];
-							$id = $row['product_id'];
 							
 
 							
@@ -31,7 +31,7 @@
 							<div id = 'SideInventoryIDContainer'>
 							<div id = 'ItemQTY'></div>
 							<div id = 'ItemPrice'><p>$price $</p></div>
-							<button id = 'ItemRemove' onClick='remove($id)'>Remove Product</button>
+							<button id = 'ItemReservation'></button>
 							</div>
 
 							"; 

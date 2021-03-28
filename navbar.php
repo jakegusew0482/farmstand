@@ -56,7 +56,7 @@
 			echo "<a href='createAccount.php'>Create Account</a>";
 		} else {
 			if ($_SESSION['account_type'] == "farmstand") {
-				echo "<a href='NewMarketPlace.php'>My Farmstand</a>";
+				echo "<a href='ownerMarketPage.php'>My Farmstand</a>";
 			} else {
 				echo "<a href=''>My Account</a>";
 			}
