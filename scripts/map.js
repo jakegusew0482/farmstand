@@ -46,13 +46,12 @@ let greenIcon = new leafIcon({
   });
 
 function onLocationFound(e) {
-  // Display user location
-  let marker = L.marker(e.latlng, {
-    icon: greenIcon,
-  }).addTo(myMap);
+  let radius = e.accuracy;
 
-  //
-  marker.bindPopup("Your current location").openPopup();
+  // Display user location
+  L.marker(e.latlng).addTo(myMap);
+
+  L.circle(e.latlng, radius).addTo(myMap);
 }
 
 myMap.on("locationfound", onLocationFound);
@@ -68,95 +67,68 @@ myMap.locate({
   maxZoom: 16,
 });
 
-// Get data from Search For Farmstands
-
-let arrayResult = [];
-
-// when Search is clicked store value in an array -> arrayResult
-document.getElementById("submitbutton").addEventListener("click", function (e) {
-  let x = document.getElementById("searchType").value;
-  let y = document.getElementById("search").value;
-  if (x === "product") {
-    arrayResult.push(y);
-  } else {
-    console.log(x);
-  }
-});
-
-function mapData() {
+// Getting data from mysql/php farmstand and display on map
+function getMapData(jQuery) {
   $.ajax({
     type: "GET",
+    //dataType: "jsonp",
     url: "mapData.php",
     success: function (response) {
-      let responseResult = JSON.parse(response);
+      let showResult = JSON.parse(response);
 
-      // get data from mapData.php
-      for (let i = 0; i < responseResult.length; i++) {
-        if (arrayResult[0] === responseResult[i].zipCode) {
-          let address = responseResult[i].address;
-          let city = responseResult[i].city;
-          console.log(address, city);
-          let queryAddress = address + ", " + city;
+      // get data from all
+      for (let i = 0; i < showResult.length; i++) {
+        let address = showResult[i].address;
+	let title = showResult[i].title;
+        // Debug purposes
+        // console.log("COMBINED:", combinedAddress);
 
-          console.log(i, "Query address:", queryAddress);
+        $.get(
+	location.protocol +
+            "//nominatim.openstreetmap.org/search?format=json&q=" +
+            address,
 
-          // Get the provider, in this case the OpenStreetMap (OSM) provider
-          const provider = new window.GeoSearch.OpenStreetMapProvider();
+          function (data) {
+            let lat = parseFloat(data[0].lat).toFixed(2);
+            let lon = parseFloat(data[0].lon).toFixed(2);
 
-          // Query for address
-          let queryPromise = provider.search({ query: queryAddress });
+            // Debug purposes
+            // console.log("lat:", lat, "lon:", lon);
 
-          // Wait until we have an answer on the Promise
-          queryPromise.then((value) => {
-            for (let j = 0; j < value.length; j++) {
-              // Success
-              let longitude = value[j].x;
-              let latitude = value[j].y;
-              let label = value[j].label;
+            // Add each address to the map with redICon
+            let marker = L.marker([lat, lon], {
+              icon: redIcon,
+            }).addTo(myMap);
 
-              // Create a marker for the found coordinates
-              let marker = L.marker([latitude, longitude], {
-                icon: redIcon,
-              }).addTo(myMap);
-
-              // Add a popup to the said marker with the address found by geoSearch
-              marker.bindPopup(label);
-            }
-          });
-        } else {
-          let address = responseResult[i].address;
-          let city = responseResult[i].city;
-          console.log(address, city);
-          let queryAddress = address + ", " + city;
-
-          console.log(i, "Query address:", queryAddress);
-
-          // Get the provider, in this case the OpenStreetMap (OSM) provider
-          const provider = new window.GeoSearch.OpenStreetMapProvider();
-
-          // Query for address
-          let queryPromise = provider.search({ query: queryAddress });
-
-          // Wait until we have an answer on the Promise
-          queryPromise.then((value) => {
-            for (let j = 0; j < value.length; j++) {
-              // Success
-              let longitude = value[j].x;
-              let latitude = value[j].y;
-              let label = value[j].label;
-
-              // Create a marker for the found coordinates
-              let marker = L.marker([latitude, longitude], {
-                icon: redIcon,
-              }).addTo(myMap);
-
-              // Add a popup to the said marker with the address found by geoSearch
-              marker.bindPopup(label);
-            }
-          });
-        }
+	marker.bindPopup(`title: ${title}`);
+		
+          }
+        );
       }
     },
   });
 }
-$(document).ready(mapData);
+
+// calling getMapData fun
+$(document).ready(getMapData);
+
+// Testing data
+let newAddress = "2350 NY-110, Farmingdale";
+$.get(
+  location.protocol +
+    "//nominatim.openstreetmap.org/search?format=json&q=" +
+    newAddress,
+
+  function (data) {
+    let lat = parseFloat(data[0].lat).toFixed(2);
+    let lon = parseFloat(data[0].lon).toFixed(2);
+    // Debug purposes
+    // console.log("lat:", lat, "lon:", lon);
+
+    let marker = L.marker([lat, lon], {
+      icon: redIcon,
+    }).addTo(myMap);
+
+	  marker.bindPopup(`Title: Farmindale State College`);
+  }
+);
