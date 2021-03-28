@@ -79,6 +79,7 @@ function mapData() {
       for (let i = 0; i < responseResult.length; i++) {
         let address = responseResult[i].address;
         let city = responseResult[i].city;
+        let title = responseResult[i].title;
         console.log(address, city);
         let queryAddress = address + " " + city;
 
@@ -104,7 +105,11 @@ function mapData() {
             }).addTo(myMap);
 
             // Add a popup to the said marker with the address found by geoSearch
-            marker.bindPopup(label);
+            // marker.bindPopup(label);
+
+            marker.bindPopup(
+              `${title}<br/><a href='http://www.google.com'>Visit this farmstand</a>`
+            );
           }
         });
       }
