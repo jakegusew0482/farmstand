@@ -1,15 +1,23 @@
+body{
+    background-color: rgba(245, 245, 245, 0.747)
+
+}
+
 /*Stand Info*/
 #FarmstandInfo
 {
-    background-color: lightslategray;
-    width: 300px;
-    height: 400px;
+    background-color: rgba(245, 245, 245, 0.747);
+    width: 15%;
+    height: 10%;
     border: 2px solid lightblue; 
-    padding: 10px;
-    margin-left: 100px;
-    margin-top: 150px;
-    border-radius: 50px;
+    margin-left: 5%;
+    margin-top: 8%;
+    margin-bottom: 0%;
+    border-radius: 25px;
     float: left;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    text-align: center;
+
 }
 #FarmStandName
 {
@@ -18,14 +26,19 @@
     height: 50px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     margin: 0;
-    border-radius: 10px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    text-align: center;
+    border: 2px solid rgb(181, 186, 187); 
+    
 }
 #FarmStandImage
 {
     background-color: rgba(211, 211, 211, 0.767);
     height: 200px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
-    border-radius: 10px;
+    border-radius: 25px;
+    text-align: center;
 }
 #FarmStandAddr
 {
@@ -34,44 +47,78 @@
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     margin: auto;
     padding-bottom: 0;
-    border-radius: 10px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*News Container*/
 #NewsContainer
 {
-    background-color: lightslategray;
-    width: 1300px;
-    height: 400px;
+    background-color: rgba(245, 245, 245, 0.747);
+    width: 70%;
+    height: 10%;
     border: 2px solid lightblue; 
     padding: 10px;
-    margin-top: 150px;
-    border-radius: 50px;
+    margin-top: 8%;
+    border-radius: 25px;
     margin-left: 40px;
     float: left;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+
 }
 
 #NewsContainerBox
 {
     background-color: rgba(211, 211, 211, 0.767);
-    height: 350px;
+    height: 325px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-radius: 10px;
-    margin-top: 25px;
+    margin-top: 0;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*Stand Owner Posting*/
 #StandOwnerPosting
 {
-    background-color: lightslategray;
-    width: 300px;
+    background-color: rgba(245, 245, 245, 0.747);
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    width: 15%;
     height: 600px;
     border: 2px solid lightblue; 
-    padding: 10px;
-    margin-left: 100px;
-    margin-top: 20px;
-    border-radius: 50px;
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 25px;
     float: left;
+    
 }
 #StandPostingTitle
 {
@@ -79,10 +126,7 @@
     background-color: rgb(195, 199, 202);
     box-shadow: 0 4px 8px 0 rgba(229, 237, 240, 0.5);
     height: 50px;
-    margin-top: 25px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 10px;
+
 }
 #StandPostingSubContainer
 {
@@ -112,19 +156,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*Inventory*/
 #InventoryDisplayContainer
 {
-    background-color: lightslategray;
-    width: 900px;
+    background-color: rgba(245, 245, 245, 0.747);
+    width: 35%;
     height: 600px;
     border: 2px solid lightblue; 
     padding: 10px;
     margin-left: 40px;
-    margin-top: 20px;
+    margin-top: 5%;
     border-radius: 50px;
     float: left;
-    //overflow: scroll;
+    /*overflow: scroll;*/
     
 }
 
@@ -182,15 +245,24 @@
 }
 
 
+
+
+
+
+
+
+
+
+
 /*
     SideInventoryIDContainer
 */
 #SideInventoryIDContainer
 {
-    background-color: rgba(121, 120, 120, 0.63);
+    background-color: rgba(245, 245, 245, 0.747);
     height: 150px;
     width: 260px;
-  //   box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    /*box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);*/
     border-radius: 10px;
     margin-top: 25px;
     margin-left: 0px;
@@ -252,18 +324,35 @@
 /*Reviews*/
 #UserReviewContainer
 {
-    background-color: lightslategray;
-    width: 340px;
+    background-color: rgba(245, 245, 245, 0.747);
+    width: 15%;
     height: 600px;
     border: 2px solid lightblue; 
-    padding: 10px;
     margin-left: 40px;
-    margin-top: 20px;
+    margin-top: 5%;
     border-radius: 50px;
     float: left;
 }
 
- {box-sizing: border-box;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* {box-sizing: border-box;}*/
 
 
 .open-button {
@@ -277,7 +366,7 @@
 
 
 .form-popup {
-  display: none;
+display: none;
 width:100%;
 margin-top: auto;
 margin-bottom:auto;
