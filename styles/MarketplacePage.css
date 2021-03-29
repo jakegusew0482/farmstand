@@ -1,18 +1,19 @@
 body{
-    background-color: rgba(245, 245, 245, 0.747)
+    background-image: url("../images/marketPageFarmBg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 
 }
 
 /*Stand Info*/
 #FarmstandInfo
 {
-    background-color: rgba(245, 245, 245, 0.747);
+    background-color: #342628;
     width: 15%;
-    height: 10%;
-    border: 2px solid lightblue; 
-    margin-left: 5%;
-    margin-top: 8%;
-    margin-bottom: 0%;
+    height: 350px;
+    border: 2px solid #143f17; 
+    margin-left: 50px;
+    margin-top: 2%;
     border-radius: 25px;
     float: left;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
@@ -22,7 +23,7 @@ body{
 #FarmStandName
 {
 
-    background-color: rgba(245, 245, 245, 0.747);
+    background-color: #fccc73;
     height: 50px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     margin: 0;
@@ -34,63 +35,48 @@ body{
 }
 #FarmStandImage
 {
-    background-color: rgba(211, 211, 211, 0.767);
+    background-color: #fccc73;
     height: 200px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-radius: 25px;
     text-align: center;
 }
+
 #FarmStandAddr
 {
-    background-color: rgba(245, 245, 245, 0.747);
+    background-color: #fccc73;
     height: 50px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
-    margin: auto;
-    padding-bottom: 0;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     text-align: center;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*News Container*/
 #NewsContainer
 {
-    background-color: rgba(245, 245, 245, 0.747);
+    background-color: #342628;
+    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     width: 70%;
-    height: 10%;
-    border: 2px solid lightblue; 
-    padding: 10px;
-    margin-top: 8%;
+    height: 350px;
+    border: 2px solid #143f17; 
+    padding: 20px;
+    margin-top: 2%;
     border-radius: 25px;
     margin-left: 40px;
     float: left;
-    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    text-align: center;
 
 }
 
 #NewsContainerBox
 {
-    background-color: rgba(211, 211, 211, 0.767);
-    height: 325px;
+    background-color: #fccc73;
+    height: 350px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-radius: 10px;
-    margin-top: 0;
-    box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
+    text-align: center;
 
 }
 
@@ -109,13 +95,13 @@ body{
 /*Stand Owner Posting*/
 #StandOwnerPosting
 {
-    background-color: rgba(245, 245, 245, 0.747);
+    background-color: #342628;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     width: 15%;
     height: 600px;
-    border: 2px solid lightblue; 
-    margin-left: 5%;
-    margin-top: 5%;
+    border: 2px solid #143f17; 
+    margin-left: 50px;
+    margin-top: 30px;
     border-radius: 25px;
     float: left;
     
@@ -123,7 +109,7 @@ body{
 #StandPostingTitle
 {
     text-align: center;
-    background-color: rgb(195, 199, 202);
+    background-color: #fccc73;
     box-shadow: 0 4px 8px 0 rgba(229, 237, 240, 0.5);
     height: 50px;
 
@@ -131,7 +117,7 @@ body{
 #StandPostingSubContainer
 {
 
-    background-color: rgb(195, 199, 202);
+    background-color: #fccc73;
     box-shadow: 0 4px 8px 0 rgba(229, 237, 240, 0.5);
     height: 500px;
     margin-top: 25px;
@@ -151,41 +137,17 @@ body{
     border-radius: 10px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*Inventory*/
 #InventoryDisplayContainer
 {
-    background-color: rgba(245, 245, 245, 0.747);
-    width: 35%;
+    background-color: #342628;
+    width: 47%;
     height: 600px;
-    border: 2px solid lightblue; 
+    border: 2px solid #143f17;  
     padding: 10px;
     margin-left: 40px;
-    margin-top: 5%;
-    border-radius: 50px;
+    margin-top: 30px;
+    border-radius: 25px;
     float: left;
     /*overflow: scroll;*/
     
@@ -193,11 +155,11 @@ body{
 
 #itemDisplayContainer
 {
-    background-color: rgba(211, 211, 211, 0.767);
+    background-color: rgba(243, 240, 240, 0.767);
     height: 200px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-radius: 10px;
-    margin-top: 25px;
+    margin-top: 5px;
 }
 
 
@@ -223,12 +185,13 @@ body{
     border-radius: 10px;
     margin-top: 25px;
     margin-left: 25px;
+
     float: left;
 
 }
 #ItemName
 {
-    background-color: rgba(243, 178, 178, 0.767);
+    background-color: rgba(255, 255, 255, 0.774);
     height: 50px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     margin-top: 0;
@@ -238,21 +201,12 @@ body{
 
 #ItemDescriptionBox
 {
-    background-color: rgba(175, 248, 242, 0.767);
+    background-color: rgba(209, 207, 207, 0.767);
     height: 100px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     margin-top: 0;
+
 }
-
-
-
-
-
-
-
-
-
-
 
 /*
     SideInventoryIDContainer
@@ -266,7 +220,7 @@ body{
     border-radius: 10px;
     margin-top: 25px;
     margin-left: 0px;
-    float: left;
+    float: right;
 
 }
 
@@ -274,7 +228,7 @@ body{
 
 #ItemQTY
 {
-    background-color: rgba(121, 120, 120, 0.63);
+    background-color: rgb(228, 228, 228);
     border: black;
     height: 50px;
     width: 250px;
@@ -286,7 +240,7 @@ body{
 
 #ItemPrice
 {
-    background-color: rgba(121, 120, 120, 0.63);
+    background-color: rgb(228, 228, 228);
     border: black;
     height: 50px;
     width: 250px;
@@ -297,7 +251,7 @@ body{
 
 #ItemReservation
 {
-    background-color: rgba(121, 120, 120, 0.63);
+    background-color: rgb(228, 228, 228);
     border: black;
     height: 50px;
     width: 250px;
@@ -317,39 +271,18 @@ body{
     float: left;
 }
 
-
-
-
-
 /*Reviews*/
 #UserReviewContainer
 {
-    background-color: rgba(245, 245, 245, 0.747);
-    width: 15%;
+    background-color: #342628;
+    width: 22%;
     height: 600px;
-    border: 2px solid lightblue; 
+    border: 2px solid #143f17; 
     margin-left: 40px;
-    margin-top: 5%;
+    margin-top: 30px;
     border-radius: 50px;
     float: left;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* {box-sizing: border-box;}*/
