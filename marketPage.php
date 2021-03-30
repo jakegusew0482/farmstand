@@ -126,8 +126,7 @@
 		<div id = "UserReviewContainer">
 			<div id = "UserReviewTitle"></div>
 			<div id = "UserReviewContent">
-				<script src="https://apps.elfsight.com/p/platform.js" defer></script>
-				<div class="elfsight-app-129dc7ae-caf3-4312-898c-2125deb522a0"></div>
+				
 
 
 
