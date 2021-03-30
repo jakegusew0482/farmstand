@@ -70,9 +70,12 @@ myMap.locate({
 // Getting data from mysql/php farmstand and display on map
 function getMapData(jQuery) {
   $.ajax({
-    type: "GET",
+    // from GET to POST, for search for farmstand
+    type: "POST",
     //dataType: "jsonp",
     url: "mapData.php",
+    // Added for search for farmstand
+    data: { search: search, searchtype: searchtype },
     success: function (response) {
       let showResult = JSON.parse(response);
 
