@@ -67,6 +67,17 @@ myMap.locate({
   maxZoom: 16,
 });
 
+const searchButton = document.getElementById("submitbutton");
+
+const searchTerm = document.getElementById("search").value;
+const searchType = document.getElementById("searchType").value;
+
+searchButton.onclick = function () {
+  console.log("Button clicked");
+  console.log(searchType);
+  console.log(searchTerm);
+};
+
 // Getting data from mysql/php farmstand and display on map
 function mapData() {
   $.ajax({
@@ -97,7 +108,6 @@ function mapData() {
             // Success
             let longitude = value[j].x;
             let latitude = value[j].y;
-            let label = value[j].label;
 
             // Create a marker for the found coordinates
             let marker = L.marker([latitude, longitude], {
