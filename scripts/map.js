@@ -46,12 +46,12 @@ let greenIcon = new leafIcon({
   });
 
 function onLocationFound(e) {
-  let radius = e.accuracy;
-
   // Display user location
-  L.marker(e.latlng).addTo(myMap);
+  let marker = L.marker(e.latlng, {
+    icon: greenIcon,
+  }).addTo(myMap);
 
-  L.circle(e.latlng, radius).addTo(myMap);
+  marker.bindPopup("Your current location").openPopup();
 }
 
 myMap.on("locationfound", onLocationFound);
@@ -79,12 +79,13 @@ function getMapData(jQuery) {
       // get data from all
       for (let i = 0; i < showResult.length; i++) {
         let address = showResult[i].address;
-	let title = showResult[i].title;
+        let title = showResult[i].title;
+        let farmstand_id = showResult[i].farmstand_id;
         // Debug purposes
         // console.log("COMBINED:", combinedAddress);
 
         $.get(
-	location.protocol +
+          location.protocol +
             "//nominatim.openstreetmap.org/search?format=json&q=" +
             address,
 
@@ -100,8 +101,9 @@ function getMapData(jQuery) {
               icon: redIcon,
             }).addTo(myMap);
 
-	marker.bindPopup(`title: ${title}`);
-		
+            marker.bindPopup(
+              `${title}<br/><a href="https://www.farmstandwebsite.com/marketPage.php?id=${farmstand_id}">Visit this farmstand</a>`
+            );
           }
         );
       }
@@ -111,24 +113,3 @@ function getMapData(jQuery) {
 
 // calling getMapData fun
 $(document).ready(getMapData);
-
-// Testing data
-let newAddress = "2350 NY-110, Farmingdale";
-$.get(
-  location.protocol +
-    "//nominatim.openstreetmap.org/search?format=json&q=" +
-    newAddress,
-
-  function (data) {
-    let lat = parseFloat(data[0].lat).toFixed(2);
-    let lon = parseFloat(data[0].lon).toFixed(2);
-    // Debug purposes
-    // console.log("lat:", lat, "lon:", lon);
-
-    let marker = L.marker([lat, lon], {
-      icon: redIcon,
-    }).addTo(myMap);
-
-	  marker.bindPopup(`Title: Farmindale State College`);
-  }
-);
