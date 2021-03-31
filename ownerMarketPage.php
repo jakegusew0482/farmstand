@@ -3,7 +3,7 @@
 <?php
 	include('navbar.php');
 ?>
-<body onload='loadProducts()'>
+<body onload='loadProducts()' style="background-image: url('/images/MarketPageFarmBg.jpg');>
 	
 	<div id= "page-container">
 		<div id ="ContentBox"></div>
@@ -26,7 +26,7 @@
 							$image = $row['coverimage'];
 				
 							echo "<div id = 'FarmStandName'><h2>$title</h2></div>
-								<div id = 'FarmStandImage'><img src='$image' height='200' width='275'></div>
+								<div id = 'FarmStandImage'><img src='$image' height='100%' width='100%'></div>
 								<div id = 'FarmStandAddr'><h5>$desc</h5></div>";
 						}
 					
@@ -88,6 +88,30 @@
   </form>
 </div>
 
+<div class="form-popup" id="editForm">
+			
+  <form id='editproductform' name='editproductform' method='post' action='editProduct.php' enctype='multipart/form-data' class="form-container">
+
+    						<label for="editname"><b>Product Name</b></label>
+    						<input type="text" placeholder="Product Name" name="editname" id="editname" required>
+
+    						<label for="editdesc"><b>Description</b></label>
+   						<input type="text" placeholder="Product Description" name="editdesc" id="editdesc" required>
+
+						<input type="text" name="editid" id="editid"  style='display:none;'>
+
+						
+						<input type="number"  id="editprice" name="editprice"><br><br>
+
+						<br><br>
+						<?php $id = $_SESSION['farm_id'];
+							echo "<input style='display:none;' id='editid' name = 'editid' value='$id'>"; ?>  
+	<input type="submit" class="btn"/>	
+    <button type="submit" class="btn cancel" onclick="closeEditForm()">Close</button>
+  </form>
+</div>
+
+
 				<div id='products'>
 					
 				</div>
@@ -146,6 +170,39 @@ $(document).ready(function(e) {
 	}));
 });
 
+$(document).ready(function(e) {
+	$("#editproductform").on('submit', (function(e) {
+		e.preventDefault();
+
+		var name = document.getElementById('editname').value;
+		var desc = document.getElementById('editdesc').value;
+		var price = document.getElementById('editprice').value;
+		var id = document.getElementById('editid').value;
+
+		$.ajax({
+			url: "editProduct.php",
+			type: "POST",
+			data: {name:name, desc:desc, price:price, id:id},
+			success: function(response) {
+				if (response==1) {
+					$("#editproductform")[0].reset();
+					closeEditForm();
+					loadProducts();
+				} else {
+					alert('Error adding product');
+				}
+
+
+			}
+
+
+		});
+
+	}));
+});
+
+
+
 function loadProducts() {
 var id = "<?php echo $_SESSION['farm_id']; ?>";
 if(id != 0) {
@@ -178,6 +235,26 @@ $.ajax({
 }
 }
 
+function editItem(id) {
+
+openEditForm();
+
+$.ajax({
+	url: "editProductData.php",
+	type: "POST",
+	data: {id:id},
+	dataType: "JSON",
+	success: function(data) {
+		document.getElementById('editname').value = data[0].name;
+		document.getElementById('editdesc').value = data[0].desc;
+		document.getElementById('editprice').value = Number(data[0].price);
+		document.getElementById('editid').value = data[0].id;
+
+	}
+});
+
+}
+
 function openForm() {
   	document.getElementById("myForm").style.display = "block";
  	document.getElementById('additem').style.display = "none";
@@ -187,6 +264,15 @@ function closeForm() {
 	document.getElementById("myForm").style.display = "none";
 	document.getElementById('additem').style.display = "block";
 }
+
+function openEditForm() {
+ 	document.getElementById('editForm').style.display = "block";
+}
+
+function closeEditForm() {
+	document.getElementById("editForm").style.display = "none";
+}
+
 
 			
 </script>

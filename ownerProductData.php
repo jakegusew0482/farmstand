@@ -29,8 +29,8 @@
 							<div id = 'ItemName'><p>$name</p></div>
 							<div id = 'ItemDescriptionBox'><p>$desc</p></div></div>
 							<div id = 'SideInventoryIDContainer'>
-							<div id = 'ItemQTY'></div>
 							<div id = 'ItemPrice'><p>$price $</p></div>
+							<button id = 'ItemEdit' onClick='editItem($id)'>Edit Product</button>
 							<button id = 'ItemRemove' onClick='remove($id)'>Remove Product</button>
 							</div>
 

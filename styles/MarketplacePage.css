@@ -1,5 +1,5 @@
 body{
-    background-color : #C1FF33;
+    
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -8,7 +8,7 @@ body{
 /*Stand Info*/
 #FarmstandInfo
 {
-    background-color: #DECECE;
+    background-color: #342628;
     width: 15%;
     height: 350px;
     border: 2px solid #143f17; 
@@ -23,7 +23,7 @@ body{
 #FarmStandName
 {
 
-    background-color: #fccc73;
+    background-color:  #DECECE;
     height: 50px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     margin: 0;
@@ -267,11 +267,22 @@ body{
 {
     background-color: red;
     border: red;
-    height: 50px;
-    width: 250px;
+    height: 25%;
+    width: 100%;
     border-radius: 10px;
     float: left;
 }
+
+#ItemEdit
+{
+    background-color: blue;
+    border: blue;
+    height: 25%;
+    width: 100%;
+    border-radius: 10px;
+    float: left;
+}
+
 
 /*Reviews*/
 #UserReviewContainer
@@ -340,4 +351,3 @@ margin-right:auto;
 .form-container .cancel {
   background-color: red;
 }
-

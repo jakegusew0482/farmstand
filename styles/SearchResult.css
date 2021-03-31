@@ -2,7 +2,7 @@
 {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-     width: 300px;
+     width: 100%;
 }
 
 #result td, #result th {
