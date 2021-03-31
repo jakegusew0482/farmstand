@@ -1,8 +1,5 @@
 body{
-    background-image: url("../images/marketPageFarmBg.png");
-    background-image: url("../images/marketPageFarmBg.jpg");
-    background-image: url("./images/marketPageFarmBg.png");
-    background-image: url("./images/marketPageFarmBg.jpg");
+    background-color : #C1FF33;
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -11,7 +8,7 @@ body{
 /*Stand Info*/
 #FarmstandInfo
 {
-    background-color: #342628;
+    background-color: #DECECE;
     width: 15%;
     height: 350px;
     border: 2px solid #143f17; 
@@ -38,7 +35,7 @@ body{
 }
 #FarmStandImage
 {
-    background-color: #fccc73;
+    background-color: #DECECE;
     height: 200px;
     padding-left: 20px; 
     padding-right: 20px; 
@@ -49,7 +46,7 @@ body{
 
 #FarmStandAddr
 {
-    background-color: #fccc73;
+    background-color: #DECECE;
     height: 50px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-bottom-left-radius: 25px;
@@ -77,7 +74,7 @@ body{
 
 #NewsContainerBox
 {
-    background-color: #fccc73;
+    background-color: #DECECE;
     height: 300px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-radius: 10px;
@@ -114,7 +111,7 @@ body{
 #StandPostingTitle
 {
     text-align: center;
-    background-color: #fccc73;
+    background-color: #DECECE;
     box-shadow: 0 4px 8px 0 rgba(229, 237, 240, 0.5);
     height: 50px;
 
@@ -122,7 +119,7 @@ body{
 #StandPostingSubContainer
 {
 
-    background-color: #fccc73;
+    background-color: #DECECE;
     box-shadow: 0 4px 8px 0 rgba(229, 237, 240, 0.5);
     height: 500px;
     margin-top: 25px;
