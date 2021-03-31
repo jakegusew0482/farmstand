@@ -67,6 +67,10 @@ myMap.locate({
   maxZoom: 16,
 });
 
+// search and searchType
+const search = document.getElementById("search").value;
+const searchtype = document.getElementById("searchType").value;
+
 // Getting data from mysql/php farmstand and display on map
 function getMapData(jQuery) {
   $.ajax({
