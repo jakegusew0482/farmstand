@@ -1,5 +1,8 @@
 body{
     background-image: url("../images/marketPageFarmBg.png");
+    background-image: url("../images/marketPageFarmBg.jpg");
+    background-image: url("./images/marketPageFarmBg.png");
+    background-image: url("./images/marketPageFarmBg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -37,6 +40,8 @@ body{
 {
     background-color: #fccc73;
     height: 200px;
+    padding-left: 20px; 
+    padding-right: 20px; 
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-radius: 25px;
     text-align: center;
@@ -73,7 +78,7 @@ body{
 #NewsContainerBox
 {
     background-color: #fccc73;
-    height: 350px;
+    height: 300px;
     box-shadow: 0 4px 8px 0 rgba(103, 106, 107, 0.5);
     border-radius: 10px;
     text-align: center;
