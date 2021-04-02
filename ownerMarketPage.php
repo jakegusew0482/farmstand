@@ -3,7 +3,7 @@
 <?php
 	include('navbar.php');
 ?>
-<body onload='loadProducts()' style="background-image: url('/images/MarketPageFarmBg.jpg');>
+<body onload='loadPage();' style="background-image: url('/images/MarketPageFarmBg.jpg');>
 	
 	<div id= "page-container">
 		<div id ="ContentBox"></div>
@@ -46,12 +46,34 @@
 			</div>
 
 			<!--Reviews-->
+
+
 			<div id = "StandOwnerPosting">
+
+<div class="form-popup" id="postForm">
+			
+  <form id='addpostform' name='addpostform' method='post' action='addPost.php' enctype='multipart/form-data' class="form-container">
+
+    						<label for="posttitle"><b>Post Title</b></label>
+    						<input type="text" placeholder="Post Title Name" name="posttitle" id="posttitle" required>
+
+    						<label for="postdesc"><b>Description</b></label>
+   						<input type="text" placeholder="Post Description" name="postdesc" id="postdesc" required>			
+
+						<br><br>
+						<?php $id = $_SESSION['farm_id'];
+							echo "<input style='display:none;' id='postid' name = 'postid' value='$id'>"; ?>  
+	<input type="submit" class="btn"/>	
+    <button  class="btn cancel" onclick="closePostForm()">Close</button>
+  </form>
+</div>
+
 				<div id = "StandPostingTitle"><h3>Latest Posts</h3></div>
 				<div id = "StandPostingSubContainer">
-					<div id = "StandPostingContent"><p>
-						Place holder of text / image content
-					</p></div>
+<button class='open-button' onClick='openPostForm()' id = 'addpost'>Add Post</button>
+					<div id = "StandPostingContent">
+
+					</div>
 				</div>
 			</div>
 
@@ -84,7 +106,7 @@
 						<?php $id = $_SESSION['farm_id'];
 							echo "<input style='display:none;' id='id' name = 'id' value='$id'>"; ?>  
 	<input type="submit" class="btn"/>	
-    <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+    <button class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
 
@@ -107,7 +129,7 @@
 						<?php $id = $_SESSION['farm_id'];
 							echo "<input style='display:none;' id='editid' name = 'editid' value='$id'>"; ?>  
 	<input type="submit" class="btn"/>	
-    <button type="submit" class="btn cancel" onclick="closeEditForm()">Close</button>
+    <button class="btn cancel" onclick="closeEditForm()">Close</button>
   </form>
 </div>
 
@@ -201,6 +223,73 @@ $(document).ready(function(e) {
 	}));
 });
 
+$(document).ready(function(e) {
+	$("#addpostform").on('submit', (function(e) {
+		e.preventDefault();
+
+		var title = document.getElementById('posttitle').value;
+		var desc = document.getElementById('postdesc').value;
+		var id = document.getElementById('postid').value;
+		
+
+		if (title != "" && desc != "" && id != "") {
+			$.ajax({
+				url: "addPost.php",
+				type: "POST",
+				data: {title:title,desc:desc,id:id},
+				success: function(response) {
+					if (response==1) {
+						$("#addpostform")[0].reset();
+						closePostForm();
+						loadPosts();
+					} else {
+						alert('Error adding post');
+					}
+
+					}
+			});
+		} else {
+			alert('error');
+		}
+	}));
+});
+
+
+function loadPage() {
+loadPosts();
+loadProducts();
+}
+
+
+function openPostForm() {
+  	document.getElementById("postForm").style.display = "block";
+ 	document.getElementById('addpost').style.display = "none";
+}
+
+function closePostForm() {
+  	document.getElementById("postForm").style.display = "none";
+ 	document.getElementById('addpost').style.display = "block";
+							$("#addpostform")[0].reset();
+
+}
+
+function loadPosts() {
+var id = "<?php echo $_SESSION['farm_id']; ?>";
+
+	if(id != 0) {
+		$.ajax({
+		url: "ownerPostData.php",
+		type: "POST",
+		data: {id:id},
+		dataType: "html",
+		success: function(data) {
+		var result = $('<div />').append(data).find('#result').html();
+            	$('#StandPostingContent').html(result);						
+		}
+	});
+
+	}
+}
 
 
 function loadProducts() {
@@ -220,6 +309,22 @@ $.ajax({
 }
 }
 
+function removePost(postid) {
+
+if(confirm('Delete Post?')) {
+$.ajax({
+		url: "removePost.php",
+		type: "POST",
+		data: {postid:postid},
+		success: function(data) {
+			loadPosts();
+		}
+	});
+} else {
+}
+}
+
+
 function remove(productid) {
 
 if(confirm('Delete Product?')) {
@@ -231,7 +336,6 @@ $.ajax({
 			loadProducts();
 		}
 	});
-} else {
 }
 }
 
@@ -263,6 +367,8 @@ function openForm() {
 function closeForm() {
 	document.getElementById("myForm").style.display = "none";
 	document.getElementById('additem').style.display = "block";
+						$("#productform")[0].reset();
+
 }
 
 function openEditForm() {
@@ -271,6 +377,8 @@ function openEditForm() {
 
 function closeEditForm() {
 	document.getElementById("editForm").style.display = "none";
+						$("#editproductform")[0].reset();
+
 }
 
 

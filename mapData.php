@@ -16,21 +16,17 @@ include("mysqli_connect.php");
 // Search Farmstand 
 if (isset($_POST['search']))
 	$searchTerm = $_POST['search'];
-else
-	$searchTerm = NULL;
 
 if (isset($_POST['searchtype']))
 	$searchType = $_POST['searchtype'];
-else
-	$searchType = NULL;
 
 if ($searchType == "product") {
 	$query = "SELECT f.title, f.description, f.coverimage, p.name FROM farmstand AS f INNER JOIN " +
-		"product AS p on p.farmstand_id = f.farmstand_id WHERE p.name LIKE '%$searchterm%'";
+		"product AS p on p.farmstand_id = f.farmstand_id WHERE p.name LIKE '%$searchTerm%'";
 } else if ($searchType == "title") {
-	$query = "SELECT title, description, coverimage FROM farmstand WHERE title LIKE '%$searchterm%'";
+	$query = "SELECT title, description, coverimage FROM farmstand WHERE title LIKE '%$searchTerm%'";
 } else if ($searchType == "zipcode") {
-	$query = "SELECT * from farmstand where zip_code like '%$searchterm%'";
+	$query = "SELECT * from farmstand where zip_code like '%$searchTerm%'";
 } else {
 	$query = "SELECT farmstand_id, title ,address, city, state, zip_code FROM farmstand";
 }
@@ -38,6 +34,8 @@ if ($searchType == "product") {
 // server data
 // Working result query
 /* $result = mysqli_query($connect, "SELECT title ,address, city, state, zip_code FROM farmstand"); */
+//$query = "SELECT farmstand_id, title ,address, city, state, zip_code FROM farmstand";
+
 
 // Test for search for farmstands
 $result = mysqli_query($connect, $query);
@@ -45,7 +43,7 @@ $result = mysqli_query($connect, $query);
 
 // empty array to store query $result 
 $data = array();
-while ($row = mysqli_fetch_object($result)) {
+while ($row = mysqli_fetch_assoc($result)) {
 	array_push($data, $row);
 }
 

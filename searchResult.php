@@ -34,3 +34,4 @@ echo "</div>";
 
 mysqli_close($connect);
 
+?>

@@ -22,6 +22,8 @@ myMap.locate({
   maxZoom: 16,
 });
 
+
+
 // Creating icon's shadow
 let leafIcon = L.Icon.extend({
   options: {
@@ -71,42 +73,44 @@ myMap.locate({
 const search = document.getElementById("search").value;
 const searchtype = document.getElementById("searchType").value;
 
+
 // Getting data from mysql/php farmstand and display on map
 function getMapData(jQuery) {
   $.ajax({
     // from GET to POST, for search for farmstand
-    type: "POST",
-    //dataType: "jsonp",
+    type: "GET",
+	headers: {'Access-Control-Allow-Origin': '*'},
     url: "mapData.php",
+	  dataType: "json",
     // Added for search for farmstand
-    data: { search: search, searchtype: searchtype },
+    //data: { search: search, searchtype: searchtype },
     success: function (response) {
-      let showResult = JSON.parse(response);
-
+      let showResult = response;
       // get data from all
-      for (let i = 0; i < showResult.length; i++) {
+      //for (let i = 0; i < showResult.length; i++) {
+      for (let i = 0; i < 10; i++) {
         let address = showResult[i].address;
         let title = showResult[i].title;
         let farmstand_id = showResult[i].farmstand_id;
         // Debug purposes
-        // console.log("COMBINED:", combinedAddress);
+         console.log("Data:", address);
 
-        $.get(
-          location.protocol +
+        jQuery.get(location.protocol +
             "//nominatim.openstreetmap.org/search?format=json&q=" +
             address,
 
+		// Data from nonimatim.openstreetmap
           function (data) {
             let lat = parseFloat(data[0].lat).toFixed(2);
             let lon = parseFloat(data[0].lon).toFixed(2);
 
             // Debug purposes
-            // console.log("lat:", lat, "lon:", lon);
-
+            console.log("lat:", lat, "lon:", lon);
             // Add each address to the map with redICon
             let marker = L.marker([lat, lon], {
               icon: redIcon,
             }).addTo(myMap);
+	console.log(myMap);
 
             marker.bindPopup(
               `${title}<br/><a href="https://www.farmstandwebsite.com/marketPage.php?id=${farmstand_id}">Visit this farmstand</a>`
@@ -114,9 +118,8 @@ function getMapData(jQuery) {
           }
         );
       }
-    },
+    }
   });
 }
-
 // calling getMapData fun
 $(document).ready(getMapData);
