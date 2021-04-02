@@ -3,7 +3,7 @@
 <?php
 	include('navbar.php');
 ?>
-<body onload='loadPage()'>
+<body onload='loadProducts()'>
 	
 	<div id= "page-container">
 		<div id ="ContentBox"></div>
@@ -153,33 +153,6 @@ $.ajax({
 
 }
 }
-
-function loadPage() {
-loadPosts();
-loadProducts();
-}
-
-
-function loadPosts() {
-var id = "<?php echo $_GET['id']; ?>";
-
-	if(id != 0) {
-		$.ajax({
-		url: "userPostData.php",
-		type: "POST",
-		data: {id:id},
-		dataType: "html",
-		success: function(data) {
-		var result = $('<div />').append(data).find('#result').html();
-            	$('#StandPostingContent').html(result);						
-		}
-	});
-
-	} else {
-
-	}
-}
-
 
 </script>
 

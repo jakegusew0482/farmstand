@@ -22,8 +22,6 @@ myMap.locate({
   maxZoom: 16,
 });
 
-
-
 // Creating icon's shadow
 let leafIcon = L.Icon.extend({
   options: {
@@ -70,56 +68,66 @@ myMap.locate({
 });
 
 // search and searchType
-const search = document.getElementById("search").value;
-const searchtype = document.getElementById("searchType").value;
 
+let searchResult = (document.getElementById(
+  "submitSearch"
+).onclick = function () {
+  const searchType = document.getElementById("searchType").value;
+  const searchTerm = document.getElementById("searchTerm").value;
+  console.log("Search Type:", searchType, "Search Term:", searchTerm);
+});
 
 // Getting data from mysql/php farmstand and display on map
 function getMapData(jQuery) {
   $.ajax({
     // from GET to POST, for search for farmstand
     type: "GET",
-	headers: {'Access-Control-Allow-Origin': '*'},
+    contentType: "application/json",
+    dataType: "jsonp",
     url: "mapData.php",
-	  dataType: "json",
     // Added for search for farmstand
-    //data: { search: search, searchtype: searchtype },
+    //   data: { search: search, searchtype: searchtype },
     success: function (response) {
       let showResult = response;
+
       // get data from all
-      //for (let i = 0; i < showResult.length; i++) {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < showResult.length; i++) {
         let address = showResult[i].address;
         let title = showResult[i].title;
         let farmstand_id = showResult[i].farmstand_id;
         // Debug purposes
-         console.log("Data:", address);
+        // console.log("COMBINED:", combinedAddress);
 
-        jQuery.get(location.protocol +
+        jQuery.get(
+          location.protocol +
             "//nominatim.openstreetmap.org/search?format=json&q=" +
             address,
 
-		// Data from nonimatim.openstreetmap
           function (data) {
             let lat = parseFloat(data[0].lat).toFixed(2);
             let lon = parseFloat(data[0].lon).toFixed(2);
 
             // Debug purposes
-            console.log("lat:", lat, "lon:", lon);
+            // console.log("lat:", lat, "lon:", lon);
+
             // Add each address to the map with redICon
             let marker = L.marker([lat, lon], {
               icon: redIcon,
             }).addTo(myMap);
-	console.log(myMap);
 
             marker.bindPopup(
-              `${title}<br/><a href="https://www.farmstandwebsite.com/userMarketPage.php?id=${farmstand_id}">Visit this farmstand</a>`
+              `${title}<br/><a href="https://www.farmstandwebsite.com/marketPage.php?id=${farmstand_id}">Visit this farmstand</a>`
             );
           }
         );
       }
-    }
+    },
+
+    xhrFields: {
+      withCredentials: false,
+    },
   });
 }
+
 // calling getMapData fun
 $(document).ready(getMapData);

@@ -26,7 +26,6 @@
 			});
 		}
 	</script>
-	
 
 	<!-- script src="scripts/SearchBarScript.js"></script>-->
 </head>
