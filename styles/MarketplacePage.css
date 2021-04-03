@@ -356,3 +356,21 @@ margin-right:auto;
 .form-container .cancel {
   background-color: red;
 }
+
+
+.mySlides {display:none;}
+#ImageContainer
+{
+	width: 500px;
+	height: 400px; 
+	padding: 25px;
+	margin: auto;
+}
+
+
+
+
+
+
+
+
