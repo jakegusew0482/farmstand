@@ -114,9 +114,10 @@ $(document).ready(function () {
           for (let i = 0; i < showResult.length; i++) {
             let address = showResult[i].address;
             let title = showResult[i].title;
-            let farmstand_id = showResult[i].id;
+            //let farmstand_id = showResult[i].id;
+
             // for server
-            //let farmstand_id = showResult[i].farmstand_id;
+            let farmstand_id = showResult[i].farmstand_id;
 
             console.log("ZipCode", showResult[i].zipCode);
 
