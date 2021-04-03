@@ -97,7 +97,7 @@ $(document).ready(function () {
     const searchType = document.getElementById("searchType").value;
     const searchTerm = document.getElementById("searchTerm").value;
 
-    // Removes previous markers from base layer
+    // Removes previous markers from previous search - base layer
     farmstandsMarkers.clearLayers();
 
     if (searchTerm != "") {
@@ -118,8 +118,6 @@ $(document).ready(function () {
 
             // for server
             let farmstand_id = showResult[i].farmstand_id;
-
-            console.log("ZipCode", showResult[i].zipCode);
 
             jQuery.get(
               "https://nominatim.openstreetmap.org/search?format=json&q=" +

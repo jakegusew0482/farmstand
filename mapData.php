@@ -10,7 +10,7 @@ include("mysqli_connect.php");
 /* $conn = mysqli_connect("localhost", "farm_user", "password", "farm_db"); */
 
 // local host
-/* $result = mysqli_query($conn, "SELECT title ,address, city, state, zipCode FROM farmstand"); */
+/* $result = mysqli_query($conn, "SELECT title ,address, city, state, zip_code FROM farmstand"); */
 
 if (isset($_POST['searchTerm'])) {
 	$searchTerm = $_POST['searchTerm'];
@@ -25,13 +25,13 @@ if (isset($_POST['searchType'])) {
 }
 
 if ($searchType == "farmstand") {
-	$query = "SELECT farmstand_id, title, address, city, state, zipCode from farmstand where title like '%$searchTerm%'";
+	$query = "SELECT farmstand_id, title, address, city, state, zip_code from farmstand where title like '%$searchTerm%'";
 } else if ($searchType == "product") {
 	$query = "select f.title, f.description, f.coverimage, f.farmstand_id, p.name from farmstand as f inner join product as p on p.farmstand_id = f.farmstand_id where p.name LIKE '%$searchTerm%'";
-} else if ($searchType == "zipCode") {
-	$query = "SELECT farmstand_id, title, address, city, state, zipCode from farmstand where zipCode like '%$searchTerm%'";
+} else if ($searchType == "zip_code") {
+	$query = "SELECT farmstand_id, title, address, city, state, zip_code from farmstand where zip_code like '%$searchTerm%'";
 } else if ($searchType == "") {
-	$query = "SELECT farmstand_id, title ,address, city, state, zipCode FROM farmstand";
+	$query = "SELECT farmstand_id, title ,address, city, state, zip_code FROM farmstand";
 }
 
 $result = mysqli_query($connect, $query);
