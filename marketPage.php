@@ -42,7 +42,11 @@
 			
 			<!--Posting Area-->
 			<div id = "NewsContainer">
-				<div id = "NewsContainerBox"></div>
+				<div id="ImageContainer" style="max-width:500px">
+				  <img class="mySlides" src="1.jpg" style="width:100%">
+				  <img class="mySlides" src="2.jpg" style="width:100%">
+				  <img class="mySlides" src="3.jpg" style="width:100%">
+				</div>
 			</div>
 
 			<!--Reviews-->
