@@ -6,11 +6,6 @@ body{
 }
 
 /*Stand Info*/
-
-#post
-{
-	border: solid;
-}
 #FarmstandInfo
 {
     background-color: #342628;
@@ -88,47 +83,9 @@ body{
 }
 
 
-/*----*/
 
-#SideShoppingContainer{
-	width:300px;
-	height: 600px;
-	background-color:gray;
-	margin-top: 30px;
-	padding:20px;
 
-}
 
-#ReservationInfoContainer{
-	width:250px;
-	height: 200px;
-	background-color:white;
-	padding:20px;
-	border-radius: 10px;
-
-}
-
-#InventoryReservationContainer
-{
-	width:250px;
-	height: 250px;
-	background-color:white;
-	padding:20px;
-	border-radius: 10px;
-	margin-top: 25px;
-}
-
-#ConfirmReservationButton
-{
-	width:250px;
-	height: 25px;
-	border-radius: 10px;
-	margin-top: 25px;
-	text-align: center;
-	font-size: 12px;
-
-}
-/*----*/
 
 
 
@@ -394,21 +351,3 @@ margin-right:auto;
 .form-container .cancel {
   background-color: red;
 }
-
-
-.mySlides {display:none;}
-#ImageContainer
-{
-	width: 500px;
-	height: 400px; 
-	padding: 25px;
-	margin: auto;
-}
-
-
-
-
-
-
-
-

@@ -1,9 +1,7 @@
 const map = document.getElementById("myMap");
 
-let myMap = L.map(map);
-
-// Create map - use mapBox
-L.tileLayer(
+// Create base layer map - use mapBox
+let streets = L.tileLayer(
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
   {
     attribution:
@@ -15,14 +13,10 @@ L.tileLayer(
     accessToken:
       "pk.eyJ1IjoibWFreWZqIiwiYSI6ImNrbHJib21oNjAyZnUyb2xkZnJvcG5kZW8ifQ.EoSKv-aBqUhwqjmcH6fERg",
   }
-).addTo(myMap);
+);
 
-myMap.locate({
-  setView: true,
-  maxZoom: 16,
-});
-
-
+// Create overlay layer for map
+let farmstandsMarkers = L.layerGroup();
 
 // Creating icon's shadow
 let leafIcon = L.Icon.extend({
@@ -47,10 +41,23 @@ let greenIcon = new leafIcon({
     iconUrl: "./images/leaf-orange.png",
   });
 
+// create map
+let myMap = L.map(map, {
+  center: [39.73, -104.99],
+  zoom: 10,
+  layers: [streets, farmstandsMarkers],
+});
+
+myMap.locate({
+  setView: true,
+  maxZoom: 16,
+});
+
 function onLocationFound(e) {
   // Display user location
   let marker = L.marker(e.latlng, {
     icon: greenIcon,
+    zoom: 4,
   }).addTo(myMap);
 
   marker.bindPopup("Your current location").openPopup();
@@ -69,57 +76,113 @@ myMap.locate({
   maxZoom: 16,
 });
 
+// base layer
+let baseMaps = {
+  Streets: streets,
+};
+
+// overlays
+let overlays = {
+  Farmstands: farmstandsMarkers,
+};
+
+L.control.layers(baseMaps, overlays).addTo(myMap);
+
 // search and searchType
-const search = document.getElementById("search").value;
-const searchtype = document.getElementById("searchType").value;
+$(document).ready(function () {
+  $("#searchForm").on("submit", function (e) {
+    e.preventDefault();
 
+    // Get values of search farmstand
+    const searchType = document.getElementById("searchType").value;
+    const searchTerm = document.getElementById("searchTerm").value;
 
-// Getting data from mysql/php farmstand and display on map
-function getMapData(jQuery) {
-  $.ajax({
-    // from GET to POST, for search for farmstand
-    type: "GET",
-	headers: {'Access-Control-Allow-Origin': '*'},
-    url: "mapData.php",
-	  dataType: "json",
-    // Added for search for farmstand
-    //data: { search: search, searchtype: searchtype },
-    success: function (response) {
-      let showResult = response;
-      // get data from all
-      //for (let i = 0; i < showResult.length; i++) {
-      for (let i = 0; i < 10; i++) {
-        let address = showResult[i].address;
-        let title = showResult[i].title;
-        let farmstand_id = showResult[i].farmstand_id;
-        // Debug purposes
-         console.log("Data:", address);
+    // Removes previous markers from base layer
+    farmstandsMarkers.clearLayers();
 
-        jQuery.get(location.protocol +
-            "//nominatim.openstreetmap.org/search?format=json&q=" +
-            address,
+    if (searchTerm != "") {
+      // ajax call
+      $.ajax({
+        url: "mapData.php",
+        type: "POST",
+        dataType: "json",
+        data: { searchType: searchType, searchTerm: searchTerm },
+        success: function (response) {
+          let showResult = response;
 
-		// Data from nonimatim.openstreetmap
-          function (data) {
-            let lat = parseFloat(data[0].lat).toFixed(2);
-            let lon = parseFloat(data[0].lon).toFixed(2);
+          // get data based on the query from searchTerm
+          for (let i = 0; i < showResult.length; i++) {
+            let address = showResult[i].address;
+            let title = showResult[i].title;
+            let farmstand_id = showResult[i].id;
+            // for server
+            //let farmstand_id = showResult[i].farmstand_id;
 
-            // Debug purposes
-            console.log("lat:", lat, "lon:", lon);
-            // Add each address to the map with redICon
-            let marker = L.marker([lat, lon], {
-              icon: redIcon,
-            }).addTo(myMap);
-	console.log(myMap);
+            console.log("ZipCode", showResult[i].zipCode);
 
-            marker.bindPopup(
-              `${title}<br/><a href="https://www.farmstandwebsite.com/userMarketPage.php?id=${farmstand_id}">Visit this farmstand</a>`
+            jQuery.get(
+              "https://nominatim.openstreetmap.org/search?format=json&q=" +
+                address,
+
+              function (data) {
+                let lat = parseFloat(data[0].lat).toFixed(2);
+                let lon = parseFloat(data[0].lon).toFixed(2);
+
+                // Add each address to the map with redICon
+                let marker = L.marker([lat, lon], {
+                  icon: redIcon,
+                }).addTo(farmstandsMarkers);
+
+                marker
+                  .bindPopup(
+                    `${title}<br/><a href="https://www.farmstandwebsite.com/marketPage.php?id=${farmstand_id}">Visit this farmstand</a>`
+                  )
+                  .openPopup();
+              }
             );
           }
-        );
-      }
+        },
+      });
+    } else {
+      $.ajax({
+        // from GET to POST, for search for farmstand
+        type: "POST",
+        dataType: "json",
+        url: "mapData.php",
+        // Added for search for farmstand
+        //   data: { search: search, searchtype: searchtype },
+        success: function (response) {
+          let showResult = response;
+
+          // get data from all
+          for (let i = 0; i < showResult.length; i++) {
+            let address = showResult[i].address;
+            let title = showResult[i].title;
+            let farmstand_id = showResult[i].id;
+            // for server
+            //let farmstand_id = showResult[i].farmstand_id;
+
+            jQuery.get(
+              "https://nominatim.openstreetmap.org/search?format=json&q=" +
+                address,
+
+              function (data) {
+                let lat = parseFloat(data[0].lat).toFixed(2);
+                let lon = parseFloat(data[0].lon).toFixed(2);
+
+                // Add markers to layer group - farmstandsMarkers
+                L.marker([lat, lon], {
+                  icon: redIcon,
+                })
+                  .bindPopup(
+                    `${title}<br/><a href="https://www.farmstandwebsite.com/marketPage.php?id=${farmstand_id}">Visit this farmstand</a>`
+                  )
+                  .addTo(farmstandsMarkers);
+              }
+            );
+          }
+        },
+      });
     }
   });
-}
-// calling getMapData fun
-$(document).ready(getMapData);
+});

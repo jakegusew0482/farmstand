@@ -26,7 +26,6 @@
 			});
 		}
 	</script>
-	
 
 	<!-- script src="scripts/SearchBarScript.js"></script>-->
 </head>
@@ -50,7 +49,7 @@
 		}
 		?>
 
-		
+
 		<!--<a href="ContactUs.php" class="right">Contact Us</a>-->
 
 		<?php

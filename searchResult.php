@@ -33,5 +33,3 @@ echo "</tr></table>";
 echo "</div>";
 
 mysqli_close($connect);
-
-?>

@@ -1,22 +1,37 @@
-	<?php include('navbar.php'); 
-		include('config.php');	?>
+	<?php include('navbar.php');
+	include('config.php');	?>
 
 	<!-- Side Column of Main Page -->
 	<div class="row">
-	<?php
-		include('searchBar.php');
-	?>
+
+		<div class="side">
+			<h3>Search for Farmstands</h3>
+			<form method="post" id="searchForm">
+
+				<select name="searchType" id="searchType">
+					<option value="farmstand">Farmstand Name</option>
+					<option value="product">Product</option>
+					<option value="zipCode">Zip Code</option>
+				</select>
+
+				<input type="text" id="searchTerm" placeholder="Enter search term" />
+
+				<button type="submit" id="submitSearch">Search</button>
+				<button type="submit">Show me all locations</button>
+			</form>
+		</div>
 		<!--Main Page-->
 		<div class="main">
-			<?php 
-				if(isset($_SESSION['username'])) {
-					echo "<p> You Are Logged In</p>";
-				} else {
-					echo "<p> You Are Not Logged In</p>";
-				}
+			<?php
+			if (isset($_SESSION['username'])) {
+				echo "<p> You Are Logged In</p>";
+			} else {
+				echo "<p> You Are Not Logged In</p>";
+			}
 			?>
 			<p id='login'></p>
 			<div id="myMap" style="height: 400px"></div>
+
 			<script src="scripts/map.js">
 			</script>
 		</div>
