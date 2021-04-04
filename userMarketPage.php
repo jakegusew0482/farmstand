@@ -3,7 +3,7 @@
 <?php
 	include('navbar.php');
 ?>
-<body onload='loadProducts()'>
+<body onload='loadPage()'>
 	
 	<div id= "page-container">
 		<div id ="ContentBox"></div>
@@ -120,21 +120,78 @@
 			</div>
 		</div>
 		
-
-
-		<!--UserReviewsArea-->
-		<div id = "UserReviewContainer">
+<div id = "UserReviewContainer">
 			<div id = "UserReviewTitle"></div>
 			<div id = "UserReviewContent">
-				
+
+		<!--UserReviewsArea-->
+		<div id = "SideShoppingContainer">
+
+	<div id = "ReservationInfoContainer">
+		<form action="/action_page.php">
+          	<h3>Item Reservation</h3>
+		<p>Please fill out the following information</p>
+            	<label for="fname">Name</label>
+            	<input type="text" id="fname" name="firstname" placeholder="First and Last Name">
+            	<label for="Phone Number"><i id="PhoneNumber"></i> Phone Number</label>
+            	<input type="text" id="PhoneNumber" name="Phone Number" placeholder="555-555-5555">  
+      		</form>
+	<label for="PaymentReservation">Payment Type?</label>
+
+<select name="PaymentTime" id="PaymentTime">
+  <option value="Arrival">Pay at the stand</option>
+  <option value="">Pay Now using online processing</option>
+</select>
 
 
-			</div>
+	</div>
+
+
+	<div id = "InventoryReservationContainer">
+
+		<h4>Reservation Cart </h4><span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span></h4>
+      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+	</div>
+
+	<div id = "ConfirmReservationButton">
+		<input type="submit" value="Confirm Reservation" class="btn">
+	</div>
+</div>
+</div>
 		</div>
-	
-
+		</div></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+function loadPage() {
+loadPosts();
+loadProducts();
+}
+
+
+function loadPosts() {
+var id = "<?php echo $_GET['id']; ?>";
+
+	if(id != 0) {
+		$.ajax({
+		url: "userPostData.php",
+		type: "POST",
+		data: {id:id},
+		dataType: "html",
+		success: function(data) {
+		var result = $('<div />').append(data).find('#result').html();
+            	$('#StandPostingContent').html(result);						
+		}
+	});
+
+	} else {
+
+	}
+}
 function loadProducts() {
 var id = "<?php echo $_GET['id']; ?>";
 if(id != 0) {

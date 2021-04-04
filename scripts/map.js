@@ -136,7 +136,7 @@ $(document).ready(function () {
 
                 marker
                   .bindPopup(
-                    `${title}<br/><a href="https://www.farmstandwebsite.com/marketPage.php?id=${farmstand_id}">Visit this farmstand</a>`
+                    `${title}<br/><a href="https://www.farmstandwebsite.com/userMarketPage.php?id=${farmstand_id}">Visit this farmstand</a>`
                   )
                   .openPopup();
               }
@@ -176,7 +176,7 @@ $(document).ready(function () {
                   icon: redIcon,
                 })
                   .bindPopup(
-                    `${title}<br/><a href="https://www.farmstandwebsite.com/marketPage.php?id=${farmstand_id}">Visit this farmstand</a>`
+                    `${title}<br/><a href="https://www.farmstandwebsite.com/userMarketPage.php?id=${farmstand_id}">Visit this farmstand</a>`
                   )
                   .addTo(farmstandsMarkers);
               }
