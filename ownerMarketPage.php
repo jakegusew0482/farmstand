@@ -84,7 +84,7 @@
 						<?php $id = $_SESSION['farm_id'];
 							echo "<input style='display:none;' id='id' name = 'id' value='$id'>"; ?>  
 	<input type="submit" class="btn"/>	
-    <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+    <button class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
 
@@ -107,7 +107,7 @@
 						<?php $id = $_SESSION['farm_id'];
 							echo "<input style='display:none;' id='editid' name = 'editid' value='$id'>"; ?>  
 	<input type="submit" class="btn"/>	
-    <button type="submit" class="btn cancel" onclick="closeEditForm()">Close</button>
+    <button class="btn cancel" onclick="closeEditForm()">Close</button>
   </form>
 </div>
 
@@ -263,6 +263,7 @@ function openForm() {
 function closeForm() {
 	document.getElementById("myForm").style.display = "none";
 	document.getElementById('additem').style.display = "block";
+	$("#productform")[0].reset();
 }
 
 function openEditForm() {
@@ -271,6 +272,7 @@ function openEditForm() {
 
 function closeEditForm() {
 	document.getElementById("editForm").style.display = "none";
+	$("#editproductform")[0].reset();
 }
 
 

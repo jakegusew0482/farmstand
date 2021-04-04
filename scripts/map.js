@@ -97,7 +97,7 @@ $(document).ready(function () {
     const searchType = document.getElementById("searchType").value;
     const searchTerm = document.getElementById("searchTerm").value;
 
-    // Removes previous markers from previous search - base layer
+    // Removes previous markers from base layer
     farmstandsMarkers.clearLayers();
 
     if (searchTerm != "") {
@@ -118,6 +118,8 @@ $(document).ready(function () {
 
             // for server
             let farmstand_id = showResult[i].farmstand_id;
+
+            console.log("ZipCode", showResult[i].zipCode);
 
             jQuery.get(
               "https://nominatim.openstreetmap.org/search?format=json&q=" +
@@ -157,9 +159,9 @@ $(document).ready(function () {
           for (let i = 0; i < showResult.length; i++) {
             let address = showResult[i].address;
             let title = showResult[i].title;
-            let farmstand_id = showResult[i].id;
+            //let farmstand_id = showResult[i].id;
             // for server
-            //let farmstand_id = showResult[i].farmstand_id;
+            let farmstand_id = showResult[i].farmstand_id;
 
             jQuery.get(
               "https://nominatim.openstreetmap.org/search?format=json&q=" +
