@@ -51,8 +51,10 @@ $(document).ready(function() {
 $("#sub").click(function() {
 var user = $('#user').val();
 var pass = $('#pass').val();
+var id = "<?php include('config.php');
+		if(isset($_SESSION['username'])) echo 1; else echo 0;?>";
 
-if (user != "" && pass != "") {
+if (user != "" && pass != "" && id == "0") {
 $.ajax({
         url:'/login.php',
         type:'post',
@@ -69,6 +71,8 @@ $.ajax({
         }
         }
         });
+} else if (id == "1") {
+	alert('you are already logged in');
 }
 });
 });
