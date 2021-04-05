@@ -19,6 +19,11 @@
 							$desc = $row['description'];
 							$price = $row['price'];
 							$image = $row['image'];
+
+							include('config.php');
+							$pid = $row['product_id'];
+							$fid = $row['farmstand_id'];
+							$uid = $_SESSION['user_id'];
 							
 
 							
@@ -30,12 +35,16 @@
 							<div id = 'ItemDescriptionBox'><p>$desc</p></div></div>
 							<div id = 'SideInventoryIDContainer'>
 							<div id = 'ItemQTY'></div>
-							<div id = 'ItemPrice'><p>$price $</p></div>
-							<button id = 'ItemReservation'></button>
-							</div>
+							<div id = 'ItemPrice'><p>$price $</p></div>";
 
-							"; 
-							echo"</div>";
+							include('config.php');
+							if(isset($_SESSION['user_id'])) {
+							echo "<button id = 'AddToCart' onClick='addToCart($uid, $pid, $fid);'>Add Item to Cart</button>";
+							}
+						
+							echo"</div></div>";
+
+
 						
 						}
 						

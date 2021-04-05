@@ -26,6 +26,7 @@ if ($user != NULL && $pass != NULL) {
 	if (mysqli_num_rows($result) > 0) { // If user found
 		$_SESSION['username'] = $user;
 		$_SESSION['account_type'] = "user";
+		$_SESSION['user_id'] = $row['user_id'];
 		echo 1;
 	} else {
 		$query = "SELECT * FROM $farmtable WHERE username='$user' and password='$pass';";

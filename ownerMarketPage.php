@@ -3,7 +3,7 @@
 <?php
 	include('navbar.php');
 ?>
-<body onload='loadPage()' style="background-image: url('/images/MarketPageFarmBg.jpg');>
+<body onload='loadPage()'>
 	
 	<div id= "page-container">
 		<div id ="ContentBox"></div>

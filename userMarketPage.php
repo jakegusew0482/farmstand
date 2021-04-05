@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 	include('navbar.php');
 ?>
@@ -26,7 +24,7 @@
 							$image = $row['coverimage'];
 				
 							echo "<div id = 'FarmStandName'><h2>$title</h2></div>
-								<div id = 'FarmStandImage'><img src='$image' height='200' width='275'></div>
+								<div id = 'FarmStandImage'><img src='$image' height='200' width='150'></div>
 								<div id = 'FarmStandAddr'><h5>$desc</h5></div>";
 						}
 					
@@ -120,56 +118,30 @@
 			</div>
 		</div>
 		
-<div id = "UserReviewContainer">
-			<div id = "UserReviewTitle"></div>
-			<div id = "UserReviewContent">
+<?php
+	include('config.php');
 
-		<!--UserReviewsArea-->
-		<div id = "SideShoppingContainer">
+	if(isset($_SESSION['user_id']) && isset($_SESSION['account_type'])) {
+		if($_SESSION['account_type'] == "user") {
 
-	<div id = "ReservationInfoContainer">
-		<form action="/action_page.php">
-          	<h3>Item Reservation</h3>
-		<p>Please fill out the following information</p>
-            	<label for="fname">Name</label>
-            	<input type="text" id="fname" name="firstname" placeholder="First and Last Name">
-            	<label for="Phone Number"><i id="PhoneNumber"></i> Phone Number</label>
-            	<input type="text" id="PhoneNumber" name="Phone Number" placeholder="555-555-5555">  
-      		</form>
-	<label for="PaymentReservation">Payment Type?</label>
+			$id = $_SESSION['user_id'];
 
-<select name="PaymentTime" id="PaymentTime">
-  <option value="Arrival">Pay at the stand</option>
-  <option value="">Pay Now using online processing</option>
-</select>
+			include('loggedInCart.php');
 
-
-	</div>
-
-
-	<div id = "InventoryReservationContainer">
-
-		<h4>Reservation Cart </h4><span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span></h4>
-      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-	</div>
-
-	<div id = "ConfirmReservationButton">
-		<input type="submit" value="Confirm Reservation" class="btn">
-	</div>
-</div>
-</div>
-		</div>
-		</div></div>
+		} else {
+			include('loggedOutCart.php');
+		}		
+	} else {
+		include('loggedOutCart.php');
+	}
+?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+
 function loadPage() {
 loadPosts();
 loadProducts();
+loadCart();
 }
 
 
@@ -207,6 +179,57 @@ $.ajax({
 } else {
 
 }
+}
+
+function loadCart() {
+var fid = "<?php echo $_GET['id']; ?>";
+var uid = "<?php include('config.php');
+			if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>";
+
+if (fid != "" && uid != "") {
+	$.ajax({
+		url: "cartData.php",
+		type: "POST",
+		data: {user_id:uid,farmstand_id:fid},
+		dataType: "html",
+		success: function(data) {
+			var result = $('<div />').append(data).find('#result').html();
+            		$('#cartresult').html(result);	
+		}
+	});
+}
+
+}
+
+function addToCart(user_id, product_id, farmstand_id) {
+$.ajax({
+	url: "addToCart.php",
+	type: "POST",
+	data:{user_id:user_id, product_id:product_id, farmstand_id:farmstand_id},
+	success:function(response) {
+		if(response == 1) {
+			loadCart();
+		} else {
+			alert('Error adding item');
+		}
+	}
+});
+	
+}
+
+function removeFromCart(cart_id) {
+$.ajax({
+	url: "removeFromCart.php",
+	type: "POST",
+	data: {cart_id:cart_id},
+	success: function(response) {
+		if (response == 1) {
+			loadCart();			
+		} else {
+			alert("could not remove item");
+		}
+	}
+});
 }
 
 </script>
