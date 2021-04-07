@@ -1,3 +1,4 @@
+
     <?php include('navbar.php'); ?>
 
     <!-- Side Column of Main Page -->

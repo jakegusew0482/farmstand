@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <?php
 	include('navbar.php');
 ?>
@@ -31,11 +34,6 @@
 
 					mysqli_close($connect);
 				?>
-
-				
-				<!--<div id = "FarmStandName"><h2>Stand Name</h2></div>
-				<div id = "FarmStandImage"><h5>Stand Image</h5></div>
-				<div id = "FarmStandAddr"><h5>Stand Description</h5></div> -->
 			</div>
 			
 			<!--Posting Area-->
@@ -64,75 +62,15 @@
 			<div id = "InventoryDisplayContainer">
 				<!--Item Inventory COntainer-->
 				<div id='products'>
-				<?php /*
-
-					include('mysqli_connect.php');
-					
-					if(isset($_GET['id'])) $id = $_GET['id']; else $id = NULL;
-
-					if($id != NULL) {
-						$query = "SELECT * FROM product WHERE farmstand_id = '$id';";
-
-						$result = mysqli_query($connect, $query);
-
-						
-					
-						while($row = mysqli_fetch_assoc($result)) {
-							$name = $row['name'];
-							$desc = $row['description'];
-							$price = $row['price'];
-							$image = $row['image'];
-							
-							
-							echo"<div id = 'itemDisplayContainer'>";
-							
-							echo "<div id = 'ItemImage'><img src='$image' height='150' width='150'></div>
-							<div id = 'ItemDescription'>	
-							<div id = 'ItemName'><p>$name</p></div>
-							<div id = 'ItemDescriptionBox'><p>$desc</p></div></div>
-							<div id = 'SideInventoryIDContainer'>
-							<div id = 'ItemQTY'></div>
-							<div id = 'ItemPrice'><p>$price $</p></div>
-							<button id = 'ItemReservation'></button>
-							</div>
-
-							";
-							echo"</div>";
-						
-						}
-						
-
-					}
-				mysqli_close($connect); */
-				?>
-
+	
 				</div>
-				<!--<div id = "itemDisplayContainer">
-					<div id = "ItemImage"></div>
-					<div id = "ItemDescription"></div>
-					<div id = "ItemQTY"></div>
-					<div id = "ItemPrice"></div>
-					<div id = "ItemReservation"></div>
-					<div id = "DeleteItem"></div>
-				</div>-->
 			</div>
 		</div>
 		
 <?php
-	include('config.php');
 
-	if(isset($_SESSION['user_id']) && isset($_SESSION['account_type'])) {
-		if($_SESSION['account_type'] == "user") {
-
-			$id = $_SESSION['user_id'];
-
-			include('loggedInCart.php');
-
-		} else {
-			include('loggedOutCart.php');
-		}		
-	} else {
-		include('loggedOutCart.php');
+	if(isset($_SESSION['user_id'])) {
+		include('loggedInCart');
 	}
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -183,8 +121,7 @@ $.ajax({
 
 function loadCart() {
 var fid = "<?php echo $_GET['id']; ?>";
-var uid = "<?php include('config.php');
-			if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>";
+var uid = "<?php if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>";
 
 if (fid != "" && uid != "") {
 	$.ajax({

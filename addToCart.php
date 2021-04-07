@@ -12,6 +12,7 @@
 		$result = mysqli_query($connect, $query);
 
 		echo mysqli_affected_rows($connect);
+		echo mysqli_error($connect);
 	} else {
 		echo 2;
 	}

@@ -16,11 +16,11 @@ include('mysqli_connect.php');
 							$pid = $row['post_id'];
 							echo "<div id='post'>";
 							echo "<h2>$title</h2>";
-							echo "<h3>$desc</h3>";
+							echo "<h4>$desc</h4>";
 							echo "<h3 style='display:none;'>$pid</h3>";
 							 
 							echo"</div>";
-						
+							echo "<hr>";
 						}
 						
 

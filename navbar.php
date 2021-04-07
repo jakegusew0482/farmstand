@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<?php header('Access-Control-Allow-Origin: *');
+<?php //header('Access-Control-Allow-Origin: *');
+session_start();
 ?>
 <html lang="en">
 
@@ -21,7 +22,7 @@
 				url: 'logout.php',
 				type: 'post',
 				success: function(reponse) {
-					window.location.href = "http://farmstandwebsite.com";
+					//window.location.href = "http://farmstandwebsite.com";
 				}
 			});
 		}
@@ -41,18 +42,13 @@
 	<div class="navbar">
 		<a href="index.php">Home</a>
 		<?php
-		include('config.php');
+		
 		if (isset($_SESSION['username'])) {
-			echo "<a onclick='logout()'>Log Out</a>";
+			echo "<a href='logout.php'>Log Out</a>";
 		} else {
 			echo "<a href='loginPage.php'>Log In</a>";
 		}
-		?>
 
-
-		<!--<a href="ContactUs.php" class="right">Contact Us</a>-->
-
-		<?php
 		if (!(isset($_SESSION['username']))) {
 			echo "<a href='createAccount.php'>Create Account</a>";
 		} else {

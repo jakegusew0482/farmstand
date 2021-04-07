@@ -1,7 +1,6 @@
 
 <?php
 
-include('config.php');
 include('mysqli_connect.php');
 
 $usertable          = "user";
@@ -15,6 +14,7 @@ if (isset($_POST['pass'])) $pass = $_POST['pass'];
 else $pass = NULL; // Get pass if set
 
 $found = false;
+session_start();
 
 if ($user != NULL && $pass != NULL) {
 
@@ -24,18 +24,21 @@ if ($user != NULL && $pass != NULL) {
 	$row = mysqli_fetch_assoc($result);
 
 	if (mysqli_num_rows($result) > 0) { // If user found
+		
 		$_SESSION['username'] = $user;
 		$_SESSION['account_type'] = "user";
 		$_SESSION['user_id'] = $row['user_id'];
 		echo 1;
+		mysqli_close($connect);
+		exit();
 	} else {
 		$query = "SELECT * FROM $farmtable WHERE username='$user' and password='$pass';";
 		$result = mysqli_query($connect, $query);
 
 
 		if (mysqli_num_rows($result) > 0) { // If user found
+			
 			$row = mysqli_fetch_assoc($result);
-
 			$id = $row['farmstand_id'];
 			$_SESSION['farm_id'] = $id;
 			$_SESSION['username'] = $user;
@@ -45,6 +48,8 @@ if ($user != NULL && $pass != NULL) {
 			$_SESSION['farmstand_address'] = $row['address'];
 			$_SESSION['farmstand_image'] = $row['coverimage'];
 			echo 1;
+			mysqli_close($connect);
+			exit();
 		} else {
 			echo 0;
 		}

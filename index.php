@@ -1,6 +1,6 @@
-	<?php include('navbar.php');
-	include('config.php');	?>
-
+<?php include('navbar.php');
+?>
+<body>
 	<!-- Side Column of Main Page -->
 	<div class="row">
 
