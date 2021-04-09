@@ -14,7 +14,7 @@
 		<div class="container">
 			<div class="container">
 				<h2 class="my-4 text-center">Farmstand Checkout</h2>
-				<form action="./charge.php" method="post" id="payment-form">
+				<form action="./createCheckoutSession.php" method="post" id="payment-form">
 					<div class="form-row">
 						<input type="text" name="first_name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="First Name">
 						<input type="text" name="last_name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Last Name">
