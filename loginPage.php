@@ -60,7 +60,6 @@ $.ajax({
         data:{user:user,pass:pass},
         success:function(response){
         var msg="";
-	alert(response);
         if(response==1){
                 msg="success";
                 document.getElementById("demo").innerHTML = msg;

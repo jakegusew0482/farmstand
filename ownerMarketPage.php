@@ -9,35 +9,32 @@
 		<div id ="ContentBox"></div>
 			<!--Stand Description-->
 			<div id ="FarmstandInfo">
-				<?php
-					include('mysqli_connect.php');
-					
-					if(isset($_SESSION['farm_id'])) $id = $_SESSION['farm_id']; else $id = NULL;
 
-					if($id != NULL) {
-						$query = "SELECT title, description, coverimage FROM farmstand WHERE farmstand_id = '$id';";
-						
-						$result = mysqli_query($connect, $query);
+			
+				<div class="form-popup" id="farmForm">
 
-						$row = mysqli_fetch_assoc($result);
+ 					<form id='editFarmform' name='editFarmform' method='post' action='editFarm.php' enctype='multipart/form-data' class="form-container">
 
-							$title = $row['title'];
-							$desc = $row['description'];
-							$image = $row['coverimage'];
-				
-							echo "<div id = 'FarmStandName'><h2>$title</h2></div>
-								<div id = 'FarmStandImage'><img src='$image' height='100%' width='100%'></div>
-								<div id = 'FarmStandAddr'><h5>$desc</h5></div>";
-						}
-					
+    						<label for="farmtitle"><b>Farmstand Title</b></label>
+    						<input type="text" placeholder="Farmstand title" name="farmtitle" id="farmtitle" required>
 
-					mysqli_close($connect);
-				?>
+    						<label for="farmdesc"><b>Farmstand Description</b></label>
+   						<input type="text" placeholder="Farmstand Description" name="farmdesc" id="farmdesc" required>
 
-				
-				<!--<div id = "FarmStandName"><h2>Stand Name</h2></div>
-				<div id = "FarmStandImage"><h5>Stand Image</h5></div>
-				<div id = "FarmStandAddr"><h5>Stand Description</h5></div> -->
+						<label for="files">Select file:</label>
+						<input id="uploadImage" type="file" accept="image/*" name="image" />			
+
+						<br><br>
+						<?php $id = $_SESSION['farm_id'];
+							echo "<input style='display:none;' id='id' name = 'id' value='$id'>"; ?>  
+
+						<input type="submit" class="btn"/>	
+    						<button  class="btn cancel" onclick="closeFarmForm()">Close</button>
+  					</form>
+			</div>
+
+			<button class='open-button' onClick='editFarmInfo()' id = 'editfarm'>Edit Farmstand Info</button>
+			<div id='farminfo'></div>
 			</div>
 			
 			<!--Posting Area-->
@@ -251,10 +248,63 @@ $(document).ready(function(e) {
 	}));
 });
 
+$(document).ready(function(e) {
+	$("#editFarmform").on('submit', (function(e) {
+		e.preventDefault();
+
+		if(id != -1) {
+		$.ajax({
+			url: "updateFarmstandInfo.php",
+			type: "POST",
+			data: new FormData(this),
+			contentType: false,
+			cache: false,
+			processData: false,
+			success: function(response) {
+				if (response==1) {
+					$("#editFarmform")[0].reset();
+					closeFarmForm();
+					loadFarmInfo();
+				} else {
+					alert('Error editing info');
+				}
+
+
+			}
+
+
+		});
+		} else {
+			alert('You are not logged in');
+		}
+
+	}));
+});
+
+
 
 function loadPage() {
 loadPosts();
 loadProducts();
+loadFarmInfo();
+}
+
+function loadFarmInfo() {
+var id = "<?php echo $_SESSION['farm_id']; ?>";
+if(id != 0) {
+$.ajax({
+		url: "farmstandInfo.php",
+		type: "POST",
+		data: {id:id},
+		dataType: "html",
+		success: function(data) {
+		var result = $('<div />').append(data).find('#result').html();
+            	$('#farminfo').html(result);						}
+	});
+} else {
+
+}
+
 }
 
 function loadProducts() {
@@ -342,6 +392,27 @@ $.ajax({
 
 }
 
+function editFarmInfo() {
+	openFarmForm();
+	var id = "<?php if(isset($_SESSION['farm_id'])) echo $_SESSION['farm_id']; else echo -1; ?>";
+
+	if (id != -1) {
+		$.ajax({
+			url: "editFarmData.php",
+			type: "POST",
+			data: {id:id},
+			dataType: "JSON",
+			success: function(data) {
+				document.getElementById('farmtitle').value = data[0].title;
+				document.getElementById('farmdesc').value = data[0].desc;
+			}
+		});
+
+	} else {
+		alert('You are not logged in');
+	}
+}
+
 function openForm() {
   	document.getElementById("myForm").style.display = "block";
  	document.getElementById('additem').style.display = "none";
@@ -373,6 +444,19 @@ function closePostForm() {
 	$("#addpostform")[0].reset();
 
 }
+
+function openFarmForm() {
+  	document.getElementById("farmForm").style.display = "block";
+ 	document.getElementById('editfarm').style.display = "none";
+}
+
+function closeFarmForm() {
+	document.getElementById("farmForm").style.display = "none";
+	document.getElementById('editfarm').style.display = "block";
+	$("#editFarmform")[0].reset();
+}
+
+
 
 
 			

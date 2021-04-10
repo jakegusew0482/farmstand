@@ -6,7 +6,9 @@
 
 	if($id != NULL) {
 
-		$query = "delete from product where product_id = '$id'";
+		$query  = "update product set removed = 1 where product_id=$id;";
+
+		//$query = "delete from product where product_id = '$id'";
 
 		$result = mysqli_query($connect, $query);
 

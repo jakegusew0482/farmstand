@@ -67,12 +67,20 @@
 			</div>
 		</div>
 		
-<?php
+<div id = "UserReviewContainer">
+		<!--UserReviewsArea-->
+		<div id = "SideShoppingContainer"style='height:90%; overflow:scroll; overflow-x:hidden;'>
 
-	if(isset($_SESSION['user_id'])) {
-		include('loggedInCart');
-	}
-?>
+<div id = "ReservationInfoContainer" >
+<div id='cartresult' name = 'cartresult' >
+</div>
+</div>
+</div>
+	<div id = 'ConfirmReservationButton' style='bottom:0px;'>
+		<input type='button' value='Checkout' class='btn' id="checkout-button>
+	</div>
+
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
@@ -82,6 +90,27 @@ loadProducts();
 loadCart();
 }
 
+$(document).ready(function(e) {
+	$("#productview").on('submit', (function(e) {
+		e.preventDefault();
+		
+		$.ajax({
+			url: "addToCart.php",
+			type: "POST",
+			data: new FormData(this),
+			contentType: false,
+			cache: false,
+			processData: false,
+			success: function(response) {
+				if(response == 1) {
+					loadCart();
+				} else {
+					alert('Error adding item');
+				}
+			}
+		});
+	}));
+});
 
 function loadPosts() {
 var id = "<?php echo $_GET['id']; ?>";
@@ -138,11 +167,12 @@ if (fid != "" && uid != "") {
 
 }
 
-function addToCart(user_id, product_id, farmstand_id) {
+function addToCart(user_id, product_id, farmstand_id, quantity) {
+quantity = 2;
 $.ajax({
 	url: "addToCart.php",
 	type: "POST",
-	data:{user_id:user_id, product_id:product_id, farmstand_id:farmstand_id},
+	data:{user_id:user_id, product_id:product_id, farmstand_id:farmstand_id,quantity:quantity},
 	success:function(response) {
 		if(response == 1) {
 			loadCart();
@@ -170,6 +200,7 @@ $.ajax({
 }
 
 </script>
+<script src="./paymentPage/js/stripe.js"></script>
 
 </body>
 </html>

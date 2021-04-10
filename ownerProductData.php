@@ -7,7 +7,7 @@
 					echo "<div id = 'result'>";
 
 					if($id != NULL) {
-						$query = "SELECT * FROM product WHERE farmstand_id = '$id';";
+						$query = "SELECT * FROM product WHERE farmstand_id = '$id' and removed = 0;";
 
 						$result = mysqli_query($connect, $query);
 
