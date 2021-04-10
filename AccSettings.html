@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Profile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles/accSetting.css" media = "screen">
+	<script src="scripts/UserUpdateScript.js"></script>
+	
+
+</head>
+<body>
+
+<button id="settingsButton">Profile Update</button>
+	<div id="ProfileUpdateModal" class="modal">
+
+		<div class="modal-content">
+		  <div class="modal-header">
+			<span class="close">&times;</span>
+			<h2>Profile Update: Log In Information</h2>
+		  </div>
+		  <div class="modal-body">
+			
+			<form action="/action_page.php">
+				<label for="UpdateEmailAddress">New Email Address</label>
+				<input type="text" id="UpdateEmailAddress" name="UpdateEmailAddress" placeholder="Email Address"><br><br>
+
+				<label for="UpdatePasswordNew">New Password</label>
+				<input type="text" id="UpdatePasswordNew" name="UpdatePasswordNew"><br><br>
+
+				<label for="UpdatePasswordNewUp">Re-Enter New Password</label>
+				<input type="text" id="UpdatePasswordNewUp" name="UpdatePasswordNewUp"><br><br>
+
+				<label for="UpdatePasswordOld">Existing Password</label>
+				<input type="text" id="UpdatePasswordOld" name="UpdatePasswordOld"><br><br>
+			  </form>
+		  </div>
+		  <div class="modal-header">
+			<span class="close">&times;</span>
+			<h2>Profile Update: Stand Update</h2>
+		  </div>
+		  <div class="modal-body">
+			
+			<form action="/action_page.php">
+				<label for="UpdateStandName">New Email Address</label>
+				<input type="text" id="UpdateStandName" name="UpdateStandName" placeholder="New Stand Name"><br><br>
+
+				<label for="UpdateNewStandImage">Select New Stand Image:</label>
+				  <input type="file" id="UpdateNewStandImage" name="UpdateNewStandImage" accept="image/*">
+
+				<label for="UpdateStandDescription">Description Update</label>
+				<input type="text" id="UpdateStandDescription" name="UpdateStandDescription"><br><br>
+
+			  </form>
+		  </div>
+		  <div class="modal-footer">
+			<button type="Submit">Update Information</button>
+		  </div>
+		</div>
+	  
+	  </div>
+
+
+
+<!--***********************************************************-->
+	  <script>
+		  // Get the modal
+		var modal = document.getElementById("ProfileUpdateModal");
+		
+		var btn = document.getElementById("settingsButton");
+		
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+		
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+		  modal.style.display = "block";
+		}
+		
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+	  </script>
+
+
+<!--***********************************************************-->
+
+</body>
+</html>
