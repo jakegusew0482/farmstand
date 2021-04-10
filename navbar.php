@@ -61,7 +61,7 @@ session_start();
 		}
 		if ($_SESSION['account_type'] == "user") {
 			include('AccountSettings.html')
-			echo "<a href='ownerMarketPage.php'>My Farmstand</a>";
+			echo "<button id='settingsButton'>Profile Update</button>";
 		}
 		?>
 		<a href="Feedback.php" class='right'>Feedback</a>
