@@ -59,6 +59,10 @@ session_start();
 				echo "<a href=''>My Account</a>";
 			}
 		}
+		if ($_SESSION['account_type'] == "user") {
+			include('AccountSettings.html')
+			echo "<a href='ownerMarketPage.php'>My Farmstand</a>";
+		}
 		?>
 		<a href="Feedback.php" class='right'>Feedback</a>
 	</div>
