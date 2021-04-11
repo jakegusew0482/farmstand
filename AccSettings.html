@@ -10,83 +10,41 @@
 
 </head>
 <body>
+<div id = "AccSettingProfileImage">
+	<form action="/action_page.php">
+		<label for="img">Upload Profile Image</label>
+		<input type="file" id="img" name="img" accept="image/*">
+	</form>
+	
 
-<button id="settingsButton">Profile Update</button>
-	<div id="ProfileUpdateModal" class="modal">
+</div>
+<div id = "AccSettingUserInfo">
+	<div id = "AccSettingName">
+		<form action="/action_page.php">
+			<label for="fname">First name:</label>
+			<input type="text" id="fname" name="fname" placeholder="First Name"><br><br>
+			<label for="lname">Last name:</label>
+			<input type="text" id="lname" name="lname" placeholder="Last Name"><br><br>
+		  </form>
+	</div>
+	<div id = "AccSettingAddress">
+		<form action="/action_page.php">
+			<label for="Adress">Adress</label>
+			<input type="text" id="Adress" name="Adress" placeholder="Address"><br><br>
+			<label for="State">State</label>
+			<input type="text" id="State" name="State" placeholder="State"><br><br>
+			<label for="Zip">Zipcode</label>
+			<input type="text" id="Zip" name="Zip" placeholder="Zipcode"><br><br>
+		  </form>
+	</div>
+	<div id = "AccSettingSubmitButton">
+		<button type="button" id = "AccSettingSubmitButton1" >Update Profile</button>
+	</div> 
 
-		<div class="modal-content">
-		  <div class="modal-header">
-			<span class="close">&times;</span>
-			<h2>Profile Update: Log In Information</h2>
-		  </div>
-		  <div class="modal-body">
-			
-			<form action="/action_page.php">
-				<label for="UpdateEmailAddress">New Email Address</label>
-				<input type="text" id="UpdateEmailAddress" name="UpdateEmailAddress" placeholder="Email Address"><br><br>
-
-				<label for="UpdatePasswordNew">New Password</label>
-				<input type="text" id="UpdatePasswordNew" name="UpdatePasswordNew"><br><br>
-
-				<label for="UpdatePasswordNewUp">Re-Enter New Password</label>
-				<input type="text" id="UpdatePasswordNewUp" name="UpdatePasswordNewUp"><br><br>
-
-				<label for="UpdatePasswordOld">Existing Password</label>
-				<input type="text" id="UpdatePasswordOld" name="UpdatePasswordOld"><br><br>
-			  </form>
-		  </div>
-		<!--	
-		  <div class="modal-header">
-			<span class="close">&times;</span>
-			<h2>Profile Update: Stand Update</h2>
-		  </div>
-		  <div class="modal-body">
-			
-			<form action="/action_page.php">
-				<label for="UpdateStandName">New Email Address</label>
-				<input type="text" id="UpdateStandName" name="UpdateStandName" placeholder="New Stand Name"><br><br>
-
-				<label for="UpdateNewStandImage">Select New Stand Image:</label>
-				  <input type="file" id="UpdateNewStandImage" name="UpdateNewStandImage" accept="image/*">
-
-				<label for="UpdateStandDescription">Description Update</label>
-				<input type="text" id="UpdateStandDescription" name="UpdateStandDescription"><br><br>
-
-			  </form>
-		  </div>
--->
-		  <div class="modal-footer">
-			<button type="Submit">Update Information</button>
-		  </div>
-		</div>
-	  
-	  </div>
+</div>	
 
 
 
-<!--***********************************************************-->
-	  <script>
-		  // Get the modal
-		var modal = document.getElementById("ProfileUpdateModal");
-		
-		var btn = document.getElementById("settingsButton");
-		
-		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
-		
-		// When the user clicks the button, open the modal 
-		btn.onclick = function() {
-		  modal.style.display = "block";
-		}
-		
-		// When the user clicks on <span> (x), close the modal
-		span.onclick = function() {
-		  modal.style.display = "none";
-		}
-	  </script>
-
-
-<!--***********************************************************-->
 
 </body>
 </html>
