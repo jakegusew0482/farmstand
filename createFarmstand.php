@@ -1,4 +1,8 @@
-    <?php	include('navbar.php');	?>
+
+    <?php 
+// Farmstand Registration Page
+// Data is sent to registerFarmstand.php
+	include('navbar.php');	?>
 
     <!-- Side Column of Main Page -->
     <div class="row">

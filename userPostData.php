@@ -1,4 +1,5 @@
 <?php
+// Gets post data for the user market page
 include('mysqli_connect.php');
 					
 					if(isset($_POST['id'])) $id = $_POST['id']; else $id = NULL;

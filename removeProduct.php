@@ -1,5 +1,5 @@
 <?php
-
+// Removes a product from a farmstand account
 	include('mysqli_connect.php');
 	
 	if(isset($_POST['productid'])) $id = $_POST['productid']; else $id = NULL;

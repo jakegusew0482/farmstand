@@ -1,6 +1,8 @@
 
 <?php
 
+//Look for a user in the users table, if not found search the farmstand table
+
 include('mysqli_connect.php');
 
 $usertable          = "user";

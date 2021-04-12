@@ -1,4 +1,5 @@
 <?php
+// Returns html code of the search results
 
 include('mysqli_connect.php');
 

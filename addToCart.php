@@ -1,5 +1,5 @@
 <?php
-
+// Add a item to a users cart given the user id, farmstand id, and product id.
 	include('mysqli_connect.php');
 	
 	if(isset($_POST['user_id'])) $uid = $_POST['user_id']; else $uid = NULL;
@@ -13,7 +13,7 @@
 
 		$result = mysqli_query($connect, $query);
 
-		if(mysqli_affected_rows($connect) == 1) {
+		if(mysqli_affected_rows($connect) == 1) { // If the item is already in cart just add the desired quantity to the existing quantity 
 
 			$row = mysqli_fetch_assoc($result);
 
@@ -42,6 +42,6 @@
 
 
 	mysqli_close($connect);
-	header("Location: userMarketPage.php?id=$fid");
+	header("Location: userMarketPage.php?id=$fid"); //Refresh page
 
 ?>

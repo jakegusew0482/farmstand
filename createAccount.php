@@ -1,4 +1,7 @@
-    <?php	include('navbar.php');	?>
+    <?php
+// Registration page, data is sent to register.php
+// if response is success user sent to index.php
+	include('navbar.php');	?>
 
     <!-- Side Column of Main Page -->
     <div class="row">
@@ -100,7 +103,7 @@ $.ajax({
 	var msg="";
 	if(response==1) {
 		msg="Account Created";
-		window.location.href = "http://farmstandwebsite.com";
+		window.location.replace('index.php');
 	} else if(response==2){
 		alert("The Username or Email is already in use");
 	} else if(response==3) {

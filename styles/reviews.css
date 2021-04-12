@@ -1,0 +1,27 @@
+// style partially borrowed from https://www.cssscript.com/simple-5-star-rating-system-with-css-and-html-radios/ 
+
+div.reviewstars {
+	left:0;
+  	width: 100%;
+  	display: inline-block;
+}
+
+input.reviewstar { 
+	display: none; 
+}
+
+label.reviewstar {
+	float: right;
+  	padding: 5px;
+  	font-size: 20px;
+  	color: #444;
+}
+
+input.reviewstar:checked ~ label.reviewstar:before {
+  	color: #FD4;
+}
+
+label.reviewstar:before {
+  	content: '\f006';
+  	font-family: FontAwesome;
+}

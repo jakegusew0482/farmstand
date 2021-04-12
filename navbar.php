@@ -9,6 +9,8 @@ session_start();
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="styles/styles.css" media="screen" />
+	<link rel="stylesheet" href="styles/reviews.css" media="screen" />
+	<script src="https://kit.fontawesome.com/1bef7a2ad3.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 	<link rel="stylesheet" href="styles/NewMarketPlace.css" media="screen">
 	<link rel="stylesheet" href="styles/MarketplacePage.css" media="screen">
@@ -58,10 +60,6 @@ session_start();
 			} else {
 				echo "<a href=''>My Account</a>";
 			}
-		}
-		if ($_SESSION['account_type'] == "user") {
-			include('AccountSettings.html')
-			echo "<button id='settingsButton'>Profile Update</button>";
 		}
 		?>
 		<a href="Feedback.php" class='right'>Feedback</a>

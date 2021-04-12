@@ -1,4 +1,6 @@
+
 <?php
+//Retrieves data to populate the edit product form
 	include('mysqli_connect.php');
 
 	if(isset($_POST['id'])) {

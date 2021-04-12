@@ -1,4 +1,6 @@
+
 <?php
+// Retrieves data for the farmstand profile edit form
 include('mysqli_connect.php');
 
 	if(isset($_POST['id'])) {

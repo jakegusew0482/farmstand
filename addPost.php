@@ -1,4 +1,5 @@
 <?php
+// Add a post given the title, desc, and farmstands ID
 
 	include('mysqli_connect.php');
 

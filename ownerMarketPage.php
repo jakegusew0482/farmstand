@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+// Owner market page, this is the market page from the point of view of a farmstand owner
 	include('navbar.php');
 ?>
 <body onload='loadPage()'>
@@ -140,7 +141,8 @@
 		<div id = "UserReviewContainer">
 			<div id = "UserReviewTitle"></div>
 			<div id = "UserReviewContent">
-				
+				<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+				<div class="elfsight-app-129dc7ae-caf3-4312-898c-2125deb522a0"></div>
 
 
 

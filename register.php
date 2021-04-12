@@ -1,5 +1,5 @@
 <?php
-
+// Registers a user into the database
 	include('mysqli_connect.php');
 
 	$table = "user";

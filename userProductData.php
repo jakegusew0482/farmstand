@@ -1,4 +1,5 @@
 <?php
+//Gets product data for the user market page
 
 					include('mysqli_connect.php');
 					
@@ -8,7 +9,7 @@
 
 					echo "<p>$test</p>";
 					if($id != NULL) {
-						$query = "SELECT * FROM product WHERE farmstand_id = '$id'; and removed = 0";
+						$query = "SELECT * FROM product WHERE farmstand_id = '$id' and removed = 0";
 
 						$result = mysqli_query($connect, $query);
 

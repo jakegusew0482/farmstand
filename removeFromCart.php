@@ -1,4 +1,5 @@
 <?php
+// Removes a cart item from a users cart
 
 	include('mysqli_connect.php');
 

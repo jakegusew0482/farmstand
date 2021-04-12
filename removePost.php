@@ -1,4 +1,5 @@
 <?php
+// Removes a post from a farmstand account
 
 	include('mysqli_connect.php');
 	

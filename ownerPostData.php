@@ -1,4 +1,5 @@
 <?php
+//Retrieves all the posts for the farmstand owner market page.
 include('mysqli_connect.php');
 					
 					if(isset($_POST['id'])) $id = $_POST['id']; else $id = NULL;

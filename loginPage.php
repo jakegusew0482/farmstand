@@ -1,4 +1,6 @@
-	<?php	include('navbar.php');
+	<?php	
+//Login page
+include('navbar.php');
 			?>
 
 

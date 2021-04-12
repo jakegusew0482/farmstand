@@ -1,8 +1,11 @@
 <?php
-include('mysqli_connect.php');
+//Retrieves items in a users cart given the users ID and the farmstands ID.
+
+	include('mysqli_connect.php');
 
 	if(isset($_POST['farmstand_id'])) $fid = $_POST['farmstand_id']; else $fid = NULL;
 	if(isset($_POST['user_id'])) $uid = $_POST['user_id']; else $uid = NULL;
+
 	echo"<div id='result' name='result'>";
 	echo "<h3>Your Cart</h3>";
 	echo"<div id = 'InventoryReservationContainer' >";
@@ -23,14 +26,10 @@ include('mysqli_connect.php');
 			echo "<input type='button' onClick='removeFromCart($id);' value='Remove'>";
 		}
 	}
+
 	echo"<hr>";
-	echo "</div>";
+	echo "</div></div></div>";
 
-	echo "</div>";
-
-	echo "</div>";
-
-
-mysqli_close($connect);
+	mysqli_close($connect);
 ?>
 

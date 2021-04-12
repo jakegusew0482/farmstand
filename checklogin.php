@@ -1,4 +1,5 @@
 <?php
+// Check if a user is logged in
 
 	include('config.php');
 

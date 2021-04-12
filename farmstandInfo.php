@@ -1,4 +1,6 @@
 <?php
+//Retrieves the farmstands title, desc, and image to display on farmstand market page
+
 	include('mysqli_connect.php');
 					
 	if(isset($_POST['id'])) $id = $_POST['id']; else $id = NULL;

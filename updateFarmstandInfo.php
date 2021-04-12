@@ -1,5 +1,5 @@
 <?php
-
+// Updates farmstand information with new data
 	include('mysqli_connect.php');	
 	include('functions.php');
 

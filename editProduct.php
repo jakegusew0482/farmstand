@@ -1,4 +1,6 @@
+
 <?php
+//Updates an existing product with new data
 
 	include('mysqli_connect.php');
 

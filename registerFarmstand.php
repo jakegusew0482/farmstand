@@ -1,5 +1,5 @@
 <?php
-
+// Registers a farmstand into the database
 	include('mysqli_connect.php');
 
 	$table = "farmstand";
