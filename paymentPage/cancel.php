@@ -1,5 +1,3 @@
 <?php
 
-echo "Canceled order";
-
-?>
+echo "Payment cancelled";
