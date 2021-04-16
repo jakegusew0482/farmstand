@@ -22,7 +22,7 @@
 			$id = $row['id'];
 			$price = $row['price'] * $quantity;
 
-			echo "<p><h4>$name</h4><span class='price'>$$price <br> QTY: $quantity</span></p>";
+			echo "<p><h4 name='nameItem'>$name</h4><span class='price' name='priceCart'>$$price</span> <br> <span name='quantityItem'>QTY: $quantity</span></p>";
 			echo "<input type='button' onClick='removeFromCart($id);' value='Remove'>";
 		}
 	}

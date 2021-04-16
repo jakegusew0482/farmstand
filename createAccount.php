@@ -25,7 +25,8 @@
               required
             />
 
-            <label for="user"><b>Username</b></label>
+            <label for="user"><b>Username</b></label> 	<span id='usererrormsg' style='color:red;'></span>
+
             <input
               type="text"
               placeholder="Username"
@@ -34,7 +35,7 @@
               required
             />
 
-            <label for="pass"><b>Password</b></label>
+            <label for="pass"><b>Password</b></label>	<span id='passerrormsg' style='color:red;'></span>
             <input
               type="password"
               placeholder="Enter Password"
@@ -94,7 +95,19 @@ var user = $('#user').val();
 var pass = $('#pass').val();
 var email = $('#email').val();
 
-if(user != "" && pass != "" && email != "") {
+var error = 0;
+
+if(user.length > 15) {
+	        document.getElementById('usererrormsg').innerHTML="Username must be less than 15 characters long";  
+		error++;
+} 
+if (pass.length > 15) {
+		document.getElementById('passerrormsg').innerHTML="Password must be less than 15 characters long";  
+		error++;
+}
+
+
+if(user != "" && pass != "" && email != "" && error == 0) {
 $.ajax({
 	url:'/register.php',
 	type:'post',

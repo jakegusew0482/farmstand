@@ -8,6 +8,8 @@ header('Content-Type: application/json');
 
 $YOUR_DOMAIN = 'https://farmstandwebsite.com/paymentPage';
 
+
+
 $checkout_session = \Stripe\Checkout\Session::create([
   'payment_method_types' => ['card',],
   'line_items' => [[
@@ -37,4 +39,5 @@ $checkout_session = \Stripe\Checkout\Session::create([
   'success_url' => $YOUR_DOMAIN . '/success.php',
   'cancel_url' => $YOUR_DOMAIN . '/cancel.php',
 ]);
+
 echo json_encode(['id' => $checkout_session->id]);

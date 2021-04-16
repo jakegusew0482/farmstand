@@ -45,7 +45,7 @@
 
 			<!--Reviews-->
 			<div id = "StandOwnerPosting">
-<div class="form-popup" id="postForm">
+<!--<div class="form-popup" id="postForm">
 
   <form id='addpostform' name='addpostform' method='post' action='addPost.php' enctype='multipart/form-data' class="form-container">
 
@@ -64,10 +64,14 @@
 </div>
 				<div id = "StandPostingTitle"><h3>Latest Posts</h3></div>
 				<div id = "StandPostingSubContainer">
-<button class='open-button' onClick='openPostForm()' id = 'addpost'>Add Post</button>
+<button class='open-button' onClick='openPostForm()' id = 'addpost'>Add Post</button> -->
+
+				<div id = "StandPostingTitle"><h3>Reviews</h3></div>
+				<div id = "StandPostingSubContainer">
+
 
 					<div id = "StandPostingContent"><p>
-						Place holder of text / image content
+						
 					</p></div>
 				</div>
 			</div>
@@ -285,10 +289,28 @@ $(document).ready(function(e) {
 
 
 function loadPage() {
-loadPosts();
+//loadPosts(); DISABLED
+loadReviews();
 loadProducts();
 loadFarmInfo();
 }
+
+function loadReviews() {
+	var fid = "<?php if(isset($_SESSION['farm_id'])) echo $_SESSION['farm_id']; else echo 0; ?>";
+	if(fid != 0) {
+		$.ajax({
+			url: "getOwnerMarketReviews.php",
+			type: "POST",
+			data: {fid:fid},
+			dataType: "html",
+			success: function(data) {
+			var result = $('<div />').append(data).find('#result').html();
+            		$('#StandPostingContent').html(result);						
+			}
+		});
+	}
+}
+
 
 function loadFarmInfo() {
 var id = "<?php echo $_SESSION['farm_id']; ?>";

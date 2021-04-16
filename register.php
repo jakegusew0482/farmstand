@@ -28,6 +28,7 @@
 			include('config.php');
 			$_SESSION['username'] = $user;
 			$_SESSION['account_type'] = 'user';
+			$_SESSION['email'] = $email;
 			$_SESSION['user_id'] = mysqli_insert_id($connect);
 
 		} else {

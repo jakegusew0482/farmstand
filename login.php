@@ -30,6 +30,7 @@ if ($user != NULL && $pass != NULL) {
 		$_SESSION['username'] = $user;
 		$_SESSION['account_type'] = "user";
 		$_SESSION['user_id'] = $row['user_id'];
+		$_SESSION['email'] = $row['email'];
 		echo 1;
 		mysqli_close($connect);
 		exit();

@@ -57,8 +57,9 @@ session_start();
 		} else {
 			if ($_SESSION['account_type'] == "farmstand") {
 				echo "<a href='ownerMarketPage.php'>My Farmstand</a>";
+				echo "<a href='farmstandOrderPage.php'>Orders</a>";
 			} else {
-				echo "<a href=''>My Account</a>";
+				echo "<a href='myAccount.php'>My Account</a>";
 			}
 		}
 		?>

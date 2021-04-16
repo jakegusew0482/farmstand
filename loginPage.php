@@ -15,9 +15,11 @@ include('navbar.php');
   <div class="container">
 <form id='login' name='loginform' method='post'>
     <label for="user"><b>Username</b></label>
+	<span id='usererrormsg' style='color:red;'></span>
     <input type="text" placeholder="Enter Username" name="user" id="user" required>
 
     <label for="pass"><b>Password</b></label>
+	<span id='passerrormsg' style='color:red;'></span>
     <input type="password" placeholder="Enter Password" name="pass" id="pass"required>
         
 	<button type='button' name='sub' id='sub'>Login</button>
@@ -55,7 +57,19 @@ $("#sub").click(function() {
 var user = $('#user').val();
 var pass = $('#pass').val();
 
-if (user != "" && pass != "") {
+var error = 0;
+
+if(user.length > 15) {
+	        document.getElementById('usererrormsg').innerHTML="Username must be less than 15 characters long";  
+		error++;
+} 
+if (pass.length > 15) {
+		document.getElementById('passerrormsg').innerHTML="Password must be less than 15 characters long";  
+		error++;
+}
+
+if (user != "" && pass != "" && error == 0) {
+	
 $.ajax({
         url:'/login.php',
         type:'post',

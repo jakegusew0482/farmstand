@@ -219,13 +219,13 @@ function submitReview() {
 	var uid = "<?php if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']; else echo 0; ?>";
 	var reviewtext = document.getElementById('reviewtext').value;
 
-	if ($('input[id=star-5]:checked').length > 0) {
+	if ($('input[id=reviewstar5]:checked').length > 0) {
 		var rating = 5;
-	} else if ($('input[id=star-4]:checked').length > 0) {
+	} else if ($('input[id=reviewstar4]:checked').length > 0) {
 		var rating = 4;
-	} else if ($('input[id=star-3]:checked').length > 0) {
+	} else if ($('input[id=reviewstar3]:checked').length > 0) {
 		var rating = 3;
-	} else if ($('input[id=star-2]:checked').length > 0) {
+	} else if ($('input[id=reviewstar2]:checked').length > 0) {
 		var rating = 2;
 	} else {
 		var rating = 1;
