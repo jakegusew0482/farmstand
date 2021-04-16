@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Profile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles/MarketplacePage.css" media = "screen">
+	<script src="NewMarketplace.js"></script>
+	
+
+</head>
+<body>
+	<div id= "page-container">
+		<div id ="ContentBox"></div>
+			<!--Stand Description-->
+			<div id ="FarmstandInfo">
+				<div id = "FarmStandName"><h2>Stand Name</h2></div>
+				<div id = "FarmStandImage"><h5>Stand Image</h5></div>
+				<div id = "FarmStandAddr"><h5>Stand Description</h5></div>
+			</div>
+			
+			<!--Review Area-->
+			<div id = "NewsContainer">
+				<div id = "NewsContainerBox">
+                    <div class="w3-content w3-section" style="max-width:500px">
+                        <p class="mySlides"> Review 1</p>
+                        <p class="mySlides"> Review 2</p>
+                        <p class="mySlides"> Review 3</p>
+                      </div>
+
+                </div>
+			</div>
+
+			<!--Reviews-->
+			<div id = "StandOwnerPosting">
+				<div id = "StandPostingTitle"><h3>Latest Posts</h3></div>
+				<div id = "StandPostingSubContainer">
+					<div id = "StandPostingContent"><p>
+						Place holder of text / image content
+					</p></div>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+			<!--Outstanding reservations -->
+			<div id = "ReservationDisplayContainer">
+				<!--Item Inventory Container-->
+				<div id = "ReservationSubContainer">
+
+                    <button type="button" id = "ItemImage">Complete Order</button>
+                    <div id = "ItemReservationContainerName">
+                        <h5 id = "CustomerName">Customer: </h5>
+                        <h5 id = "CustomerEmail">Email: </h5>
+                    </div>
+
+
+                    <div id = "ItemReservationContainer">
+                        <div class="dropdown">
+                            <span>Order List</span>
+                            <div class="dropdown-content">
+                                <div id = "ItemReservationItemName"></div>
+                                <div id = "ItemReservationItemQty"></div>
+                            </div>
+                          </div>
+                    </div>
+                    <div id = "ItemReservationTotalContainer">
+                        <div id = "ItemReservationTotalItems">Total Items:</div>
+                        <div id = "ItemReservationTotalValue">Total Value</div>
+                    </div>
+				</div>
+			</div>
+		</div>
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!--Farm Stand Eddit-->
+		<div id = "UserReviewContainer">
+
+
+
+
+
+
+			
+		</div>
+
+
+
+
+
+
+
+
+
+	
+        <script>
+            var myIndex = 0;
+            carousel();
+            
+            function carousel() {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+              }
+              myIndex++;
+              if (myIndex > x.length) {myIndex = 1}    
+              x[myIndex-1].style.display = "block";  
+              setTimeout(carousel, 2000); // Change image every 2 seconds
+            }
+            </script>
+
+
+</body>
+</html>
