@@ -104,6 +104,7 @@ $(document).ready(function () {
       // ajax call
       $.ajax({
         url: "mapData.php",
+	      crossDomain: true,
         type: "POST",
         dataType: "json",
         data: { searchType: searchType, searchTerm: searchTerm },
@@ -150,6 +151,10 @@ $(document).ready(function () {
         type: "POST",
         dataType: "json",
         url: "mapData.php",
+	xhrFields: {
+		withCredentials: true
+	},
+	crossDomain: true,
         // Added for search for farmstand
         //   data: { search: search, searchtype: searchtype },
         success: function (response) {
