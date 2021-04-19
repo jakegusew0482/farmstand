@@ -35,7 +35,7 @@
               required
             />
 
-            <label for="user"><b>Username to Login With</b></label>
+            <label for="user"><b>Username to Login With</b></label> <span id='usererrormsg' style='color:red;'></span>
             <input
               type="text"
               placeholder="Enter a Username"
@@ -43,6 +43,16 @@
               id="user"
               required
             />
+
+	 <label for="password"><b>Password for farmstand login</b></label>  <span id='passerrormsg' style='color:red;'></span>
+            <input
+              type="text"
+              placeholder="Enter Password"
+              name="password"
+              id="password"
+              required
+            />
+
 
 	    <label for="email"><b>Email</b></label>
             <input
@@ -60,15 +70,6 @@
               placeholder="Enter Address"
               name="address"
               id="address"
-              required
-            />
-
-	 <label for="password"><b>Password for farmstand login</b></label>
-            <input
-              type="text"
-              placeholder="Enter Password"
-              name="password"
-              id="password"
               required
             />
 
@@ -192,7 +193,29 @@ e.preventDefault();
 	var zip = document.getElementById('zipcode').value;
 	var file = document.getElementById('uploadImage').files.length;
 
-	if (name != "" && desc != "" & user != "" && email != "" && add != "" && pass != "" && city != "" && state != "" && zip != "" && file > 0) {
+	var error = 0;
+
+	if(user.length < 8) {
+	        document.getElementById('usererrormsg').innerHTML="Username must be longer than 8 characters";  
+		error++;
+	} 
+	if (pass.length < 8) {
+		document.getElementById('passerrormsg').innerHTML="Password must be longer than 8 characters";  
+		error++;
+	}
+
+	if(user.length > 20) {
+	        document.getElementById('usererrormsg').innerHTML="Username must be less than 20 characters long";  
+		error++;
+	} 
+	if (pass.length > 20) {
+		document.getElementById('passerrormsg').innerHTML="Password must be less than 20 characters long";  
+		error++;
+	}
+
+
+
+	if (name != "" && desc != "" & user != "" && email != "" && add != "" && pass != "" && city != "" && state != "" && zip != "" && file > 0 && error == 0) {
 
 		$.ajax({
       			url: "registerFarmstand.php",

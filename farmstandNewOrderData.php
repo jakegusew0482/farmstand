@@ -34,8 +34,7 @@
 						<p id='headerp'>STATUS: $status<br>ORDER ID: $orderID<br>CUSTOMER NAME: $username<br>PHONE: 631-123-4567</p>
 							<div id='orderButtons'>
 								<button type='button' onclick='markOrderReady($orderID)'>Mark Ready</button>
-								<button type='button' onclick='markOrderComplete($orderID)'>Mark Complete</button>
-							</div>
+														</div>
 				     </div>";
 
 				

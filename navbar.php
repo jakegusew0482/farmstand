@@ -60,6 +60,8 @@ session_start();
 				echo "<a href='farmstandOrderPage.php'>Orders</a>";
 			} else {
 				echo "<a href='myAccount.php'>My Account</a>";
+				echo "<a href='userOrderPage.php'>My Orders</a>";
+
 			}
 		}
 		?>

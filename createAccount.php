@@ -96,13 +96,21 @@ var pass = $('#pass').val();
 var email = $('#email').val();
 
 var error = 0;
-
-if(user.length > 15) {
-	        document.getElementById('usererrormsg').innerHTML="Username must be less than 15 characters long";  
+if(user.length < 8) {
+	        document.getElementById('usererrormsg').innerHTML="Username must be longer than 8 characters";  
 		error++;
 } 
-if (pass.length > 15) {
-		document.getElementById('passerrormsg').innerHTML="Password must be less than 15 characters long";  
+if (pass.length < 8) {
+		document.getElementById('passerrormsg').innerHTML="Password must be longer than 8 characters";  
+		error++;
+}
+
+if(user.length > 20) {
+	        document.getElementById('usererrormsg').innerHTML="Username must be less than 20 characters long";  
+		error++;
+} 
+if (pass.length > 20) {
+		document.getElementById('passerrormsg').innerHTML="Password must be less than 20 characters long";  
 		error++;
 }
 

@@ -31,6 +31,28 @@ function loadPage() {
 	showNew();
 }
 
+function refreshOrders() {
+var current = 0;
+	if(document.getElementById("newOrders").style.display == "block") {
+		current = 1;
+	} else if(document.getElementById("readyOrders").style.display == "block") {
+		current = 2;
+	} else if(document.getElementById("completeOrders").style.display == "block") {
+		current = 3;
+	}
+
+	loadPage();
+
+	if(current == 1) {
+		showNew();
+	} else if (current == 2) {
+		showReady();
+	} else if (current == 3) {
+		showComplete();
+	}
+
+}
+
 function loadNewOrders() {
 	var fid = "<?php echo $_SESSION['farm_id']; ?>";
 
@@ -83,6 +105,44 @@ function loadCompleteOrders() {
 		});
 
 	}
+}
+
+function markOrderReady(order_id) {
+if(order_id != "") {
+	var method = 1;
+	$.ajax({
+		url: "changeFarmstandOrderStatus.php",
+		type: "POST",
+		data: {order_id:order_id, method:method},
+		dataType: "html",
+		success: function(response) {
+			if (response==1) {
+				refreshOrders();
+			}
+		}
+	});
+
+}
+
+}
+
+function markOrderComplete(order_id) {
+if(order_id != "") {
+	var method = 2;
+	$.ajax({
+		url: "changeFarmstandOrderStatus.php",
+		type: "POST",
+		data: {order_id:order_id, method:method},
+		dataType: "html",
+		success: function(response) {
+			if (response==1) {
+				refreshOrders();
+			}
+		}
+	});
+
+}
+
 }
 
 function showNew() {

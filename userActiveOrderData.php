@@ -1,39 +1,34 @@
 <?php
 	include('mysqli_connect.php');
 	
-	if(isset($_POST['fid'])) $fid = $_POST['fid']; else $fid = NULL;
+	if(isset($_POST['uid'])) $uid = $_POST['uid']; else $uid = NULL;
 	
-	if($fid != NULL) {
+	if($uid != NULL) {
 
 		// SELECT ALL THE ORDER FOR THIS FARMSTAND INCLUDING THE USERS INFORMATION WHO PLACED THE ORDER
-		$query = "SELECT u.username, o.order_id, o.user_id, o.paid, o.ready, o.complete from user_order o, user u where o.farmstand_id = $fid and o.user_id = u.user_id and o.complete = 1;";
+		$query = "SELECT o.order_id, o.paid, o.ready from user_order o where o.user_id = $uid and o.complete = 0 order by o.ready desc;";
 
 		$result = mysqli_query($connect, $query);
 
-		echo "<div id='completeresult'>";
+		echo "<div id='newresult'>";
 	
 		while($row = mysqli_fetch_assoc($result)) {
 
 			echo"<div id='testorder'>";
 			
 			$orderID 	= $row['order_id'];
-			$username 	= $row['username'];
 			$user_id 	= $row['user_id'];
 			$paid 		= $row['paid'];
 			$ready		= $row['ready'];
-			$complete	= $row['complete'];
 
-			if($ready == 1) $status = 'ready'; else $status = 'incomplete';
-			if($complete == 1) $status = 'complete';
+			if($ready == 1) $status = 'Ready to pick up!'; else $status = 'Not ready to pick up.';
 
 			// ECHO THE ORDER INFORMATION PANEL
 
 			
 
 				echo"<div id='orderInfo'>
-						<p id='headerp'>STATUS: $status<br>ORDER ID: $orderID<br>CUSTOMER NAME: $username<br>PHONE: 631-123-4567</p>
-							<div id='orderButtons'>
-															</div>
+						<p id='headerp'>STATUS: $status<br>ORDER ID: $orderID<br>PHONE: 631-123-4567</p>
 				     </div>";
 
 				
