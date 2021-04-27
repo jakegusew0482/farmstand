@@ -69,6 +69,3 @@ if($name != NULL && $desc != NULL && $price != NULL && $id != NULL && $_FILES['i
 
 mysqli_close($connect);
 ?>
-
-
-

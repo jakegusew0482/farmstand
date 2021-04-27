@@ -6,9 +6,6 @@ include('mysqli_connect.php');
 if(isset($_POST['farmstand_id'])) $fid = $_POST['farmstand_id']; else $fid = NULL;
 if(isset($_POST['user_id'])) $uid = $_POST['user_id']; else $uid = NULL;
 
-// Array for Stripe
-$itemsStripe = array();
-
 echo"<div id='result' name='result'>";
 echo "<h3>Your Cart</h3>";
 echo"<div id = 'InventoryReservationContainer' >";
@@ -19,6 +16,7 @@ if($uid != NULL && $fid != NULL) {
 	
 	$result = mysqli_query($connect, $query);
 
+	// Values for itemsKeys
 	while($row = mysqli_fetch_assoc($result)) {
 		$name = $row['name'];
 		$quantity = $row['quantity'];
@@ -35,4 +33,3 @@ echo "</div></div></div>";
 
 mysqli_close($connect);
 ?>
-

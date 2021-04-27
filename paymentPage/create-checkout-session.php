@@ -8,17 +8,14 @@ header('Content-Type: application/json');
 
 $YOUR_DOMAIN = 'https://farmstandwebsite.com/paymentPage';
 
-
-
 $checkout_session = \Stripe\Checkout\Session::create([
   'payment_method_types' => ['card',],
   'line_items' => [[
     'price_data' => [
       'currency' => 'usd',
-      'unit_amount' => 2000,
+      'unit_amount' => 2000.00,
       'product_data' => [
-        'name' => 'Chicken',
-        'images' => ["https://i.imgur.com/EHyR2nP.png"],
+        'name' => 'carrot',
       ],
     ],
     'quantity' => 1,
@@ -26,10 +23,9 @@ $checkout_session = \Stripe\Checkout\Session::create([
   [
     'price_data' => [
       'currency' => 'usd',
-      'unit_amount' => 1000,
+      'unit_amount' => 118.00,
       'product_data' => [
-        'name' => "Rice",
-        'images' => ["https://i.imgur.com/EHyR2nP.png"],
+        'name' => "Apettizer - Chicken Satay",
       ],
     ],
     'quantity' => 2,
