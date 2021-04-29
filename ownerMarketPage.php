@@ -40,14 +40,9 @@
 			
 			<!--Posting Area-->
 			<div id = "NewsContainer">
-				<div id = "NewsContainerBox"></div>
-			</div>
+			<div class="form-popup" id="postForm">
 
-			<!--Reviews-->
-			<div id = "StandOwnerPosting">
-<!--<div class="form-popup" id="postForm">
-
-  <form id='addpostform' name='addpostform' method='post' action='addPost.php' enctype='multipart/form-data' class="form-container">
+  			<form id='addpostform' name='addpostform' method='post' action='addPost.php' enctype='multipart/form-data' class="form-container">
 
     						<label for="posttitle"><b>Post Title</b></label>
     						<input type="text" placeholder="Post Title Name" name="posttitle" id="posttitle" required>
@@ -56,16 +51,29 @@
    						<input type="text" placeholder="Post Description" name="postdesc" id="postdesc" required>			
 
 						<br><br>
+						<span id='posterror' style='color:red;'></span>
 						<?php $id = $_SESSION['farm_id'];
 							echo "<input style='display:none;' id='postid' name = 'postid' value='$id'>"; ?>  
-	<input type="submit" class="btn"/>	
-    <button  class="btn cancel" onclick="closePostForm()">Close</button>
-  </form>
-</div>
-				<div id = "StandPostingTitle"><h3>Latest Posts</h3></div>
-				<div id = "StandPostingSubContainer">
-<button class='open-button' onClick='openPostForm()' id = 'addpost'>Add Post</button> -->
+						<input type="submit" class="btn"/>	
+    						<button  class="btn cancel" onclick="closePostForm()">Close</button>
+  			</form>
+			</div>
+				<div id = "NewsContainerBox" style='overflow-x:auto;'>
+			<button class='open-button' onClick='openPostForm()' id = 'addpost'>Add Post</button>
+					<div id='posts' name='posts'>
+					</div>
+					<!--<div id='post' style='height:80%;width:400px;align:left;border:solid;'>
+					<h2>Title</h2>
+					<p style='word-wrap: break-word;text-align:left;margin-left:1%;'>bodyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+					</div>-->
+						
 
+					</div>
+				
+			</div>
+
+			<!--Reviews-->
+			<div id = "StandOwnerPosting">
 				<div id = "StandPostingTitle"><h3>Reviews</h3></div>
 				<div id = "StandPostingSubContainer">
 
@@ -145,11 +153,6 @@
 		<div id = "UserReviewContainer">
 			<div id = "UserReviewTitle"></div>
 			<div id = "UserReviewContent">
-				<script src="https://apps.elfsight.com/p/platform.js" defer></script>
-				<div class="elfsight-app-129dc7ae-caf3-4312-898c-2125deb522a0"></div>
-
-
-
 			</div>
 		</div>
 	
@@ -229,9 +232,20 @@ $(document).ready(function(e) {
 		var title = document.getElementById('posttitle').value;
 		var desc = document.getElementById('postdesc').value;
 		var id = document.getElementById('postid').value;
+		
+		var errors = 0;
+
+		if (title.length > 50) {
+			document.getElementById('posterror').innerHTML="Post title can not be longer than 50 characters";  
+			error++;
+		} 
+		if (desc.length > 200) {			
+			document.getElementById('posterror').innerHTML="Post description can not be longer than 200 characters";  
+			error++;
+		}
 
 
-		if (title != "" && desc != "" && id != "") {
+		if (title != "" && desc != "" && id != "" && error == 0) {
 			$.ajax({
 				url: "addPost.php",
 				type: "POST",
@@ -289,7 +303,7 @@ $(document).ready(function(e) {
 
 
 function loadPage() {
-//loadPosts(); DISABLED
+loadPosts();
 loadReviews();
 loadProducts();
 loadFarmInfo();
@@ -358,7 +372,7 @@ var id = "<?php echo $_SESSION['farm_id']; ?>";
 		dataType: "html",
 		success: function(data) {
 		var result = $('<div />').append(data).find('#result').html();
-            	$('#StandPostingContent').html(result);						
+            	$('#posts').html(result);						
 		}
 	});
 
@@ -459,11 +473,13 @@ function closeEditForm() {
 function openPostForm() {
   	document.getElementById("postForm").style.display = "block";
  	document.getElementById('addpost').style.display = "none";
+	document.getElementById('posts').style.display = "none";
 }
 
 function closePostForm() {
   	document.getElementById("postForm").style.display = "none";
  	document.getElementById('addpost').style.display = "block";
+	document.getElementById('posts').style.display = "block";
 	$("#addpostform")[0].reset();
 
 }

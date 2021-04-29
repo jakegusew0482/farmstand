@@ -39,7 +39,8 @@
 
 			<!--Posting Area-->
 			<div id = "NewsContainer">
-				<div id = "NewsContainerBox"></div>
+				<div id = "NewsContainerBox"><div id='posts'></div></div>
+				
 			</div>
 
 			<!--Reviews-->
@@ -79,7 +80,7 @@
 <script>
 
 function loadPage() {
-	//loadPosts();
+	loadPosts();
 	loadReviews();
 	loadProducts();
 	loadCart();
@@ -136,7 +137,7 @@ function loadPosts() {
 			dataType: "html",
 			success: function(data) {
 			var result = $('<div />').append(data).find('#result').html();
-            		$('#StandPostingContent').html(result);						
+            		$('#posts').html(result);						
 			}
 		});
 

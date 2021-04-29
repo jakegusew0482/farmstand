@@ -15,13 +15,13 @@ include('mysqli_connect.php');
 							$title = $row['title'];
 							$desc = $row['description'];
 							$pid = $row['post_id'];
-							echo "<div id='post'>";
-							echo "<h2>$title</h2>";
-							echo "<h4>$desc</h4>";
-							echo "<h3 style='display:none;'>$pid</h3>";
+							echo"<div id='post' style='height:100%;width:400px;border:solid;float:left;'>
+							<h2>$title</h2>
+							<p style='word-wrap: break-word;text-align:left;margin-left:1%;'>$desc</p>
+							<h3 style='display:none;'>$pid</h3>";
 							 
 							echo"</div>";
-							echo "<hr>";
+							
 						}
 						
 
