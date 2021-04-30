@@ -24,6 +24,7 @@
 
 						<label for="files">Select file:</label>
 						<input id="uploadImage" type="file" accept="image/*" name="image" />			
+						<span id='editfarmerror' style='color:red;'></span>
 
 						<br><br>
 						<?php $id = $_SESSION['farm_id'];
@@ -271,7 +272,27 @@ $(document).ready(function(e) {
 	$("#editFarmform").on('submit', (function(e) {
 		e.preventDefault();
 
-		if(id != -1) {
+		var title = document.getElementById("farmtitle").value;
+		var desc = document.getElementById("farmdesc").value;
+
+		//alert(title);
+		//alert(desc);
+		var error = 0;
+
+		if(title.length < 10 || title.length > 30) {
+			error++;
+			document.getElementById('editfarmerror').innerHTML="Title must be between 10 and 30 characters";  
+
+		}
+		if(desc.length < 10 || desc.length > 100) {
+			error++;
+			document.getElementById('editfarmerror').innerHTML="Description must be between 10 and 100 characters";  
+		}
+		if(document.getElementById("uploadImage").value == "") {
+			error++;
+		}
+
+		if(id != -1 && error == 0) {
 		$.ajax({
 			url: "updateFarmstandInfo.php",
 			type: "POST",
@@ -294,7 +315,6 @@ $(document).ready(function(e) {
 
 		});
 		} else {
-			alert('You are not logged in');
 		}
 
 	}));
