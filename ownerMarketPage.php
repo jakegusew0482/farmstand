@@ -23,7 +23,7 @@
    						<input type="text" placeholder="Farmstand Description" name="farmdesc" id="farmdesc" required>
 
 						<label for="files">Select file:</label>
-						<input id="uploadImage" type="file" accept="image/*" name="image" />			
+						<input id="uploadEditImage" type="file" accept="image/*" name="image" />			
 						<span id='editfarmerror' style='color:red;'></span>
 
 						<br><br>
@@ -65,7 +65,7 @@
 					</div>
 					<!--<div id='post' style='height:80%;width:400px;align:left;border:solid;'>
 					<h2>Title</h2>
-					<p style='word-wrap: break-word;text-align:left;margin-left:1%;'>bodyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+					<p style='word-wrap: break-word;text-align:left;margin-left:1%;'></p>
 					</div>-->
 						
 
@@ -95,10 +95,10 @@
 			<!--Inventory Content-->
 			<div id = "InventoryDisplayContainer">
 				<!--Item Inventory COntainer-->
-	<button class='open-button' onClick='openForm()' id = 'additem'>Add Item</button>
+				<button class='open-button' onClick='openForm()' id = 'additem'>Add Item</button>
 				<div class="form-popup" id="myForm">
 			
-  <form id='productform' name='productform' method='post' action='addProduct.php' enctype='multipart/form-data' class="form-container">
+  				<form id='productform' name='productform' method='post' action='addProduct.php' enctype='multipart/form-data' class="form-container">
 
     						<label for="name"><b>Product Name</b></label>
     						<input type="text" placeholder="Product Name" name="name" id="name" required>
@@ -167,10 +167,10 @@ $(document).ready(function(e) {
 		var name = document.getElementById('name').value;
 		var desc = document.getElementById('desc').value;
 		var price = document.getElementById('price').value;
-		var file = document.getElementById('uploadImage').files.length;
+		var file = document.getElementById('uploadImage').value;
 		var id = document.getElementById('id').value;
 
-		if (name != "" && desc != "" && price != "" && file > 0) {
+		if (name != "" && desc != "" && price != "" && file != "") {
 			$.ajax({
 				url: "addProduct.php",
 				type: "POST",
@@ -288,7 +288,7 @@ $(document).ready(function(e) {
 			error++;
 			document.getElementById('editfarmerror').innerHTML="Description must be between 10 and 100 characters";  
 		}
-		if(document.getElementById("uploadImage").value == "") {
+		if(document.getElementById("uploadEditImage").value == "") {
 			error++;
 		}
 
@@ -374,7 +374,8 @@ $.ajax({
 		dataType: "html",
 		success: function(data) {
 		var result = $('<div />').append(data).find('#result').html();
-            	$('#products').html(result);						}
+            	$('#products').html(result);	
+					}
 	});
 } else {
 

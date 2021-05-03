@@ -108,6 +108,7 @@ $(document).ready(function(e) {
 	}));
 });
 
+
 function loadReviews() {
 	var fid = "<?php echo $_GET['id']; ?>";
 	var uid = "<?php if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']; else echo 0; ?>";

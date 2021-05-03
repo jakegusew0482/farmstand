@@ -53,7 +53,7 @@ if($name != NULL && $desc != NULL && $price != NULL && $id != NULL && $_FILES['i
 
 		if(move_uploaded_file($tmp,$path)) {		// Move Image
 
-			$query = "INSERT INTO $table(farmstand_id, name, description, price, image) VALUES(?,?,?,?,?);";
+			$query = "INSERT INTO $table(farmstand_id, name, description, price, image, removed) VALUES(?,?,?,?,?, 0);";
 			$statement = mysqli_prepare($connect, $query);
 			mysqli_stmt_bind_param($statement, 'issis', $id, $name, $desc, $price, $path);
 			mysqli_stmt_execute($statement);
