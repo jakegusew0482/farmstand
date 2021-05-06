@@ -234,7 +234,7 @@ $(document).ready(function(e) {
 		var desc = document.getElementById('postdesc').value;
 		var id = document.getElementById('postid').value;
 		
-		var errors = 0;
+		var error = 0;
 
 		if (title.length > 50) {
 			document.getElementById('posterror').innerHTML="Post title can not be longer than 50 characters";  

@@ -9,7 +9,7 @@ require "./vendor/autoload.php";
 $app = new \Slim\App;
 
 $app->add(function ($request, $response, $next) {
-  \Stripe\Stripe::setApiKey('sk_test_51IdNfnKQJVPZ85OfQtDM8XNNiAbL6HZmVNKPrCzJ5a3OcLxrM9x2nNLoa8smcLKZCu8Qm32hKXJshSPNCkBj4DiQ00jwwDTuPv');
+  \Stripe\Stripe::setApiKey('sk_test_51ImS9PKkhLhAjepvQKUmoXsnL5HDE479Xa92IxYpVADlWNQWXKDUO5H1keXYPqcWCo2azdKyrKshpIUomKImqLXq00RGthBp13');
   return $next($request, $response);
 });
 

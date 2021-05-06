@@ -29,6 +29,8 @@
 		}
 
 		$removeresult = mysqli_query($connect, $removeCartItems); // Remove the items from the cart
+
+		echo 1;
 	}
 
 	mysqli_close($connect);

@@ -16,6 +16,8 @@ if($uid != NULL && $fid != NULL) {
 	
 	$result = mysqli_query($connect, $query);
 
+	$total = 0;
+
 	// Values for itemsKeys
 	while($row = mysqli_fetch_assoc($result)) {
 		$name = $row['name'];
@@ -23,13 +25,15 @@ if($uid != NULL && $fid != NULL) {
 		$id = $row['id'];
 		$price = $row['price'] * $quantity;
 
+		$total += ($quantity * $price);
+
 		echo "<p><h4 name='nameItem'>$name</h4><span class='price' name='priceCart'>$$price</span> <br> <span name='quantityItem'>QTY: $quantity</span></p>";
 		echo "<input type='button' onClick='removeFromCart($id);' value='Remove'>";
 	}
 }
 
 echo"<hr>";
-echo "</div></div></div>";
+echo "<input id='total' name='total' style='display:none;' value='$total'></div></div>";
 
 mysqli_close($connect);
 ?>

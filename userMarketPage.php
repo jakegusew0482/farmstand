@@ -4,8 +4,20 @@
 <?php
 // User market page, this is the market page from the perspective of the customer
 	include('navbar.php');
+	include('getCartTotal.php');
+
 ?>
 <body onload='loadPage()'>
+
+<?php
+	if(isset($_GET['id'])) $id = $_GET['id']; else $id = NULL;
+	if(isset($_SESSION['user_id'])) $userId = $_SESSION['user_id']; else $userId = NULL;
+
+	
+	$total = getTotal($id,$userId);
+	echo "<input id='cart_total' name='cart_total' value='$total' style='display:none;'>";
+	echo "<input id='farmstandid' name='farmstandid' style='display:none;' value='$id'>";
+?>
 	
 	<div id= "page-container">
 		<div id ="ContentBox"></div>
@@ -178,6 +190,7 @@ function loadCart() {
 			success: function(data) {
 				var result = $('<div />').append(data).find('#result').html();
             			$('#cartresult').html(result);	
+				
 			}
 		});
 	}
@@ -185,7 +198,6 @@ function loadCart() {
 }
 
 function addToCart(user_id, product_id, farmstand_id, quantity) {
-quantity = 2;
 $.ajax({
 	url: "addToCart.php",
 	type: "POST",
@@ -202,18 +214,24 @@ $.ajax({
 }
 
 function removeFromCart(cart_id) {
+	var fid = "<?php echo $_GET['id']; ?>";
+
 	$.ajax({
 		url: "removeFromCart.php",
 		type: "POST",
 		data: {cart_id:cart_id},
 		success: function(response) {
 			if (response == 1) {
-				loadCart();			
+				loadCart();
+				window.location.replace('userMarketPage.php?id=' + fid);
+
+							
 			} else {
 				alert("could not remove item");
 			}
 		}
 	});
+
 }
 
 function submitReview() {
@@ -275,7 +293,9 @@ function removeMyReview(rid) {
 }
 
 </script>
-<script src="./paymentPage/js/charge.js"></script>
+<script src="./paymentPage/js/charge.js">let farmId = document.getElementById("farmstandid").value;
+let total = document.getElementById("cart_total").value;
+</script>
 
 </body>
 </html>

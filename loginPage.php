@@ -60,12 +60,12 @@ var pass = $('#pass').val();
 var error = 0;
 
 if(user.length > 15) {
-	        document.getElementById('usererrormsg').innerHTML="Username must be less than 15 characters long";  
-		error++;
+	       // document.getElementById('usererrormsg').innerHTML="Username must be less than 15 characters long";  
+		//error++;
 } 
 if (pass.length > 15) {
-		document.getElementById('passerrormsg').innerHTML="Password must be less than 15 characters long";  
-		error++;
+		//document.getElementById('passerrormsg').innerHTML="Password must be less than 15 characters long";  
+		//error++;
 }
 
 if (user != "" && pass != "" && error == 0) {

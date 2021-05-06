@@ -65,5 +65,5 @@ session_start();
 			}
 		}
 		?>
-		<a href="Feedback.php" class='right'>Feedback</a>
+		
 	</div>

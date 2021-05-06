@@ -23,6 +23,7 @@
 function loadPage() {
 	loadActiveOrders();
 	loadCompletedOrders();
+	showActive();
 }
 
 function loadActiveOrders() {
